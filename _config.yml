@@ -28,7 +28,6 @@ twitter_username: bsullivanwrites
 github_username:  bsullivan-io
 
 # Build settings
-theme: minima
 plugins:
   - jekyll-feed
 
