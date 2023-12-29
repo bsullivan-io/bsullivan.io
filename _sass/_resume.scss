@@ -10,12 +10,12 @@
   h2 {
     @include sans;
     font-weight: 900;
-    font-size: 1.55rem;
+    font-size: 1.3rem;
     letter-spacing: -.05rem;
     margin: 0;
     background: rgba(51,51,51,0.8);
     color: white;
-    padding: 0 10px;
+    padding: 0 5px;
   }
 }
 
