@@ -1,11 +1,11 @@
 # Skills
 # Programming languages & Frameworks
 - skill: Programming Languages & Frameworks
-  description: TypeScript / JavaScript, node.js, jQuery, React, PHP, Ruby, Tailwind CSS, SASS, CSS, HTML 
+  description: TypeScript / JavaScript, node.js, jQuery, React, PHP, Ruby, Tailwind CSS, SASS, CSS, HTML, Markdown
 
 # Platforms & Systems
 - skill: Platforms & Systems
-  description: AWS, DynamoDB, mongoDB, mySQL, Git, GitHub, Docker, Jenkins, Grafana, Facebook Business Manager, Opal, Google Cloud, WordPress
+  description: AWS, DynamoDB, mongoDB, mySQL, Git, GitHub, Docker, Jenkins, Bash, Grafana, Facebook Business Manager, Opal, Google Cloud, WordPress
 
 # Applications
 - skill: Design Proficiencies 
