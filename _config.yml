@@ -23,7 +23,7 @@ resume_contact_address:         "143 Skillman Ave, #3C • Brooklyn NY 11211"
 resume_header_contact_info:     "143 Skillman Ave, #3C • Brooklyn NY 11211 • 732-600-6507 • brian@bsullivan.io"
 display_header_contact_info:    "false"
 
-resume_header_intro: "<p>I am a full-stack web engineer specializing in creating dynamic web services. My skill set encompasses development, design and strong project management capabilities. I am equipped to lead projects, leveraging a comprehensive understanding of all layers of the tech stack. I am currently seeking employment in an engaging, challenging new role. </p>"
+resume_header_intro: "<p>I am a full-stack web engineer specializing in dynamic web services. My skill set includes development, design and project management capabilities. I am equipped to lead projects, leveraging a comprehensive understanding of all layers of the tech stack. I am currently seeking employment in an engaging, challenging new role. </p>"
 
 # use "yes" to display the email contact button,
 # "no" to display an "I'm not looking for work" message,
@@ -48,7 +48,7 @@ resume_social_links:
   resume_github_url:            "https://github.com/bsullivan-io"
   resume_twitter_url:           "http://twitter.com/bsullivanwrites"
   # resume_facebook_url:          "insert Facebook URL here"
-  resume_linkedin_url:          "https://www.linkedin.com/in/"
+  resume_linkedin_url:          "https://www.linkedin.com/in/brian-sullivan-8a896166/"
   # resume_instagram_url:         "insert your Instagram URL here"
   resume_website_url:           "http://bsullivan.io"
   # resume_medium_url:            "https://medium.com/@jglovier"
