@@ -6,14 +6,22 @@
   summary: Write about your core competencies in one or two sentences describing your position. If you held the position for a long time, it could be a longer section, including a couple bullet points	<ul class="resume-item-list"><li>A project you are proud of</li><li>Another awesome project</li><li>or a team or department you worked with</li></ul>
 
 # Web Services Engineer
-- company: Flashtalking by Mediaocean
   position: Web Services Engineer
   duration:  Jun, 2010 &mdash; Feb, 2023
-  summary: If your stint was shorter, feel free to be brief and just call out the most meaningful points of your role. Be concise, and be meaninful. The person reading just needs enough to want to talk to you more about your experience.
-
+  summary: <ul class='resume-item-list'><li>Automated data pipelines for ingesting and transforming client data (e.g. product APIs, catalogs) to
+create highly scalable APIs, applications and services used in ad serving</li><li>Lead engineer responsible for data feeds, retargeting implementation, social ad creation, and DVAST
+automation for hundreds of individual campaigns</li><li>Worked closely with major international companies across industries including Tier 1 & Tier 2 Auto
+(Lexus, Audi, Nissan), travel (American Airlines, Southwest Airlines, JetBlue, Royal Caribbean), retail (Best
+Buy, Dell, Kohls)</li></ul>
 
 # Full-Stack Web Developer
 - company: Theatermania
+  position: Full-Stack Web Developer
+  duration:   Jun, 2008  &mdash; May, 2010
+  summary: Led communication efforts across digital and traditional media channels for marketing and public relations, internal communication strategies, and coordinated support programs for the recipients of the center's services.
+
+# Full-Stack Web Developer
+- company: Inkwell Global Marketing
   position: Full-Stack Web Developer
   duration:   Jun, 2008  &mdash; May, 2010
   summary: Led communication efforts across digital and traditional media channels for marketing and public relations, internal communication strategies, and coordinated support programs for the recipients of the center's services.
