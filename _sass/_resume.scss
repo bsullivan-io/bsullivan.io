@@ -4,7 +4,8 @@
 // util
 
 .section-header {
-  @include section_border;
+  border-bottom: 2px solid #c7c7c7;
+  padding: .2rem 0 .4rem;
   margin-bottom: 1.5rem;
 
   h2 {
