@@ -74,7 +74,7 @@
   }
 
   .executive-summary {
-    @include media_larger_than_mobile { font-size: 1.05rem; }
+    @include media_larger_than_mobile { font-size: 1.00rem; }
   }
 }
 
