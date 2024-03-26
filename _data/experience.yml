@@ -4,13 +4,13 @@
   position: Director, Feeds Automation & Engineering
   duration: Feb, 2023 &mdash; Sept, 2023
   para: At Mediaocean I was an integral part of Feeds, a worldwide team that specializes in dynamic ad automation and feed-driven solutions. In 2023 I earned the Director role, leading the technical direction for our team. 
-  summary: <ul class='resume-item-list'><li>Led technical direction and best practices for worldwide team</li><li>Reviewed pull requests and led project deployment</li><li>Managed routine code review sessions to align and educate developers on each other's projects</li><li>Developed reusable internal tools and software</li><li>Managed projects for display, social, and dynamic video campaigns</li></ul>
+  summary: <ul class='resume-item-list'><li>Led technical direction and best practices for worldwide team utilizing a diverse tech stack, typically using PHP/Docker/AWS</li><li>Reviewed pull requests, organized releases and led software deployments using Git, Bitbucket and Jenkins</li><li>Managed routine review sessions of code and documentation to align and educate developers on each other's projects</li><li>Developed reusable tools and software used internally and by clients, including wrappers to enable access to internal API flows</li><li>Managed projects for display, social, and dynamic video campaigns</li></ul>
 
 # Web Services Engineer
 - company: 
   position: Senior Web Services Engineer
   duration:  May, 2015 &mdash; Feb, 2023
-  summary: <ul class='resume-item-list'><li>Built and managed high-availability services and applications that served billions of requests across the web</li><li>Automated data pipelines for ingesting and transforming client data (e.g. product APIs, catalogs) to create highly scalable APIs, applications and services used in ad serving</li><li>Lead engineer responsible for data feeds, retargeting implementation, social ad creation, and dynamic video automation for hundreds of individual campaigns</li><li>Worked closely with major international companies across industries including Tier 1 & Tier 2 Auto (Lexus, Audi, Nissan), travel (American Airlines, Southwest Airlines, JetBlue, Royal Caribbean), retail (Best Buy, Dell, Kohls)</li></ul>
+  summary: <ul class='resume-item-list'><li>Built and managed high-availability services and applications that power billions of ad requests across the web</li><li>Programmed automated data pipelines for ingesting and transforming client data (e.g. product APIs, catalogs) to create highly scalable APIs, applications and services used in ad serving</li><li>Lead engineer responsible for data feeds, retargeting implementation, social ad creation, and dynamic video automation for hundreds of individual campaigns</li><li>Worked closely with major international companies across industries including Tier 1 & Tier 2 Auto (Lexus, Audi, Nissan), travel (American Airlines, Southwest Airlines, JetBlue, Royal Caribbean), retail (Best Buy, Dell, Kohls)</li></ul>
 
 # Full-Stack Web Developer
 - company: Theatermania
