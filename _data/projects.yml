@@ -1,6 +1,12 @@
 # Projects
 # uncomment the urls if you wish to display them, and add your own URL
 
+# newsquick.app
+- project: newsquick.app
+  role: Founder, Developer
+  duration: 2025 &mdash; Present
+  url: "https://newsquick.app"
+  description: AI-powered news aggregator.
 # deadreader.com
 - project: deadreader.com
   role: Founder, Writer
