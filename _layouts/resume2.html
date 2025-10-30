@@ -124,6 +124,7 @@
         <div class="prompt"><span>brian@bsullivan</span>:<span class="path">~/resume</span>$ <span class="cmd">cat resume.md</span></div>
 
         <div class="output">[<a href="/resume/print/">print version</a>]</div>
+        <div class="output">[<a href="/">home</a>]</div>
 
         <div class="resume-content" itemscope itemtype="http://schema.org/Person">
           <meta itemprop="telephone" content="{{ site.resume_contact_telephone }}"/>
@@ -134,12 +135,7 @@
             <img src="https://bsullivan.io/images/avatar.jpg" alt="Brian Sullivan" class="avatar no-print" itemprop="image">
             {% endif %}
 
-            <h1 class="header-name" itemprop="name"><pre style="margin: 0; font-size: 0.4rem; line-height: 1.1; letter-spacing: 0; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; white-space: pre; overflow-x: auto;">██████╗ ██████╗ ██╗ █████╗ ███╗   ██╗      ███████╗██╗   ██╗██╗     ██╗     ██╗ █████╗ ███╗   ██╗
-██╔══██╗██╔══██╗██║██╔══██╗████╗  ██║      ██╔════╝██║   ██║██║     ██║     ██║██╔══██╗████╗  ██║
-██████╔╝██████╔╝██║███████║██╔██╗ ██║█████╗███████╗██║   ██║██║     ██║     ██║███████║██╔██╗ ██║
-██╔══██╗██╔══██╗██║██╔══██║██║╚██╗██║╚════╝╚════██║██║   ██║██║     ██║     ██║██╔══██║██║╚██╗██║
-██████╔╝██║  ██║██║██║  ██║██║ ╚████║      ███████║╚██████╔╝███████╗███████╗██║██║  ██║██║ ╚████║
-╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝      ╚══════╝ ╚═════╝ ╚══════╝╚══════╝╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝</pre></h1>
+            <h1 class="header-name" itemprop="name">{{ site.resume_name }}</h1>
 
             {% if site.display_header_contact_info == 'true' %}
             <div class="header-contact-info">
