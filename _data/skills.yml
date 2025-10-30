@@ -21,7 +21,7 @@
 - skill: Project & Collaboration
   description: Jira, Linear, Asana
 - skill: Ad Tech & Social Ops
-  description: Facebook Business Manager, Opal
+  description: Facebook Business Manager, Opal, Google AdSense, Google AdMob, TikTok Ads Manager, Snapchat Ads Business Manager
 - skill: CMS
   description: WordPress, Shopify
 - skill: Background Jobs & Queues
@@ -33,4 +33,4 @@
 
 # AI
 - skill: AI & LLMs
-  description: OpenAI/Anthropic API integrations, prompt engineering, model evaluation, content moderation, workflow automation
+  description: OpenAI/Anthropic API integrations, prompt engineering, model evaluation, content moderation, workflow automation, AI MCP Integrations
