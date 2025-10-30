@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title | default: site.title }}</title>
+    <style>
+      html, body { margin: 0; padding: 0; }
+      body {
+        background: #ffffff;
+        color: #111827;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+      }
+      .page {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 0 24px;
+        color: #111827;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 18px;
+      }
+      .name { font-size: 28px; font-weight: 800; margin: 0; }
+      .title { font-size: 16px; font-weight: 600; margin: 6px 0 10px; color: #374151; }
+      .contact { font-size: 14px; color: #374151; margin: 0; }
+      .summary { margin: 16px 0 0; color: #374151; }
+
+      .section { margin-top: 22px; }
+      .section h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; color: #111827; margin: 0 0 10px; border-bottom: 1px solid #e5e7eb; padding-bottom: 6px; }
+
+      .item { margin: 12px 0; }
+      .item h3 { font-size: 16px; font-weight: 700; margin: 0 0 2px; color: #111827; }
+      .details { font-size: 13px; color: #4b5563; margin: 0 0 6px; }
+      .copy { font-size: 14px; color: #374151; margin: 0; }
+      .list { margin: 8px 0 0; padding-left: 18px; }
+      .list li { margin: 4px 0; }
+
+      a { color: #1f2937; text-decoration: underline; }
+
+      @media print {
+        body { background: #ffffff; }
+        .page { margin: 0.5in auto; padding: 0; }
+        a { color: #111827; text-decoration: none; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="telephone" content="{{ site.resume_contact_telephone }}"/>
+      <meta itemprop="address" content="{{ site.resume_contact_address }}"/>
+
+      <header class="header">
+        {% if site.resume_avatar == 'true' %}
+        <!-- Avatar intentionally omitted for print simplicity -->
+        {% endif %}
+
+        <h1 class="name" itemprop="name">{{ site.resume_name }}</h1>
+        <div class="title" itemprop="jobTitle">{{ site.resume_title }}</div>
+
+        {% if site.display_header_contact_info == 'true' %}
+        <p class="contact">{{ site.resume_header_contact_info }}</p>
+        {% endif %}
+
+        <div class="summary" itemprop="description">{{ site.resume_header_intro }}</div>
+
+        {% if site.resume_looking_for_work == 'yes' %}
+        <!-- keep email visible for print -->
+        <p class="contact" itemprop="email">{{ site.resume_contact_email }}</p>
+        {% endif %}
+      </header>
+
+      {% if site.resume_section_experience %}
+      <section class="section">
+        <h2>Experience</h2>
+        {% for job in site.data.experience %}
+        <div class="item" itemscope itemprop="worksFor" itemtype="http://schema.org/Organization">
+          <h3 class="company" itemprop="name">{{ job.company }}</h3>
+          {% if job.para %}
+          <p class="copy">{{ job.para }}</p>
+          {% endif %}
+          <div class="details" itemprop="description">{{ job.position }} • {{ job.duration }}</div>
+          <p class="copy">{{ job.summary }}</p>
+        </div>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if site.resume_section_skills %}
+      <section class="section">
+        <h2>Skills</h2>
+        {% for skill in site.data.skills %}
+        <div class="item">
+          <div class="details" style="font-weight:700; color:#111827;">{{ skill.skill }}</div>
+          <p class="copy">{{ skill.description }}</p>
+        </div>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if site.resume_section_education %}
+      <section class="section">
+        <h2>Education</h2>
+        {% for education in site.data.education %}
+        <div class="item" itemscope itemprop="alumniOf" itemtype="http://schema.org/CollegeOrUniversity">
+          <h3 itemprop="name">{{ education.uni }}</h3>
+          <div class="details" itemprop="description">{{ education.degree }} • {{ education.year }}</div>
+          {% if education.award %}
+          <div class="details">{{ education.award }}</div>
+          {% endif %}
+          {% if education.awards %}
+          <ul class="list">
+            {% for award in education.awards %}
+            <li>{{ award.award }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if education.summary %}
+          <p class="copy">{{ education.summary }}</p>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if site.resume_section_projects %}
+      <section class="section">
+        <h2>Projects</h2>
+        {% for project in site.data.projects %}
+        <div class="item" itemscope itemtype="http://schema.org/CreativeWork">
+          <meta itemprop="creator" content="{{ site.resume_name }}" itemtype="http://schema.org/Person" />
+          <h3 itemprop="name">{% if project.url %}<a href="{{ project.url }}" itemprop="url">{{ project.project }}</a>{% else %}{{ project.project }}{% endif %}</h3>
+          <div class="details" itemprop="description">{{ project.role }} • {{ project.duration }}</div>
+          <p class="copy">{{ project.description }}</p>
+        </div>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if site.resume_section_recognition %}
+      <section class="section">
+        <h2>Recognition</h2>
+        {% for recognition in site.data.recognitions %}
+        <div class="item">
+          <h3 itemprop="award">{{ recognition.award }}</h3>
+          <div class="details">{{ recognition.organization }} • {{ recognition.year }}</div>
+          <p class="copy">{{ recognition.summary }}</p>
+        </div>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if site.resume_section_associations %}
+      <section class="section">
+        <h2>Associations</h2>
+        {% for association in site.data.associations %}
+        <div class="item" itemscope itemprop="memberOf" itemtype="http://schema.org/Organization">
+          <h3 itemprop="name">{% if association.url %}<a href="{{ association.url }}">{{ association.organization }}</a>{% else %}{{ association.organization }}{% endif %}</h3>
+          <div class="details" itemprop="description">{{ association.role }} • {{ association.year }}</div>
+          <p class="copy">{{ association.summary }}</p>
+        </div>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if site.resume_section_links %}
+      <section class="section">
+        <h2>Additional Links</h2>
+        <div class="item">
+          <ul class="list">
+            {% for link in site.data.links %}
+            <li><a href={{ link.url }} itemprop="url">{{ link.description }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </section>
+      {% endif %}
+
+      <footer></footer>
+    </div>
+  </body>
+
+</html>
+
+
