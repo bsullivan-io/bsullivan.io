@@ -102,6 +102,9 @@
       .resume-content .icon-links-terminal a:hover { text-decoration: underline; }
       .resume-content .page-header { text-align: center; }
       .resume-content .contact-button { margin-left: auto; margin-right: auto; }
+     
+      .resume-content #interests a { color: #86efac; text-decoration: none; }
+      .resume-content #interests a:hover { text-decoration: underline; }
     </style>
   </head>
 
@@ -251,7 +254,7 @@
           {% endif %}
 
           {% if site.resume_section_interests %}
-          <section class="content-section">
+          <section class="content-section" id="interests">
             <header class="section-header">
               <h2>Outside Interests</h2>
             </header>
