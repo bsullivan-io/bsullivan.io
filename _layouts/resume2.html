@@ -32,6 +32,9 @@
       .prompt { color: #86efac; margin-bottom: 12px; }
       .path { color: #93c5fd; }
       .cmd { color: #e5e7eb; }
+      .output { color: #9ca3af; margin: 6px 0 16px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+      .output a { color: #60a5fa; text-decoration: none; }
+      .output a:hover { text-decoration: underline; }
       /* Resume content area swaps to normal fonts/colors for readability */
       .resume-content { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #e5e7eb; }
       .resume-content a { color: #60a5fa; }
@@ -119,6 +122,8 @@
       </div>
       <div class="screen">
         <div class="prompt"><span>brian@bsullivan</span>:<span class="path">~/resume</span>$ <span class="cmd">cat resume.md</span></div>
+
+        <div class="output">[<a href="/resume/print/">print version</a>] (resume/print)</div>
 
         <div class="resume-content" itemscope itemtype="http://schema.org/Person">
           <meta itemprop="telephone" content="{{ site.resume_contact_telephone }}"/>
