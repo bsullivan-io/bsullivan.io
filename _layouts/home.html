@@ -4,9 +4,53 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.title | default: site.title }}</title>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    body {
+      background: #0b0c0e;
+      color: #d1fae5;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .terminal {
+      width: 90vw;
+      max-width: 900px;
+      background: #0a0b0d;
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      overflow: hidden;
+    }
+    .bar { display: flex; gap: 8px; padding: 10px 12px; background: #0f1113; border-bottom: 1px solid #1f2937; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .red { background: #ef4444; }
+    .yellow { background: #f59e0b; }
+    .green { background: #10b981; }
+    .screen { padding: 20px; }
+    .prompt { color: #86efac; }
+    .path { color: #93c5fd; }
+    .cmd { color: #e5e7eb; }
+    .ls a { color: #60a5fa; text-decoration: none; }
+    .ls a:hover { text-decoration: underline; }
+    .spacer { display: inline-block; width: 2ch; }
+  </style>
 </head>
 <body>
-    <h1> /</h1>
+  <div class="terminal">
+    <div class="bar">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+    </div>
+    <div class="screen">
+      <div><span class="prompt">brian@bsullivan</span>:<span class="path">~/</span>$ <span class="cmd">ls</span></div>
+      <div class="ls">
+        <a href="/resume">resume</a><span class="spacer"></span><a href="https://newsquick.app" rel="noopener noreferrer">newsquick</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
 
