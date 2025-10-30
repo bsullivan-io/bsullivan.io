@@ -99,49 +99,6 @@
           </section>
           {% endif %}
 
-          
-
-          {% if site.resume_section_recognition %}
-          <section class="section">
-            <h2>Recognition</h2>
-            {% for recognition in site.data.recognitions %}
-            <div class="item">
-              <h3 itemprop="award">{{ recognition.award }}</h3>
-              <div class="details">{{ recognition.organization }} • {{ recognition.year }}</div>
-              <p class="copy">{{ recognition.summary }}</p>
-            </div>
-            {% endfor %}
-          </section>
-          {% endif %}
-
-          {% if site.resume_section_associations %}
-          <section class="section">
-            <h2>Associations</h2>
-            {% for association in site.data.associations %}
-            <div class="item" itemscope itemprop="memberOf" itemtype="http://schema.org/Organization">
-              <h3 itemprop="name">{% if association.url %}<a href="{{ association.url }}">{{ association.organization }}</a>{% else %}{{ association.organization }}{% endif %}</h3>
-              <div class="details" itemprop="description">{{ association.role }} • {{ association.year }}</div>
-              <p class="copy">{{ association.summary }}</p>
-            </div>
-            {% endfor %}
-          </section>
-          {% endif %}
-
-          {% if site.resume_section_links %}
-          <section class="section">
-            <h2>Additional Links</h2>
-            <div class="item">
-              <ul class="list">
-                {% for link in site.data.links %}
-                <li><a href={{ link.url }} itemprop="url">{{ link.description }}</a></li>
-                {% endfor %}
-              </ul>
-            </div>
-          </section>
-          {% endif %}
-        </div>
-
-        <aside class="sidebar">
           {% if site.resume_section_skills %}
           <section class="section">
             <h2>Skills</h2>
@@ -192,7 +149,46 @@
             {% endfor %}
           </section>
           {% endif %}
-        </aside>
+
+          {% if site.resume_section_recognition %}
+          <section class="section">
+            <h2>Recognition</h2>
+            {% for recognition in site.data.recognitions %}
+            <div class="item">
+              <h3 itemprop="award">{{ recognition.award }}</h3>
+              <div class="details">{{ recognition.organization }} • {{ recognition.year }}</div>
+              <p class="copy">{{ recognition.summary }}</p>
+            </div>
+            {% endfor %}
+          </section>
+          {% endif %}
+
+          {% if site.resume_section_associations %}
+          <section class="section">
+            <h2>Associations</h2>
+            {% for association in site.data.associations %}
+            <div class="item" itemscope itemprop="memberOf" itemtype="http://schema.org/Organization">
+              <h3 itemprop="name">{% if association.url %}<a href="{{ association.url }}">{{ association.organization }}</a>{% else %}{{ association.organization }}{% endif %}</h3>
+              <div class="details" itemprop="description">{{ association.role }} • {{ association.year }}</div>
+              <p class="copy">{{ association.summary }}</p>
+            </div>
+            {% endfor %}
+          </section>
+          {% endif %}
+
+          {% if site.resume_section_links %}
+          <section class="section">
+            <h2>Additional Links</h2>
+            <div class="item">
+              <ul class="list">
+                {% for link in site.data.links %}
+                <li><a href={{ link.url }} itemprop="url">{{ link.description }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+          </section>
+          {% endif %}
+        </div>
       </div>
 
       <footer></footer>
