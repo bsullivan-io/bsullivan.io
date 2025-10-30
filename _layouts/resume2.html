@@ -105,6 +105,8 @@
      
       .resume-content #interests a { color: #86efac; text-decoration: none; }
       .resume-content #interests a:hover { text-decoration: underline; }
+      .resume-content #projects a { color: #86efac; text-decoration: none; }
+      .resume-content #projects a:hover { text-decoration: underline; }
     </style>
   </head>
 
@@ -208,7 +210,7 @@
           {% endif %}
 
           {% if site.resume_section_projects %}
-          <section class="content-section">
+          <section class="content-section" id="projects">
             <header class="section-header">
               <h2>Projects</h2>
             </header>
