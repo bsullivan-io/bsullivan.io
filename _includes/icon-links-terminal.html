@@ -1,0 +1,37 @@
+{% if site.resume_social_links %}
+<div class="icon-links-terminal">
+  {% if site.resume_social_links.resume_linkedin_url %}
+  <a href="{{ site.resume_social_links.resume_linkedin_url }}" itemprop="sameAs">[linkedin]</a>
+  {% endif %}
+
+  {% if site.resume_social_links.resume_github_url %}
+  <a href="{{ site.resume_social_links.resume_github_url }}" itemprop="sameAs">[github]</a>
+  {% endif %}
+
+  {% if site.resume_social_links.resume_twitter_url %}
+  <a href="{{ site.resume_social_links.resume_twitter_url }}" itemprop="sameAs">[twitter]</a>
+  {% endif %}
+
+  {% if site.resume_social_links.resume_medium_url %}
+  <a href="{{ site.resume_social_links.resume_medium_url }}" itemprop="url">[medium]</a>
+  {% endif %}
+
+  {% if site.resume_social_links.resume_dribbble_url %}
+  <a href="{{ site.resume_social_links.resume_dribbble_url }}" itemprop="sameAs">[dribbble]</a>
+  {% endif %}
+
+  {% if site.resume_social_links.resume_facebook_url %}
+  <a href="{{ site.resume_social_links.resume_facebook_url }}" itemprop="sameAs">[facebook]</a>
+  {% endif %}
+
+  {% if site.resume_social_links.resume_instagram_url %}
+  <a href="{{ site.resume_social_links.resume_instagram_url }}" itemprop="sameAs">[instagram]</a>
+  {% endif %}
+
+  {% if site.resume_social_links.resume_website_url %}
+  <a href="{{ site.resume_social_links.resume_website_url }}" itemprop="url">[website]</a>
+  {% endif %}
+</div>
+{% endif %}
+
+
