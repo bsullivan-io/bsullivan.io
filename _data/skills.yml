@@ -1,11 +1,29 @@
 # Skills
 # Programming languages & Frameworks
 - skill: Programming Languages & Frameworks
-  description: TypeScript / JavaScript, node.js, jQuery, React, Redux, Angular, Ruby / Ruby on Rails, PHP, Symfony, Laravel, Ruby, Ruby on Rails, Python, Jekyll, Tailwind CSS, SASS, CSS, HTML, Markdown
+  description: TypeScript / JavaScript, node.js, jQuery, React, Redux, Angular, Ruby / Ruby on Rails, PHP, Symfony, Laravel, Ruby, Ruby on Rails, Python, Jekyll, Tailwind CSS, SaaS, CSS, HTML, Markdown
 
 # Platforms & Systems
-- skill: Platforms & Systems
-  description: AWS, DynamoDB, mongoDB, mySQL, postgreSQL, Cypress, Render, Git, GitHub, Docker, Jenkins, Bash, Grafana, Jira, Facebook Business Manager, Opal, Google Cloud, WordPress
+- skill: Cloud Platforms
+  description: AWS, Google Cloud, Render
+- skill: Databases
+  description: DynamoDB, MongoDB, MySQL, PostgreSQL
+- skill: DevOps & CI/CD
+  description: Docker, Jenkins, CircleCI
+- skill: Version Control
+  description: Git, GitHub, Bitbucket
+- skill: Testing & QA
+  description: Cypress
+- skill: Monitoring & Observability
+  description: Bugsnag, Grafana
+- skill: Scripting & CLI
+  description: Bash
+- skill: Project & Collaboration
+  description: Jira, Linear
+- skill: Ad Tech & Social Ops
+  description: Facebook Business Manager, Opal
+- skill: CMS
+  description: WordPress
 
 # Applications
 - skill: Design Proficiencies 
