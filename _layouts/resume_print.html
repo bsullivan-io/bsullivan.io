@@ -98,44 +98,7 @@
           </section>
           {% endif %}
 
-          {% if site.resume_section_education %}
-          <section class="section">
-            <h2>Education</h2>
-            {% for education in site.data.education %}
-            <div class="item" itemscope itemprop="alumniOf" itemtype="http://schema.org/CollegeOrUniversity">
-              <h3 itemprop="name">{{ education.uni }}</h3>
-              <div class="details" itemprop="description">{{ education.degree }} • {{ education.year }}</div>
-              {% if education.award %}
-              <div class="details">{{ education.award }}</div>
-              {% endif %}
-              {% if education.awards %}
-              <ul class="list">
-                {% for award in education.awards %}
-                <li>{{ award.award }}</li>
-                {% endfor %}
-              </ul>
-              {% endif %}
-              {% if education.summary %}
-              <p class="copy">{{ education.summary }}</p>
-              {% endif %}
-            </div>
-            {% endfor %}
-          </section>
-          {% endif %}
-
-          {% if site.resume_section_projects %}
-          <section class="section">
-            <h2>Projects</h2>
-            {% for project in site.data.projects %}
-            <div class="item" itemscope itemtype="http://schema.org/CreativeWork">
-              <meta itemprop="creator" content="{{ site.resume_name }}" itemtype="http://schema.org/Person" />
-              <h3 itemprop="name">{% if project.url %}<a href="{{ project.url }}" itemprop="url">{{ project.project }}</a>{% else %}{{ project.project }}{% endif %}</h3>
-              <div class="details" itemprop="description">{{ project.role }} • {{ project.duration }}</div>
-              <p class="copy">{{ project.description }}</p>
-            </div>
-            {% endfor %}
-          </section>
-          {% endif %}
+          
 
           {% if site.resume_section_recognition %}
           <section class="section">
@@ -177,8 +140,8 @@
           {% endif %}
         </div>
 
-        {% if site.resume_section_skills %}
         <aside class="sidebar">
+          {% if site.resume_section_skills %}
           <section class="section">
             <h2>Skills</h2>
             {% for skill in site.data.skills %}
@@ -188,8 +151,47 @@
             </div>
             {% endfor %}
           </section>
+          {% endif %}
+
+          {% if site.resume_section_education %}
+          <section class="section">
+            <h2>Education</h2>
+            {% for education in site.data.education %}
+            <div class="item" itemscope itemprop="alumniOf" itemtype="http://schema.org/CollegeOrUniversity">
+              <h3 itemprop="name">{{ education.uni }}</h3>
+              <div class="details" itemprop="description">{{ education.degree }} • {{ education.year }}</div>
+              {% if education.award %}
+              <div class="details">{{ education.award }}</div>
+              {% endif %}
+              {% if education.awards %}
+              <ul class="list">
+                {% for award in education.awards %}
+                <li>{{ award.award }}</li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+              {% if education.summary %}
+              <p class="copy">{{ education.summary }}</p>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </section>
+          {% endif %}
+
+          {% if site.resume_section_projects %}
+          <section class="section">
+            <h2>Projects</h2>
+            {% for project in site.data.projects %}
+            <div class="item" itemscope itemtype="http://schema.org/CreativeWork">
+              <meta itemprop="creator" content="{{ site.resume_name }}" itemtype="http://schema.org/Person" />
+              <h3 itemprop="name">{% if project.url %}<a href="{{ project.url }}" itemprop="url">{{ project.project }}</a>{% else %}{{ project.project }}{% endif %}</h3>
+              <div class="details" itemprop="description">{{ project.role }} • {{ project.duration }}</div>
+              <p class="copy">{{ project.description }}</p>
+            </div>
+            {% endfor %}
+          </section>
+          {% endif %}
         </aside>
-        {% endif %}
       </div>
 
       <footer></footer>
