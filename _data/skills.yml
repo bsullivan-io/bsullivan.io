@@ -9,4 +9,8 @@
 
 # Applications
 - skill: Design Proficiencies 
-  description: REST applications, micro services, data parsers, content management systems, large-scale data ingestion & retrieval, full-stack development
+  description: REST applications, micro services, AI Integrations, data parsers, content management systems, large-scale data ingestion & retrieval, full-stack development
+
+# AI
+- skill: AI & LLMs
+  description: OpenAI/Anthropic API integrations, prompt engineering, model evaluation, content moderation, workflow automation
