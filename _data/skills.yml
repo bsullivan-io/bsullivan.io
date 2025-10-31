@@ -17,19 +17,19 @@
 - skill: Monitoring & Observability
   description: Bugsnag, Grafana, AWS CloudWatch
 - skill: Scripting & CLI
-  description: Bash, PowerShell, cron
+  description: Bash, PowerShell
 - skill: Project & Collaboration
   description: Jira, Linear, Asana
-- skill: Ad Tech & Social Ops
+- skill: Ad Tech & Social
   description: Facebook Business Manager, Opal, Google AdSense, Google AdMob, TikTok Ads Manager, Snapchat Ads Business Manager
 - skill: CMS
-  description: WordPress, Shopify
+  description: WordPress, Shopify, OpenCart
 - skill: Background Jobs & Queues
-  description: Sidekiq
+  description: Sidekiq, cron
 
 # Applications
 - skill: Design Proficiencies 
-  description: REST applications, micro services, AI Integrations, data parsers, content management systems, large-scale data ingestion & retrieval, full-stack development
+  description: REST applications, micro services, AI Integrations, data parsers, ETL pipelines, content management systems, large-scale data ingestion & retrieval, full-stack development
 
 # AI
 - skill: AI & LLMs
