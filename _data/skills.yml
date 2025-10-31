@@ -13,9 +13,12 @@
 - skill: Version Control
   description: Git, GitHub, Bitbucket
 - skill: Testing & QA
-  description: Cypress
+  description: Cypress, Playwright, RSpec, Postman
 - skill: Monitoring & Observability
   description: Bugsnag, Grafana, AWS CloudWatch
+# AI
+- skill: AI & LLMs
+  description: OpenAI/Anthropic API integrations, prompt engineering, model evaluation, content moderation, workflow automation, AI MCP Integrations
 - skill: Scripting & CLI
   description: Bash, PowerShell
 - skill: Project & Collaboration
@@ -30,7 +33,3 @@
 # Applications
 - skill: Design Proficiencies 
   description: REST applications, micro services, AI Integrations, data parsers, ETL pipelines, content management systems, large-scale data ingestion & retrieval, full-stack development
-
-# AI
-- skill: AI & LLMs
-  description: OpenAI/Anthropic API integrations, prompt engineering, model evaluation, content moderation, workflow automation, AI MCP Integrations
