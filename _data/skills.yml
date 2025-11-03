@@ -1,13 +1,15 @@
 # Skills
 # Programming languages & Frameworks
 - skill: Programming Languages & Frameworks
-  description: TypeScript / JavaScript, node.js, jQuery, React, Redux, Angular, Ruby / Ruby on Rails, PHP, Symfony, Laravel, Python, Jekyll, Tailwind, CSS, HTML, Markdown, SwiftUI
+  description: TypeScript / JavaScript, Node.js, jQuery, React, Redux, Angular, Ruby / Ruby on Rails, PHP, Symfony, Laravel, Python, Jekyll, Tailwind, CSS, HTML, Markdown, SwiftUI
 
 # Platforms & Systems
 - skill: Cloud Platforms
-  description: AWS (EC2, ECS), Google Cloud, Render, Railway, GitLab Pages
+  description: AWS (EC2, ECS, S3, CloudFront), Google Cloud, Render, Railway, GitLab Pages
 - skill: Databases
   description: DynamoDB, MongoDB, MySQL, PostgreSQL
+- skill: Caching
+  description: Redis, Memcached
 - skill: DevOps & CI/CD
   description: Docker, Jenkins, CircleCI
 - skill: Version Control
@@ -15,7 +17,7 @@
 - skill: Testing & QA
   description: Cypress, Playwright, RSpec, Postman
 - skill: Monitoring & Observability
-  description: Bugsnag, Grafana, AWS CloudWatch
+  description: Bugsnag, Sentry, Grafana, AWS CloudWatch
 # AI
 - skill: AI & LLMs
   description: OpenAI/Anthropic API integrations, prompt engineering, model evaluation, content moderation, workflow automation, AI MCP Integrations, NLP (Natural Language Processing)
@@ -29,7 +31,9 @@
   description: WordPress, Shopify, OpenCart
 - skill: Background Jobs & Queues
   description: Sidekiq, cron
+- skill: Authentication & Security
+  description: OAuth, JWT, Single Sign-On (SSO), Content Security Policy (CSP)
 
 # Applications
-- skill: Design Proficiencies 
+- skill: Technical Proficiencies
   description: REST applications, micro services, AI Integrations, data parsers, ETL pipelines, content management systems, large-scale data ingestion & retrieval, full-stack development

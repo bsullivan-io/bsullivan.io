@@ -77,7 +77,7 @@
 
         {% if site.resume_looking_for_work == 'yes' %}
         <!-- keep email visible for print -->
-        <p class="contact" itemprop="email">{{ site.resume_contact_email }}</p>
+        <p class="contact"><span itemprop="address">{{ site.resume_contact_address }}</span> • <span itemprop="email">{{ site.resume_contact_email }}</span></p>
         {% endif %}
       </header>
 

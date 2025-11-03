@@ -4,7 +4,7 @@
 - company: Marketfuel • 2024 - 2025
   position: Senior Full-Stack Web Engineer
   duration: April, 2024 &mdash; October, 2025
-  summary: <ul class='resume-item-list'><li>Worked on a small team of developers to create a SaaS e-commerce platform for marketing agencies</li><li>Acted as Project lead for integrations, including backend system design and development of user interfaces to support third party API connections</li><li>Collaborated in a startup environment to scale and modernize the platform while adding support for multi-tenancy </li><li>Developed new features and fixes end-to-end across React and Ruby on Rails codebases, designing idempotent Rails APIs consumed by the React frontend</li><li>Wrote tests and automated pipelines for atomic code units, ensuring reliable test execution and reducing the test suite run time by 80%</li> <li>Worked in AWS to monitor, deploy, and scale services, helping to lower costs by 32%</li><li>Utilized Sidekiq for multi-threaded background processing and automation tasks to improve page response times and reduce server load</li></ul>
+  summary: <ul class='resume-item-list'><li>Worked on a small team of developers to create a SaaS e-commerce platform for marketing agencies</li><li>Acted as Project lead for integrations, including backend system design and development of user interfaces to support third-party API connections</li><li>Collaborated in a startup environment to scale and modernize the platform while adding support for multi-tenancy and adhering to SOC2 compliance</li><li>Performed security updates and dependency management, patching vulnerabilities and updating packages to maintain SOC2 compliance standards</li><li>Developed new features and fixes end-to-end across React and Ruby on Rails codebases, designing idempotent Rails APIs consumed by the React frontend</li><li>Wrote tests and automated pipelines for atomic code units, ensuring reliable test execution and reducing the test suite run time by 80%</li> <li>Worked in AWS to monitor, deploy, and scale services, helping to lower costs by 32%</li><li>Utilized Sidekiq for multi-threaded background processing and automation tasks to improve page response times and reduce server load</li></ul>
 
 
 # Director, Feeds Automation
@@ -18,16 +18,16 @@
 - company: 
   position: Senior Web Services Engineer
   duration:  May, 2015 &mdash; Feb, 2023
-  summary: <ul class='resume-item-list'><li>Built and managed high-availability services and applications that power billions of ad requests across the web</li><li>Programmed automated data pipelines for ingesting and transforming client data (e.g. product APIs, catalogs) to create highly scalable APIs, applications and services used in ad serving</li><li>Lead engineer responsible for data feeds, retargeting implementation, social ad creation, and dynamic video automation for hundreds of individual campaigns</li><li>Worked closely with major international companies across industries including Tier 1 & Tier 2 Auto (Lexus, Audi, Nissan), travel (American Airlines, Southwest Airlines, JetBlue, Royal Caribbean), retail (Best Buy, Dell, Kohls)</li></ul>
+  summary: <ul class='resume-item-list'><li>Built and managed high-availability services and applications that power billions of ad requests across the web</li><li>Programmed automated data pipelines for ingesting and transforming client data (e.g. product APIs, catalogs) to create highly scalable APIs, applications and services used in ad serving</li><li>Lead engineer responsible for data feeds, retargeting implementation, social ad creation, and dynamic video automation for hundreds of individual campaigns</li><li>Worked closely with major international companies across industries including Tier 1 & Tier 2 Auto (Lexus, Audi, Nissan), travel (American Airlines, Southwest Airlines, JetBlue, Royal Caribbean), retail (Best Buy, Dell, Kohl's)</li></ul>
 
 # Full-Stack Web Developer
 - company: Theatermania
   position: Full-Stack Web Developer
-  duration:  May, 2013  &mdash; November, 2014
+  duration: May, 2013 &mdash; November, 2014
   summary: <ul class='resume-item-list'><li>Full-stack developer for Theatermania.com and WhatsOnStage.com websites</li><li>Developed and maintained custom CMS for high-traffic sites specializing in theater news, reviews and ticketing</li><li>Created custom WYSIWYG article editor for writers</li><li>Implemented new responsive front-end design</li></ul>
 
 # Full-Stack Web Developer
 - company: Inkwell Global Marketing
   position: Full-Stack Web Developer
-  duration:   Jun, 2010  &mdash; March, 2013
-  summary: <ul class='resume-item-list'><li>Lead full-stack developer creating branded internal stores for businesses</li><li>Developed and designed internal store websites for brands such as ADP, Grant Thorton, NYU</li><li>Leveraged E-Commerce platforms such as Opencart and Shopify while developing other sites from scratch</li><li>Developed OpenCart modules to add custom functionality</li><li>Created custom payment gateway flows (PayPal, employee discount programs, etc) and user authentication systems while adhering to PCI compliance rules</li></ul>
+  duration: Jun, 2010 &mdash; March, 2013
+  summary: <ul class='resume-item-list'><li>Lead full-stack developer creating branded internal stores for businesses</li><li>Developed and designed internal store websites for brands such as ADP, Grant Thornton, NYU</li><li>Leveraged E-Commerce platforms such as Opencart and Shopify while developing other sites from scratch</li><li>Developed OpenCart modules to add custom functionality</li><li>Created custom payment gateway flows (PayPal, employee discount programs, etc) and user authentication systems while adhering to PCI compliance rules</li></ul>
