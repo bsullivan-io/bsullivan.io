@@ -1,24 +1,24 @@
 # Jobs
 
 # Senior Web Engineer
-- company: Marketfuel • 2024 - 2025
+- company: Marketfuel
   position: Senior Full-Stack Web Engineer
   duration: April, 2024 &mdash; October, 2025
-  summary: <ul class='resume-item-list'><li>Worked on a small team of developers to create a SaaS e-commerce platform for marketing agencies</li><li>Acted as Project lead for integrations, including backend system design and development of user interfaces to support third-party API connections</li><li>Collaborated in a startup environment to scale and modernize the platform while adding support for multi-tenancy and adhering to SOC2 compliance</li><li>Performed security updates and dependency management, patching vulnerabilities and updating packages to maintain SOC2 compliance standards</li><li>Developed new features and fixes end-to-end across React and Ruby on Rails codebases, designing idempotent Rails APIs consumed by the React frontend</li><li>Wrote tests and automated pipelines for atomic code units, ensuring reliable test execution and reducing the test suite run time by 80%</li> <li>Worked in AWS to monitor, deploy, and scale services, helping to lower costs by 32%</li><li>Utilized Sidekiq for multi-threaded background processing and automation tasks to improve page response times and reduce server load</li></ul>
+  summary: <ul class='resume-item-list'><li>Led third-party integrations architecture across backend services and React interfaces for a SaaS e-commerce platform used by marketing agencies</li><li>Built features end-to-end across React and Ruby on Rails, including idempotent Rails APIs consumed by the frontend</li><li>Helped scale and modernize the platform for multi-tenancy while strengthening SOC 2-aligned security, dependency management, and compliance readiness</li><li>Reduced automated test suite runtime by 80% through improved test coverage and CI pipeline automation</li><li>Lowered AWS costs by 32% by monitoring, deploying, and tuning services for better scale efficiency</li><li>Used Sidekiq to build background processing and automation workflows that improved response times and reduced server load</li></ul>
 
 
 # Director, Feeds Automation
-- company: Flashtalking by Mediaocean • 2015 - 2023
+- company: Flashtalking by Mediaocean
   position: Director, Feeds Automation & Engineering
   duration: Feb, 2023 &mdash; Sept, 2023
-  para: At Mediaocean I was an integral part of Feeds, a worldwide team that specializes in dynamic ad automation and feed-driven solutions. In 2023 I earned the Director role, leading the technical direction for our team. 
-  summary: <ul class='resume-item-list'><li>Led technical direction and best practices for worldwide team utilizing a diverse tech stack, typically using PHP/Docker/AWS</li><li>Reviewed pull requests, organized releases and led software deployments using Git, Bitbucket and Jenkins</li><li>Managed routine review sessions of code and documentation to align and educate developers on each other's projects</li><li>Developed reusable tools and software used internally and by clients, including wrappers to enable access to internal API flows</li><li>Managed projects for display, social, and dynamic video campaigns</li></ul>
+  para: Promoted in 2023 after years building feeds, automation, and ad-serving systems within Mediaocean's global Feeds organization.
+  summary: <ul class='resume-item-list'><li>Led technical direction and engineering best practices for a global team building feed-driven automation and dynamic creative systems across PHP, Docker, and AWS</li><li>Reviewed pull requests, coordinated releases, and led software deployments using Git, Bitbucket, and Jenkins</li><li>Developed reusable internal and client-facing tools, including wrappers around internal APIs that streamlined delivery workflows</li><li>Ran code and documentation reviews that improved alignment, maintainability, and shared ownership across projects</li><li>Managed technical delivery for display, social, and dynamic video campaigns</li></ul>
 
 # Web Services Engineer
-- company: 
+- company: Mediaocean
   position: Senior Web Services Engineer
   duration:  May, 2015 &mdash; Feb, 2023
-  summary: <ul class='resume-item-list'><li>Built and managed high-availability services and applications that power billions of ad requests across the web</li><li>Programmed automated data pipelines for ingesting and transforming client data (e.g. product APIs, catalogs) to create highly scalable APIs, applications and services used in ad serving</li><li>Lead engineer responsible for data feeds, retargeting implementation, social ad creation, and dynamic video automation for hundreds of individual campaigns</li><li>Worked closely with major international companies across industries including Tier 1 & Tier 2 Auto (Lexus, Audi, Nissan), travel (American Airlines, Southwest Airlines, JetBlue, Royal Caribbean), retail (Best Buy, Dell, Kohl's)</li></ul>
+  summary: <ul class='resume-item-list'><li>Built and operated high-availability services and applications that supported billions of ad requests across the web</li><li>Developed automated data ingestion and transformation pipelines for client APIs and product catalogs, powering scalable services used in ad serving</li><li>Served as lead engineer for feeds, retargeting, social ad creation, and dynamic video automation across hundreds of campaigns</li><li>Delivered solutions for major enterprise brands across automotive, travel, and retail, including Lexus, Audi, Nissan, American Airlines, JetBlue, Royal Caribbean, Best Buy, and Dell</li></ul>
 
 # Full-Stack Web Developer
 - company: Theatermania

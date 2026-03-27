@@ -6,7 +6,7 @@
   role: Founder, Developer
   duration: 2025 &mdash; Present
   url: "https://newsquick.app"
-  description: AI-powered news aggregator, iOS (SwiftUI) and web (Node.js) app.
+  description: AI-powered news aggregation product across iOS and web using LLM-driven summarization, content grouping, prompt design, and workflow automation.
 # deadreader.com
 - project: deadreader.com
   role: Founder, Writer
