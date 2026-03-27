@@ -182,7 +182,7 @@
               <p></p>
               {% endif %}
               <h4 class="resume-item-details" itemprop="description">{{ job.position }} &bull; {{ job.duration }}</h4>
-              <p class="resume-item-copy">{{ job.summary }}</p>
+              <div class="resume-item-copy">{{ job.summary }}</div>
             </div>
             {% endfor %}
           </section>
@@ -212,13 +212,16 @@
               <h3 class="resume-item-title" itemprop="name">{{ education.uni }}</h3>
               <h4 class="resume-item-details group" itemprop="description">{{ education.degree }} &bull; {{ education.year }}</h4>
               <h5 class="resume-item-details award-title" itemprop="description">{{ education.award }}</h5>
-              <p class="resume-item-copy" itemprop="description">
-                <ul class="resume-item-list">
-                  {% for award in education.awards %}
-                  <li>{{ award.award }}</li>
-                  {% endfor %}
-                </ul>
+              {% if education.awards %}
+              <ul class="resume-item-list" itemprop="description">
+                {% for award in education.awards %}
+                <li>{{ award.award }}</li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+              {% if education.summary %}
               <p class="resume-item-copy">{{ education.summary }}</p>
+              {% endif %}
             </div>
             {% endfor %}
           </section>
@@ -302,5 +305,3 @@
   </body>
 
 </html>
-
-

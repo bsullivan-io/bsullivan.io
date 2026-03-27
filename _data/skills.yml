@@ -20,7 +20,7 @@
   description: Bugsnag, Sentry, Grafana, AWS CloudWatch
 # AI
 - skill: AI, LLMs & Agentic Tools
-  description: Claude Code, Codex, OpenAI/Anthropic API integrations, agentic workflows, prompt engineering, model evaluation, workflow automation, MCP integrations, content moderation, NLP (Natural Language Processing)
+  description: OpenAI/Anthropic API integrations, agentic workflows, prompt engineering, model evaluation, workflow automation, MCP integrations, Claude Code, Codex, content moderation, NLP (Natural Language Processing)
 - skill: Scripting & CLI
   description: Bash, PowerShell
 - skill: Project & Collaboration
@@ -36,4 +36,4 @@
 
 # Applications
 - skill: Technical Proficiencies
-  description: REST applications, micro services, AI Integrations, data parsers, ETL pipelines, content management systems, large-scale data ingestion & retrieval, full-stack development
+  description: REST APIs, microservices, AI integrations, data parsers, ETL pipelines, content management systems, large-scale data ingestion and retrieval, full-stack development
