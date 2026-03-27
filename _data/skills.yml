@@ -19,8 +19,8 @@
 - skill: Monitoring & Observability
   description: Bugsnag, Sentry, Grafana, AWS CloudWatch
 # AI
-- skill: AI & LLMs
-  description: OpenAI/Anthropic API integrations, prompt engineering, agentic coding, model evaluation, content moderation, workflow automation, AI MCP Integrations, NLP (Natural Language Processing)
+- skill: AI, LLMs & Agentic Tools
+  description: Claude Code, Codex, OpenAI/Anthropic API integrations, agentic workflows, prompt engineering, model evaluation, workflow automation, MCP integrations, content moderation, NLP (Natural Language Processing)
 - skill: Scripting & CLI
   description: Bash, PowerShell
 - skill: Project & Collaboration
