@@ -1,6 +1,12 @@
 # Projects
 # uncomment the urls if you wish to display them, and add your own URL
 
+# Make a Mile
+- project: Make a Mile
+  role: Founder, Developer
+  duration: 2026 &mdash; Present
+  url: "https://www.makeamile.com"
+  description: Trip planning, tracking, and blogging platform built in React with the Google Maps API, allowing travelers to plan routes and track actual progress during a trip.
 # newsquick.app
 - project: newsquick.app
   role: Founder, Developer
