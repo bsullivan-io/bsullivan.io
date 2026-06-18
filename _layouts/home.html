@@ -140,11 +140,13 @@
 
     /* project entries */
     .entry {
-      display: block;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
       text-decoration: none;
       color: inherit;
-      padding: 10px 14px;
-      margin: 0 -4px 10px;
+      padding: 12px 14px;
+      margin: 0 -4px 12px;
       border: 1px solid transparent;
       border-left: 2px solid var(--border);
       border-radius: 6px;
@@ -160,6 +162,52 @@
     .entry:hover .name, .entry:focus-visible .name {
       text-shadow: 0 0 14px rgba(74,222,128,0.55);
     }
+    .entry-body { flex: 1; min-width: 0; }
+
+    /* thumbnail */
+    .thumb {
+      flex: 0 0 168px;
+      width: 168px;
+      aspect-ratio: 5 / 3;
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--border);
+      background: #0d0f12;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.5);
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      filter: saturate(0.85) brightness(0.92) contrast(1.02);
+      transition: filter 0.25s ease, transform 0.4s ease;
+    }
+    /* faint green scanline veneer to tie screenshots into the terminal */
+    .thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(74,222,128,0.06), transparent 40%),
+        repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0 2px, rgba(0,0,0,0.10) 3px 4px);
+      mix-blend-mode: multiply;
+      opacity: 0.7;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+    .entry:hover .thumb, .entry:focus-visible .thumb {
+      border-color: rgba(74,222,128,0.45);
+      box-shadow: 0 0 18px rgba(74,222,128,0.18), inset 0 0 0 1px rgba(0,0,0,0.5);
+    }
+    .entry:hover .thumb img, .entry:focus-visible .thumb img {
+      filter: saturate(1) brightness(1) contrast(1);
+      transform: scale(1.04);
+    }
+    .entry:hover .thumb::after, .entry:focus-visible .thumb::after { opacity: 0.35; }
 
     .entry-head {
       display: flex;
@@ -216,12 +264,15 @@
       .screen { padding: 20px 18px 24px; }
       .desc { max-width: none; }
       .bar-title { display: none; }
+      .entry { flex-direction: column; gap: 12px; }
+      .thumb { flex: 0 0 auto; width: 100%; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .line { opacity: 1; animation: none; }
       .cursor { animation: none; }
-      .entry, .resume, .arrow { transition: none; }
+      .entry, .resume, .arrow, .thumb, .thumb img { transition: none; }
+      .entry:hover .thumb img { transform: none; }
     }
   </style>
 </head>
@@ -254,24 +305,29 @@
       </div>
       <div class="line l6 comment block">drwxr-xr-x  2 brian  staff  &mdash; founder + builder &mdash;</div>
 
-      {% assign featured = "Make a Mile,newsquick.app" | split: "," %}
+      {% assign featured = "Make a Mile,newsquick.app,deadreader.com" | split: "," %}
       {% for fname in featured %}
         {% assign p = site.data.projects | where: "project", fname | first %}
         {% if p %}
           {% if forloop.index == 1 %}{% assign cls = "p1" %}{% elsif forloop.index == 2 %}{% assign cls = "p2" %}{% else %}{% assign cls = "p3" %}{% endif %}
           <a class="line {{ cls }} entry" href="{{ p.url }}" rel="noopener noreferrer" target="_blank">
-            <span class="entry-head">
-              <span class="perm">drwxr-xr-x</span>
-              <span class="name">{{ p.project | downcase | replace: " ", "-" | split: "." | first }}/</span>
-              <span class="meta">{{ p.duration }} · {{ p.role }}</span>
+            {% if p.image %}
+            <span class="thumb"><img src="{{ p.image }}" alt="Screenshot of {{ p.project }}" loading="lazy" width="640" height="384"></span>
+            {% endif %}
+            <span class="entry-body">
+              <span class="entry-head">
+                <span class="perm">drwxr-xr-x</span>
+                <span class="name">{{ p.project | downcase | replace: " ", "-" | split: "." | first }}/</span>
+                <span class="meta">{{ p.duration }} · {{ p.role }}</span>
+              </span>
+              <span class="desc">{{ p.description }}</span>
+              <span class="open">↳ open {{ p.url | remove: "https://" | remove: "http://" | remove: "www." | replace: "/", "" }} <span class="arrow">→</span></span>
             </span>
-            <span class="desc">{{ p.description }}</span>
-            <span class="open">↳ open {{ p.url | remove: "https://" | remove: "http://" | remove: "www." | replace: "/", "" }} <span class="arrow">→</span></span>
           </a>
         {% endif %}
       {% endfor %}
 
-      <div class="line p3 promptline">
+      <div class="line l7 promptline">
         <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cursor" aria-hidden="true"></span>
       </div>
     </div>

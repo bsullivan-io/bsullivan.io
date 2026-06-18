@@ -6,16 +6,19 @@
   role: Founder, Developer
   duration: 2026 &mdash; Present
   url: "https://www.makeamile.com"
+  image: "/images/projects/makeamile.png"
   description: Trip planning, tracking, and blogging platform built in React with the Google Maps API, allowing travelers to plan routes and track actual progress during a trip.
 # newsquick.app
 - project: newsquick.app
   role: Founder, Developer
   duration: 2025 &mdash; Present
   url: "https://newsquick.app"
+  image: "/images/projects/newsquick.png"
   description: AI-powered news aggregation product across iOS and web using LLM-driven summarization, content grouping, and workflow automation.
 # deadreader.com
 - project: deadreader.com
   role: Founder, Writer
   duration: 2022 &mdash; Present
   url: "https://deadreader.com"
+  image: "/images/projects/deadreader.png"
   description: A personal blog about horror literature, including reviews and personal writing.
