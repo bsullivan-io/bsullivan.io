@@ -239,14 +239,20 @@
         <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cmd">whoami</span>
       </div>
       <div class="line l2 out block">
-        Brian Sullivan — full-stack web engineer · <span class="accent">15+ years</span> shipping
-        products end-to-end. Currently building a few things of my own.
+        Brian Sullivan — full-stack web engineer
       </div>
 
       <div class="line l3 promptline">
+        <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cmd">cat resume</span>
+      </div>
+      <div class="line l4 block">
+        <a class="resume" href="/resume">▤ open full résumé <span class="arrow">→</span></a>
+      </div>
+
+      <div class="line l5 promptline">
         <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cmd">ls -l projects/</span>
       </div>
-      <div class="line l4 comment block">drwxr-xr-x  2 brian  staff  &mdash; founder + builder &mdash;</div>
+      <div class="line l6 comment block">drwxr-xr-x  2 brian  staff  &mdash; founder + builder &mdash;</div>
 
       {% assign featured = "Make a Mile,newsquick.app" | split: "," %}
       {% for fname in featured %}
@@ -265,14 +271,8 @@
         {% endif %}
       {% endfor %}
 
-      <div class="gap"></div>
-
-      <div class="line l7 promptline">
-        <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cmd">cat resume</span>
-      </div>
-      <div class="line l8 block">
-        <a class="resume" href="/resume">▤ open full résumé <span class="arrow">→</span></a>
-        <span class="cursor" aria-hidden="true"></span>
+      <div class="line p3 promptline">
+        <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cursor" aria-hidden="true"></span>
       </div>
     </div>
   </main>
