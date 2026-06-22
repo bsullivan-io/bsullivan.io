@@ -144,7 +144,6 @@
     .cmd  { color: #000; }
     .name-out { display: block; font-size: 19px; font-weight: 700; color: #000; margin: 6px 0 2px; }
     .block { margin: 4px 0 16px; }
-    .hint { color: var(--ink-faint); font-size: 11px; margin: -8px 0 14px; }
 
     /* ---- platinum button ---- */
     .btn {
@@ -226,8 +225,6 @@
           <div class="promptline">
             <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cmd">ls -l projects/</span>
           </div>
-          <p class="hint">double-click a window's stripes to roll it up &middot; drag by the title bar</p>
-
           {% for fname in featured %}
             {% assign p = site.data.projects | where: "project", fname | first %}
             {% if p %}
