@@ -9,21 +9,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
   <style>
     /* ============================================================
-       Mac OS 8 "Platinum" retro theme
-       (self-contained; revert this commit to restore the terminal)
+       Mac OS 8 "Platinum" desktop — draggable, collapsible windows
        ============================================================ */
     :root {
-      --face:       #d9d9d9;  /* platinum window face */
-      --face-lo:    #c4c4c4;
-      --hi:         #ffffff;  /* bevel highlight */
-      --sh:         #7a7a7a;  /* bevel shadow */
-      --sh-dk:      #4a4a4a;
-      --ink:        #1a1a1a;
-      --ink-soft:   #555555;
-      --ink-faint:  #888888;
-      --link:       #00309c;
-      --sel:        #000a8c;  /* classic selection navy */
-      --desktop:    #4e8f8c;  /* classic Mac teal */
+      --face:      #d9d9d9;
+      --hi:        #ffffff;
+      --sh:        #7a7a7a;
+      --sh-dk:     #4a4a4a;
+      --ink:       #1a1a1a;
+      --ink-soft:  #555555;
+      --ink-faint: #888888;
+      --link:      #00309c;
+      --sel:       #000a8c;
+      --desktop:   #4e8f8c;
     }
 
     * { box-sizing: border-box; }
@@ -42,28 +40,37 @@
       font-family: Geneva, Verdana, Tahoma, "Helvetica Neue", Helvetica, sans-serif;
       font-size: 14px;
       line-height: 1.5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 28px 20px;
     }
+
+    /* ---- desktop surface ---- */
+    #desktop { position: relative; width: 100%; min-height: 100vh; }
+    body.floating #desktop { height: 100vh; overflow: hidden; }
+    body.stacked  #desktop { padding: 24px 16px 40px; }
 
     /* ---- window ---- */
     .window {
-      width: 100%;
-      max-width: 720px;
+      width: min(560px, 100%);
+      margin: 0 auto 22px;
       background: var(--face);
       border: 2px solid;
       border-color: var(--hi) var(--sh) var(--sh) var(--hi);
       box-shadow: 0 0 0 1px #000, 7px 8px 0 rgba(0,0,0,0.28);
-      animation: winopen 0.18s ease both;
+      animation: winopen 0.2s ease both;
     }
+    body.floating .window {
+      position: absolute;
+      margin: 0;
+    }
+    body.floating .window.main     { width: 560px; }
+    body.floating .window.proj     { width: 366px; }
+    body.floating .window.resumew  { width: 392px; }
+
     @keyframes winopen {
       from { opacity: 0; transform: scale(0.965); }
       to   { opacity: 1; transform: scale(1); }
     }
 
-    /* ---- title bar with pinstripes ---- */
+    /* ---- title bar ---- */
     .titlebar {
       display: flex;
       align-items: center;
@@ -71,15 +78,15 @@
       height: 22px;
       padding: 0 6px;
       border-bottom: 1px solid var(--sh);
-      background: repeating-linear-gradient(
-        to bottom,
-        #c2c2c2 0, #c2c2c2 1px,
-        #efefef 1px, #efefef 2px
-      );
+      background: repeating-linear-gradient(to bottom, #c2c2c2 0, #c2c2c2 1px, #efefef 1px, #efefef 2px);
       box-shadow: inset 0 1px 0 #fff;
       user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
     }
-    .tb-fill { flex: 1; align-self: stretch; }   /* transparent → stripes show through */
+    body.floating .titlebar { cursor: grab; }
+    body.floating .window.dragging .titlebar { cursor: grabbing; }
+    .tb-fill { flex: 1; align-self: stretch; }
     .title {
       font-family: "Silkscreen", Geneva, sans-serif;
       font-weight: 700;
@@ -88,34 +95,36 @@
       color: var(--ink);
       background: var(--face);
       padding: 2px 12px 1px;
+      white-space: nowrap;
+      max-width: 60%;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    /* close / collapse / zoom boxes */
+
+    /* control boxes */
     .ctl {
+      appearance: none; -webkit-appearance: none;
+      font: inherit; padding: 0; cursor: default;
       position: relative;
-      width: 13px;
-      height: 13px;
+      width: 13px; height: 13px;
       flex: 0 0 auto;
       background: var(--face);
       border: 1px solid var(--sh-dk);
       box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #9a9a9a;
     }
+    .ctl:active { box-shadow: inset 1px 1px 0 #9a9a9a, inset -1px -1px 0 #fff; }
     .ctl.zoom::after {
-      content: "";
-      position: absolute;
-      top: 1px; left: 1px;
-      width: 5px; height: 5px;
-      border: 1px solid var(--sh-dk);
-      background: var(--face);
+      content: ""; position: absolute; top: 1px; left: 1px;
+      width: 5px; height: 5px; border: 1px solid var(--sh-dk); background: var(--face);
     }
     .ctl.collapse::after {
-      content: "";
-      position: absolute;
-      left: 2px; right: 2px; top: 5px;
+      content: ""; position: absolute; left: 2px; right: 2px; top: 5px;
       border-top: 1px solid var(--sh-dk);
     }
 
-    /* ---- body / sunken white pane ---- */
+    /* ---- body / sunken pane ---- */
     .window-body { background: var(--face); padding: 10px; }
+    .window.collapsed .window-body { display: none; }
     .pane {
       background: #fff;
       border: 2px solid;
@@ -124,126 +133,55 @@
       padding: 16px 18px 20px;
     }
 
-    /* ---- shell-worksheet text ---- */
-    .promptline {
-      font-family: Monaco, "Courier New", monospace;
-      font-size: 12px;
-      color: var(--ink-soft);
-      margin: 2px 0;
-    }
+    /* ---- shell text (main window) ---- */
+    .promptline { font-family: Monaco, "Courier New", monospace; font-size: 12px; color: var(--ink-soft); margin: 2px 0; }
     .user { color: #000; font-weight: 700; }
     .at   { color: var(--ink-faint); }
     .path { color: var(--link); }
     .sym  { color: var(--ink-faint); }
     .cmd  { color: #000; }
-    .name-out {
-      display: block;
-      font-size: 19px;
-      font-weight: 700;
-      color: #000;
-      margin: 6px 0 2px;
-    }
+    .name-out { display: block; font-size: 19px; font-weight: 700; color: #000; margin: 6px 0 2px; }
     .block { margin: 4px 0 16px; }
+    .hint { color: var(--ink-faint); font-size: 11px; margin: -8px 0 14px; }
 
-    /* ---- platinum push button (résumé) ---- */
-    .resume {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      color: #000;
-      font-size: 13px;
+    /* ---- platinum button ---- */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      text-decoration: none; color: #000; font-size: 13px;
       background: var(--face);
-      border: 2px solid;
-      border-color: var(--hi) var(--sh) var(--sh) var(--hi);
-      border-radius: 9px;
-      padding: 5px 18px;
-      /* default-button double ring */
-      box-shadow: 0 0 0 1px #000, 0 0 0 3px var(--face), 0 0 0 4px #000;
-    }
-    .resume:active {
-      border-color: var(--sh) var(--hi) var(--hi) var(--sh);
-      background: #cccccc;
-    }
-
-    /* ---- project entries (ls -l output) ---- */
-    .entry {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      text-decoration: none;
-      color: #000;
-      padding: 8px;
-      margin: 2px 0;
-      border: 1px solid transparent;
-    }
-    .entry:hover, .entry:focus-visible {
-      background: var(--sel);
-      color: #fff;
-      outline: none;
-    }
-    .entry-body { flex: 1; min-width: 0; }
-
-    .thumb {
-      flex: 0 0 152px;
-      width: 152px;
-      aspect-ratio: 5 / 3;
-      overflow: hidden;
-      background: #fff;
-      border: 2px solid;
-      border-color: var(--sh) var(--hi) var(--hi) var(--sh);
+      border: 2px solid; border-color: var(--hi) var(--sh) var(--sh) var(--hi);
+      border-radius: 9px; padding: 5px 16px;
       box-shadow: 0 0 0 1px #000;
     }
-    .thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
-    }
-    .entry:hover .thumb, .entry:focus-visible .thumb {
-      box-shadow: 0 0 0 1px #000, 0 0 0 3px #fff;
-    }
+    .btn:active { border-color: var(--sh) var(--hi) var(--hi) var(--sh); background: #ccc; }
+    .btn.default { box-shadow: 0 0 0 1px #000, 0 0 0 3px var(--face), 0 0 0 4px #000; }
 
-    .entry-head {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: 0 10px;
-      font-family: Monaco, "Courier New", monospace;
-      font-size: 12px;
-    }
+    /* ---- launcher entries (main window) ---- */
+    .entry { display: block; text-decoration: none; color: #000; padding: 7px 8px; margin: 2px 0; border: 1px solid transparent; }
+    .entry:hover, .entry:focus-visible { background: var(--sel); color: #fff; outline: none; }
+    .entry-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 10px; font-family: Monaco, "Courier New", monospace; font-size: 12px; }
     .perm { color: var(--ink-faint); }
     .name { color: #000; font-weight: 700; }
     .meta { color: var(--ink-faint); font-size: 11px; }
-    .desc { font-size: 13px; color: #222; margin: 5px 0 0; max-width: 62ch; }
-    .open { color: var(--link); margin-top: 7px; display: block; font-size: 12px; text-decoration: underline; }
+    .entry:hover .perm, .entry:hover .meta, .entry:focus-visible .perm, .entry:focus-visible .meta { color: #c4ccff; }
+    .entry:hover .name, .entry:focus-visible .name { color: #fff; }
 
-    /* selection-highlight text inversion */
-    .entry:hover .perm, .entry:hover .meta,
-    .entry:focus-visible .perm, .entry:focus-visible .meta { color: #c4ccff; }
-    .entry:hover .name, .entry:hover .desc,
-    .entry:focus-visible .name, .entry:focus-visible .desc { color: #fff; }
-    .entry:hover .open, .entry:focus-visible .open { color: #bcd2ff; }
+    /* ---- project window content ---- */
+    .thumb { width: 100%; aspect-ratio: 5 / 3; overflow: hidden; background: #fff;
+      border: 2px solid; border-color: var(--sh) var(--hi) var(--hi) var(--sh); box-shadow: 0 0 0 1px #000; }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .proj-meta { font-family: Monaco, "Courier New", monospace; font-size: 11px; color: var(--ink-faint); margin: 10px 0 4px; }
+    .desc { font-size: 13px; color: #222; margin: 0 0 14px; }
+
+    /* ---- resume window (iframe) ---- */
+    .resumew .pane { padding: 0; overflow: hidden; }
+    .frame { width: 100%; height: 440px; border: 0; display: block; background: #07080a; }
+    .frame-foot { display: flex; justify-content: flex-end; padding: 6px 8px; border-top: 1px solid var(--sh); background: var(--face); }
+    .frame-foot a { font-size: 11px; color: var(--link); }
 
     /* blinking caret */
-    .cursor {
-      display: inline-block;
-      width: 7px;
-      height: 1em;
-      background: #000;
-      vertical-align: text-bottom;
-      margin-left: 3px;
-      animation: blink 1s step-end infinite;
-    }
+    .cursor { display: inline-block; width: 7px; height: 1em; background: #000; vertical-align: text-bottom; margin-left: 3px; animation: blink 1s step-end infinite; }
     @keyframes blink { 50% { opacity: 0; } }
-
-    @media (max-width: 600px) {
-      body { padding: 14px 10px; }
-      .pane { padding: 14px 14px 18px; }
-      .entry { flex-direction: column; gap: 12px; }
-      .thumb { flex: 0 0 auto; width: 100%; }
-    }
 
     @media (prefers-reduced-motion: reduce) {
       .window { animation: none; }
@@ -252,63 +190,263 @@
   </style>
 </head>
 <body>
-  <main class="window" aria-label="Brian Sullivan">
-    <div class="titlebar">
-      <span class="ctl close" aria-hidden="true"></span>
-      <span class="tb-fill"></span>
-      <span class="title">bsullivan.io</span>
-      <span class="tb-fill"></span>
-      <span class="ctl collapse" aria-hidden="true"></span>
-      <span class="ctl zoom" aria-hidden="true"></span>
-    </div>
+  <div id="desktop">
 
-    <div class="window-body">
-      <div class="pane">
-        <div class="promptline">
-          <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cmd">whoami</span>
-        </div>
-        <div class="block">
-          <span class="name-out">Brian Sullivan</span>
-          full-stack web engineer
-        </div>
+    {% assign featured = "Make a Mile,newsquick.app,deadreader.com" | split: "," %}
 
-        <div class="promptline">
-          <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cmd">cat resume</span>
-        </div>
-        <div class="block">
-          <a class="resume" href="/resume">▤ open full résumé →</a>
-        </div>
+    <!-- ================= MAIN WINDOW ================= -->
+    <main class="window main" id="win-main" aria-label="Brian Sullivan">
+      <div class="titlebar">
+        <button type="button" class="ctl close" aria-label="Close"></button>
+        <span class="tb-fill"></span>
+        <span class="title">bsullivan.io</span>
+        <span class="tb-fill"></span>
+        <button type="button" class="ctl collapse" aria-label="Collapse"></button>
+        <button type="button" class="ctl zoom" aria-label="Zoom"></button>
+      </div>
+      <div class="window-body">
+        <div class="pane">
+          <div class="promptline">
+            <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cmd">whoami</span>
+          </div>
+          <div class="block">
+            <span class="name-out">Brian Sullivan</span>
+            full-stack web engineer
+          </div>
 
-        <div class="promptline">
-          <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cmd">ls -l projects/</span>
-        </div>
+          <div class="promptline">
+            <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cmd">open resume</span>
+          </div>
+          <div class="block">
+            <a class="btn default" href="/resume" data-target="win-resume">▤ open full résumé →</a>
+          </div>
 
-        {% assign featured = "Make a Mile,newsquick.app,deadreader.com" | split: "," %}
-        {% for fname in featured %}
-          {% assign p = site.data.projects | where: "project", fname | first %}
-          {% if p %}
-            <a class="entry" href="{{ p.url }}" rel="noopener noreferrer" target="_blank">
+          <div class="promptline">
+            <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cmd">ls -l projects/</span>
+          </div>
+          <p class="hint">double-click a window's stripes to roll it up &middot; drag by the title bar</p>
+
+          {% for fname in featured %}
+            {% assign p = site.data.projects | where: "project", fname | first %}
+            {% if p %}
+              {% assign slug = p.project | downcase | replace: " ", "-" | split: "." | first %}
+              <a class="entry" href="{{ p.url }}" data-target="win-{{ slug }}">
+                <span class="entry-head">
+                  <span class="perm">drwxr-xr-x</span>
+                  <span class="name">{{ slug }}/</span>
+                  <span class="meta">{{ p.duration }} · {{ p.role }}</span>
+                </span>
+              </a>
+            {% endif %}
+          {% endfor %}
+
+          <div class="promptline" style="margin-top:10px">
+            <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cursor" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ================= PROJECT WINDOWS ================= -->
+    {% for fname in featured %}
+      {% assign p = site.data.projects | where: "project", fname | first %}
+      {% if p %}
+        {% assign slug = p.project | downcase | replace: " ", "-" | split: "." | first %}
+        {% assign domain = p.url | remove: "https://" | remove: "http://" | remove: "www." | replace: "/", "" %}
+        <section class="window proj" id="win-{{ slug }}" aria-label="{{ p.project }}">
+          <div class="titlebar">
+            <button type="button" class="ctl close" aria-label="Close"></button>
+            <span class="tb-fill"></span>
+            <span class="title">{{ p.project }}</span>
+            <span class="tb-fill"></span>
+            <button type="button" class="ctl collapse" aria-label="Collapse"></button>
+            <button type="button" class="ctl zoom" aria-label="Zoom"></button>
+          </div>
+          <div class="window-body">
+            <div class="pane">
               {% if p.image %}
               <span class="thumb"><img src="{{ p.image }}" alt="Screenshot of {{ p.project }}" loading="lazy" width="640" height="384"></span>
               {% endif %}
-              <span class="entry-body">
-                <span class="entry-head">
-                  <span class="perm">drwxr-xr-x</span>
-                  <span class="name">{{ p.project | downcase | replace: " ", "-" | split: "." | first }}/</span>
-                  <span class="meta">{{ p.duration }} · {{ p.role }}</span>
-                </span>
-                <span class="desc">{{ p.description }}</span>
-                <span class="open">↳ open {{ p.url | remove: "https://" | remove: "http://" | remove: "www." | replace: "/", "" }} →</span>
-              </span>
-            </a>
-          {% endif %}
-        {% endfor %}
+              <div class="proj-meta">{{ p.duration }} · {{ p.role }}</div>
+              <p class="desc">{{ p.description }}</p>
+              <a class="btn" href="{{ p.url }}" target="_blank" rel="noopener noreferrer">▤ open {{ domain }} →</a>
+            </div>
+          </div>
+        </section>
+      {% endif %}
+    {% endfor %}
 
-        <div class="promptline" style="margin-top:10px">
-          <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cursor" aria-hidden="true"></span>
+    <!-- ================= RESUME WINDOW ================= -->
+    <section class="window resumew" id="win-resume" aria-label="résumé">
+      <div class="titlebar">
+        <button type="button" class="ctl close" aria-label="Close"></button>
+        <span class="tb-fill"></span>
+        <span class="title">résumé</span>
+        <span class="tb-fill"></span>
+        <button type="button" class="ctl collapse" aria-label="Collapse"></button>
+        <button type="button" class="ctl zoom" aria-label="Zoom"></button>
+      </div>
+      <div class="window-body">
+        <div class="pane">
+          <iframe class="frame" src="/resume" title="Brian Sullivan résumé" loading="lazy"></iframe>
+          <div class="frame-foot"><a href="/resume">open full page →</a></div>
         </div>
       </div>
-    </div>
-  </main>
+    </section>
+
+  </div>
+
+  <script>
+  (function () {
+    var body = document.body;
+    var desktop = document.getElementById('desktop');
+    var wins = [].slice.call(document.querySelectorAll('.window'));
+    var z = 10;
+
+    function front(w) { z += 1; w.style.zIndex = z; }
+
+    // focus on interaction
+    wins.forEach(function (w) {
+      w.addEventListener('pointerdown', function () { front(w); }, true);
+
+      var bar = w.querySelector('.titlebar');
+      var closeB = w.querySelector('.ctl.close');
+      var collB = w.querySelector('.ctl.collapse');
+      var zoomB = w.querySelector('.ctl.zoom');
+
+      if (closeB) closeB.addEventListener('click', function (e) { e.stopPropagation(); w.style.display = 'none'; });
+      if (collB) collB.addEventListener('click', function (e) { e.stopPropagation(); w.classList.toggle('collapsed'); });
+      if (zoomB) zoomB.addEventListener('click', function (e) { e.stopPropagation(); toggleZoom(w); });
+
+      if (bar) {
+        bar.addEventListener('dblclick', function (e) {
+          if (e.target.closest('.ctl')) return;
+          w.classList.toggle('collapsed');
+        });
+        bar.addEventListener('pointerdown', function (e) { startDrag(e, w, bar); });
+      }
+    });
+
+    function toggleZoom(w) {
+      if (!body.classList.contains('floating')) return;
+      if (w.classList.contains('zoomed')) {
+        w.classList.remove('zoomed');
+        w.style.width = w.dataset.ow || '';
+        w.style.left = w.dataset.ol || '';
+        w.style.top = w.dataset.ot || '';
+      } else {
+        w.dataset.ow = w.style.width; w.dataset.ol = w.style.left; w.dataset.ot = w.style.top;
+        w.classList.add('zoomed');
+        var dw = Math.min(900, desktop.clientWidth - 24);
+        w.style.width = dw + 'px';
+        w.style.left = Math.max(12, (desktop.clientWidth - dw) / 2) + 'px';
+        w.style.top = '24px';
+      }
+      front(w);
+    }
+
+    function startDrag(e, w, bar) {
+      if (e.target.closest('.ctl')) return;
+      if (!body.classList.contains('floating')) return;
+      front(w);
+      var rect = w.getBoundingClientRect();
+      var drect = desktop.getBoundingClientRect();
+      var ox = e.clientX - rect.left;
+      var oy = e.clientY - rect.top;
+      w.classList.add('dragging');
+      try { bar.setPointerCapture(e.pointerId); } catch (err) {}
+
+      function move(ev) {
+        var x = ev.clientX - drect.left - ox;
+        var y = ev.clientY - drect.top - oy;
+        x = Math.max(0, Math.min(x, desktop.clientWidth - 60));
+        y = Math.max(0, Math.min(y, desktop.clientHeight - 24));
+        w.style.left = x + 'px';
+        w.style.top = y + 'px';
+      }
+      function up() {
+        w.classList.remove('dragging');
+        bar.removeEventListener('pointermove', move);
+        bar.removeEventListener('pointerup', up);
+        bar.removeEventListener('pointercancel', up);
+      }
+      bar.addEventListener('pointermove', move);
+      bar.addEventListener('pointerup', up);
+      bar.addEventListener('pointercancel', up);
+    }
+
+    // launchers (project entries + résumé button)
+    [].slice.call(document.querySelectorAll('[data-target]')).forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var t = document.getElementById(a.getAttribute('data-target'));
+        if (!t) return; // no window -> let the link navigate
+        e.preventDefault();
+        t.style.display = '';
+        t.classList.remove('collapsed');
+        if (body.classList.contains('floating') && !t.style.left) {
+          t.style.left = Math.max(12, (desktop.clientWidth - t.offsetWidth) / 2) + 'px';
+          t.style.top = '48px';
+        }
+        front(t);
+        t.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      });
+    });
+
+    // double-click empty desktop -> restore everything
+    desktop.addEventListener('dblclick', function (e) {
+      if (e.target !== desktop) return;
+      wins.forEach(function (w) { w.style.display = ''; });
+    });
+
+    // ---- layout / responsive ----
+    var mq = window.matchMedia('(min-width: 880px)');
+
+    function placeAll() {
+      var main = document.getElementById('win-main');
+      var W = desktop.clientWidth;
+      var mW = main.offsetWidth;
+      var mX = Math.max(20, (W - mW) / 2);
+      var mY = 44;
+      var spots = [
+        [mX - 312, mY + 18],
+        [mX + mW - 70, mY - 8],
+        [mX - 232, mY + 286],
+        [mX + mW - 150, mY + 250]
+      ];
+      var others = wins.filter(function (w) { return w !== main; });
+      others.forEach(function (w, i) {
+        var s = spots[i % spots.length];
+        w.style.left = Math.max(8, Math.min(s[0], W - 90)) + 'px';
+        w.style.top = Math.max(8, s[1]) + 'px';
+        w.style.zIndex = 2 + i;
+      });
+      main.style.left = mX + 'px';
+      main.style.top = mY + 'px';
+      main.style.zIndex = 10;
+      z = 10;
+    }
+
+    function layout() {
+      if (mq.matches) {
+        body.classList.add('floating');
+        body.classList.remove('stacked');
+        placeAll();
+      } else {
+        body.classList.remove('floating');
+        body.classList.add('stacked');
+        wins.forEach(function (w) {
+          w.style.left = ''; w.style.top = ''; w.style.width = '';
+          w.style.zIndex = ''; w.classList.remove('zoomed');
+        });
+      }
+    }
+
+    if (mq.addEventListener) mq.addEventListener('change', layout);
+    else if (mq.addListener) mq.addListener(layout);
+
+    body.classList.add('has-js');
+    layout();
+  })();
+  </script>
 </body>
 </html>
