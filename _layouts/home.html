@@ -29,7 +29,10 @@
       --tan-dk:    #c9a877;
       --link:      #b04429;  /* red-toned link */
       --sel:       #c14a39;  /* selection highlight (red) */
-      --desktop:   #c98e72;  /* warm clay desktop */
+      --desktop:   #8a4c37;  /* deep terracotta desktop */
+      --brown-dk:  #3f261b;  /* darkest warm edge */
+      /* faint paper grain */
+      --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.09'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
     * { box-sizing: border-box; }
@@ -40,10 +43,12 @@
       min-height: 100vh;
       background-color: var(--desktop);
       background-image:
-        radial-gradient(120% 90% at 50% 8%, rgba(255,238,214,0.45), transparent 52%),
-        radial-gradient(120% 80% at 85% 110%, rgba(193,74,57,0.35), transparent 55%),
-        radial-gradient(150% 150% at 50% 60%, transparent 42%, rgba(74,38,28,0.5) 100%);
-      background-repeat: no-repeat;
+        radial-gradient(120% 90% at 50% 6%, rgba(255,226,196,0.40), transparent 50%),
+        radial-gradient(120% 85% at 88% 112%, rgba(193,74,57,0.40), transparent 55%),
+        radial-gradient(150% 150% at 50% 58%, transparent 32%, rgba(40,20,14,0.66) 100%),
+        var(--grain);
+      background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+      background-size: auto, auto, auto, 180px 180px;
       background-attachment: fixed;
       color: var(--ink);
       font-family: Geneva, Verdana, Tahoma, "Helvetica Neue", Helvetica, sans-serif;
@@ -65,8 +70,12 @@
       border-color: var(--hi) var(--sh) var(--sh) var(--hi);
       border-radius: 7px;
       overflow: hidden;
-      box-shadow: 0 1px 0 1px var(--brown-dk, #4a2f22), 0 14px 30px rgba(74,38,28,0.32), 0 3px 8px rgba(74,38,28,0.24);
+      box-shadow: 0 0 0 1px var(--brown-dk), 0 7px 16px rgba(30,15,10,0.28), 0 2px 5px rgba(30,15,10,0.22);
+      transition: box-shadow 0.18s ease;
       animation: winopen 0.2s ease both;
+    }
+    .window.is-active {
+      box-shadow: 0 0 0 1px var(--brown-dk), 0 26px 50px rgba(28,13,8,0.46), 0 8px 18px rgba(28,13,8,0.34);
     }
     body.floating .window {
       position: absolute;
@@ -151,10 +160,12 @@
     }
 
     /* ---- body / sunken pane ---- */
-    .window-body { background: var(--face); padding: 10px; }
+    .window-body { background-color: var(--face); background-image: var(--grain); background-size: 180px 180px; padding: 10px; }
     .window.collapsed .window-body { display: none; }
     .pane {
-      background: var(--pane);
+      background-color: var(--pane);
+      background-image: var(--grain);
+      background-size: 180px 180px;
       border: 2px solid;
       border-color: var(--sh) var(--hi) var(--hi) var(--sh);
       border-radius: 3px;
