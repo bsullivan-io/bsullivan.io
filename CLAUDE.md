@@ -87,7 +87,7 @@ bsullivan.io/
 ## Layouts
 
 ### `home.html` — Retro-Inspired Desktop Home Page
-- Interactive desktop: a deep space-indigo background (with a faint paper-grain texture) and multiple draggable windows (beige beveled chrome, **colored + textured title bars** — dusty-rose on the focused window, muted tan on the rest — and close/collapse/zoom boxes); palette is space-indigo/prussian-blue/beige/light-bronze/dusty-rose (rose name, filled-rose default button, rose selection highlights, indigo links)
+- Interactive desktop: a deep space-indigo background (with a faint paper-grain texture) and multiple draggable windows (beige beveled chrome, **colored + textured title bars** — dusty-rose on the focused window, muted tan on the rest — and close/collapse/zoom boxes); palette is space-indigo/prussian-blue/beige/light-bronze/dusty-rose (indigo name + filled-indigo default button, dusty-rose used as an accent on the active title bar / prompt / selection highlight, indigo links)
 - The focused window also gets a stronger drop shadow than the resting windows
 - Window focus is tracked in JS via an `is-active` class (drives the red vs. tan title bar)
 - **Main window** (`bsullivan.io`): name/title, a résumé button, and `ls -l projects/` launcher entries
