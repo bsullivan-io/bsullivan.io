@@ -13,24 +13,25 @@
        colored textured title bars. Draggable, collapsible windows.
        ============================================================ */
     :root {
-      --face:      #f4ead9;  /* warm cream window face */
-      --face-2:    #ece0c9;  /* tan panel */
-      --pane:      #fffdf7;  /* near-white warm pane */
-      --hi:        #fffaf0;  /* bevel highlight */
-      --sh:        #b59b78;  /* warm bevel shadow */
-      --sh-dk:     #8a6f52;  /* deeper warm edge */
-      --ink:       #33271d;  /* warm near-black */
-      --ink-soft:  #6b5644;
-      --ink-faint: #a0876c;
-      --red:       #c14a39;  /* brick red accent */
-      --red-dk:    #98372a;
-      --red-lt:    #d56b58;
-      --tan:       #e0c79f;
-      --tan-dk:    #c9a877;
-      --link:      #b04429;  /* red-toned link */
-      --sel:       #c14a39;  /* selection highlight (red) */
-      --desktop:   #8a4c37;  /* deep terracotta desktop */
-      --brown-dk:  #3f261b;  /* darkest warm edge */
+      /* palette: space-indigo / prussian-blue / beige / light-bronze / dusty-rose */
+      --face:      #f2f3d9;  /* beige window face */
+      --face-2:    #e6e6c4;  /* deeper beige panel */
+      --pane:      #f8f8ea;  /* lighter beige pane */
+      --hi:        #fcfcef;  /* bevel highlight */
+      --sh:        #cda78a;  /* bronze bevel shadow */
+      --sh-dk:     #a9805f;  /* deeper bronze edge */
+      --ink:       #151e3f;  /* space-indigo text */
+      --ink-soft:  #3b4468;
+      --ink-faint: #717a9e;
+      --red:       #c16e70;  /* dusty-rose accent */
+      --red-dk:    #9f5457;
+      --red-lt:    #d28e90;
+      --tan:       #dc9e82;  /* light-bronze */
+      --tan-dk:    #c5825f;
+      --link:      #2f3a72;  /* indigo link */
+      --sel:       #c16e70;  /* dusty-rose selection */
+      --desktop:   #151e3f;  /* space-indigo desktop */
+      --brown-dk:  #030027;  /* prussian-blue deep edge */
       /* faint paper grain */
       --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.09'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
@@ -43,9 +44,9 @@
       min-height: 100vh;
       background-color: var(--desktop);
       background-image:
-        radial-gradient(120% 90% at 50% 6%, rgba(255,226,196,0.40), transparent 50%),
-        radial-gradient(120% 85% at 88% 112%, rgba(193,74,57,0.40), transparent 55%),
-        radial-gradient(150% 150% at 50% 58%, transparent 32%, rgba(40,20,14,0.66) 100%),
+        radial-gradient(120% 95% at 50% 0%, rgba(220,158,130,0.16), transparent 52%),
+        radial-gradient(120% 90% at 86% 112%, rgba(193,110,112,0.30), transparent 55%),
+        radial-gradient(150% 150% at 50% 55%, transparent 26%, rgba(3,0,39,0.92) 100%),
         var(--grain);
       background-repeat: no-repeat, no-repeat, no-repeat, repeat;
       background-size: auto, auto, auto, 180px 180px;
@@ -70,12 +71,12 @@
       border-color: var(--hi) var(--sh) var(--sh) var(--hi);
       border-radius: 7px;
       overflow: hidden;
-      box-shadow: 0 0 0 1px var(--brown-dk), 0 7px 16px rgba(30,15,10,0.28), 0 2px 5px rgba(30,15,10,0.22);
+      box-shadow: 0 0 0 1px var(--brown-dk), 0 7px 16px rgba(3,0,28,0.45), 0 2px 5px rgba(3,0,28,0.4);
       transition: box-shadow 0.18s ease;
       animation: winopen 0.2s ease both;
     }
     .window.is-active {
-      box-shadow: 0 0 0 1px var(--brown-dk), 0 26px 50px rgba(28,13,8,0.46), 0 8px 18px rgba(28,13,8,0.34);
+      box-shadow: 0 0 0 1px var(--brown-dk), 0 26px 54px rgba(3,0,28,0.62), 0 8px 18px rgba(3,0,28,0.5);
     }
     body.floating .window {
       position: absolute;
@@ -98,11 +99,11 @@
       height: 24px;
       padding: 0 7px;
       border-bottom: 1px solid var(--sh-dk);
-      /* inactive: tan, textured */
+      /* inactive: muted pale tan, textured */
       background:
-        repeating-linear-gradient(to bottom, rgba(255,255,255,0.22) 0 1px, rgba(120,80,40,0.10) 1px 2px),
-        linear-gradient(to bottom, var(--tan), var(--tan-dk));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.45);
+        repeating-linear-gradient(to bottom, rgba(255,255,255,0.22) 0 1px, rgba(120,80,40,0.08) 1px 2px),
+        linear-gradient(to bottom, #e8dcc4, #d6c2a4);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
       user-select: none;
       -webkit-user-select: none;
       touch-action: none;
@@ -130,7 +131,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .window.is-active .title { color: #fff6ee; text-shadow: 0 1px 0 rgba(0,0,0,0.28); }
+    .window.is-active .title { color: #f6f6e2; text-shadow: 0 1px 0 rgba(3,0,39,0.35); }
 
     /* control boxes */
     .ctl {
@@ -140,15 +141,15 @@
       width: 14px; height: 14px;
       flex: 0 0 auto;
       border-radius: 3px;
-      background: linear-gradient(to bottom, #fffdf7, #e7d8bd);
+      background: linear-gradient(to bottom, #fcfcef, #e4e3c6);
       border: 1px solid var(--sh-dk);
-      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 rgba(138,111,82,0.6);
+      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 rgba(169,128,95,0.6);
     }
-    .ctl:hover { background: linear-gradient(to bottom, #ffffff, #efe2c9); }
-    .ctl:active { box-shadow: inset 1px 1px 0 rgba(138,111,82,0.7), inset -1px -1px 0 #fff; }
-    .ctl.close { background: linear-gradient(to bottom, #e9897c, var(--red)); border-color: var(--red-dk); }
-    .ctl.close:hover { background: linear-gradient(to bottom, #f0998c, var(--red-lt)); }
-    .ctl[disabled] { cursor: default; box-shadow: none; border-color: rgba(255,250,240,0.5); background: rgba(255,250,240,0.25); opacity: 0.75; }
+    .ctl:hover { background: linear-gradient(to bottom, #ffffff, #ecebd2); }
+    .ctl:active { box-shadow: inset 1px 1px 0 rgba(169,128,95,0.7), inset -1px -1px 0 #fff; }
+    .ctl.close { background: linear-gradient(to bottom, var(--red-lt), var(--red)); border-color: var(--red-dk); }
+    .ctl.close:hover { background: linear-gradient(to bottom, #dba2a4, var(--red-lt)); }
+    .ctl[disabled] { cursor: default; box-shadow: none; border-color: rgba(246,246,226,0.55); background: rgba(246,246,226,0.28); opacity: 0.75; }
     .ctl[disabled]::after { opacity: 0.5; }
     .ctl.zoom::after {
       content: ""; position: absolute; top: 2px; left: 2px;
