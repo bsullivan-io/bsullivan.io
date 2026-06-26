@@ -234,27 +234,42 @@ title: Services — Brian Sullivan
       padding: 18px 20px 20px;
     }
 
+    /* per-card accent colors */
+    .card-web  .card-pane { border-top: 4px solid #2f3a72; }
+    .card-api  .card-pane { border-top: 4px solid #c5825f; }
+    .card-mail .card-pane { border-top: 4px solid #c16e70; }
+    .card-ai   .card-pane { border-top: 4px solid #5a4a7a; }
+
+    .card-web  .svc-icon { color: #2f3a72; }
+    .card-api  .svc-icon { color: #c5825f; }
+    .card-mail .svc-icon { color: #c16e70; }
+    .card-ai   .svc-icon { color: #5a4a7a; }
+
+    .card-web  .svc-name { color: #2f3a72; }
+    .card-api  .svc-name { color: #9f5c38; }
+    .card-mail .svc-name { color: #9f5457; }
+    .card-ai   .svc-name { color: #3e2f5e; }
+
     /* service icon */
     .svc-icon {
-      font-size: 36px;
-      margin-bottom: 12px;
+      font-size: 52px;
+      margin-bottom: 14px;
       display: block;
-      filter: saturate(0.7);
+      line-height: 1;
     }
     .svc-name {
       font-family: "Silkscreen", Geneva, sans-serif;
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 700;
-      color: var(--ink);
-      letter-spacing: 0.4px;
-      margin-bottom: 8px;
-      line-height: 1.4;
+      letter-spacing: 0.3px;
+      margin-bottom: 10px;
+      line-height: 1.35;
     }
     .svc-desc {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--ink-soft);
-      margin: 0 0 14px;
-      line-height: 1.55;
+      margin: 0 0 16px;
+      line-height: 1.6;
     }
     .svc-tags {
       display: flex;
@@ -358,7 +373,7 @@ title: Services — Brian Sullivan
       <div class="services-grid">
 
         <!-- Website -->
-        <div class="card">
+        <div class="card card-web">
           <div class="card-titlebar">
             <button class="ctl close" disabled></button>
             <span class="tb-fill"></span>
@@ -383,7 +398,7 @@ title: Services — Brian Sullivan
         </div>
 
         <!-- API -->
-        <div class="card">
+        <div class="card card-api">
           <div class="card-titlebar">
             <button class="ctl close" disabled></button>
             <span class="tb-fill"></span>
@@ -407,7 +422,7 @@ title: Services — Brian Sullivan
         </div>
 
         <!-- Email -->
-        <div class="card">
+        <div class="card card-mail">
           <div class="card-titlebar">
             <button class="ctl close" disabled></button>
             <span class="tb-fill"></span>
@@ -431,7 +446,7 @@ title: Services — Brian Sullivan
         </div>
 
         <!-- AI Brain -->
-        <div class="card">
+        <div class="card card-ai">
           <div class="card-titlebar">
             <button class="ctl close" disabled></button>
             <span class="tb-fill"></span>
