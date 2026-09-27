@@ -3,503 +3,834 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title | default: site.title }}</title>
+  <title>Brian Sullivan · Web Development, Search &amp; IT Services</title>
+  <meta name="description" content="Brian Sullivan builds websites and web apps for small businesses and provides search, email, IT and ongoing support. 15+ years of full-stack engineering experience.">
+  <link rel="canonical" href="https://bsullivan.io/">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     /* ============================================================
-       Retro-inspired desktop — warm cream windows, red/tan accents,
-       colored textured title bars. Draggable, collapsible windows.
+       Retro / typographic / gridded. Teal, dark teal, scarlet rush,
+       golden pollen and graphite on warm card-stock paper.
        ============================================================ */
     :root {
-      /* palette: space-indigo / prussian-blue / beige / light-bronze / dusty-rose */
-      --face:      #f2f3d9;  /* beige window face */
-      --face-2:    #e6e6c4;  /* deeper beige panel */
-      --pane:      #f8f8ea;  /* lighter beige pane */
-      --hi:        #fcfcef;  /* bevel highlight */
-      --sh:        #cda78a;  /* bronze bevel shadow */
-      --sh-dk:     #a9805f;  /* deeper bronze edge */
-      --ink:       #151e3f;  /* space-indigo text */
-      --ink-soft:  #3b4468;
-      --ink-faint: #717a9e;
-      --red:       #c16e70;  /* dusty-rose accent */
-      --red-dk:    #9f5457;
-      --red-lt:    #d28e90;
-      --tan:       #dc9e82;  /* light-bronze */
-      --tan-dk:    #c5825f;
-      --link:      #2f3a72;  /* indigo link */
-      --sel:       #c16e70;  /* dusty-rose selection */
-      --desktop:   #151e3f;  /* space-indigo desktop */
-      --brown-dk:  #030027;  /* prussian-blue deep edge */
-      /* faint paper grain */
-      --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.09'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      --teal:     #177e89;
+      --dteal:    #084c61;
+      --scarlet:  #db3a34;
+      --gold:     #ffc857;
+      --graphite: #323031;
+      --paper:    #f6f0e4;
+      --paper-2:  #ece3d1;
+      --ink-soft: rgba(50, 48, 49, 0.78);
+      --ink-faint: rgba(50, 48, 49, 0.55);
+      --rule:     rgba(50, 48, 49, 0.18);
+      --line:     1.5px solid var(--graphite);
+
+      --sans: "Archivo", "Helvetica Neue", Arial, sans-serif;
+      --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+      /* subtle card-stock grain */
+      --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.2  0 0 0 0 0.19  0 0 0 0 0.19  0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      --fibre: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 0.35' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0.3  0 0 0 0 0.27  0 0 0 0 0.2  0 0 0 0.045 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+      --grain-lt: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      --checker: conic-gradient(var(--graphite) 25%, var(--paper) 0 50%, var(--graphite) 0 75%, var(--paper) 0);
+
+      --wrap: 1240px;
+      --gutter: clamp(18px, 4.5vw, 56px);
+      --edge: max(var(--gutter), calc((100vw - var(--wrap)) / 2 + var(--gutter)));
     }
 
     * { box-sizing: border-box; }
-    html, body { margin: 0; }
-    html { height: 100%; }
-
+    html { scroll-behavior: smooth; }
     body {
-      min-height: 100vh;
-      background-color: var(--desktop);
-      background-image:
-        radial-gradient(120% 95% at 50% 0%, rgba(220,158,130,0.16), transparent 52%),
-        radial-gradient(120% 90% at 86% 112%, rgba(193,110,112,0.30), transparent 55%),
-        radial-gradient(150% 150% at 50% 55%, transparent 26%, rgba(3,0,39,0.92) 100%),
-        var(--grain);
-      background-repeat: no-repeat, no-repeat, no-repeat, repeat;
-      background-size: auto, auto, auto, 180px 180px;
-      background-attachment: fixed;
-      color: var(--ink);
-      font-family: Geneva, Verdana, Tahoma, "Helvetica Neue", Helvetica, sans-serif;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    /* ---- desktop surface ---- */
-    #desktop { position: relative; width: 100%; min-height: 100vh; }
-    body.floating #desktop { height: 100vh; overflow: hidden; }
-    body.stacked  #desktop { padding: 24px 16px 40px; }
-
-    /* ---- window ---- */
-    .window {
-      width: min(560px, 100%);
-      margin: 0 auto 22px;
-      background: var(--face);
-      border: 2px solid;
-      border-color: var(--hi) var(--sh) var(--sh) var(--hi);
-      border-radius: 7px;
-      overflow: hidden;
-      box-shadow: 0 0 0 1px var(--brown-dk), 0 7px 16px rgba(3,0,28,0.45), 0 2px 5px rgba(3,0,28,0.4);
-      transition: box-shadow 0.18s ease;
-      animation: winopen 0.2s ease both;
-    }
-    .window.is-active {
-      box-shadow: 0 0 0 1px var(--brown-dk), 0 26px 54px rgba(3,0,28,0.62), 0 8px 18px rgba(3,0,28,0.5);
-    }
-    body.floating .window {
-      position: absolute;
       margin: 0;
+      background-color: var(--paper);
+      background-image: var(--grain), var(--fibre);
+      background-size: 240px 240px, 400px 400px;
+      color: var(--graphite);
+      font-family: var(--sans);
+      font-size: 18px;
+      line-height: 1.58;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
-    body.floating .window.main     { width: 560px; }
-    body.floating .window.proj     { width: 366px; }
-    body.floating .window.resumew  { width: 392px; }
+    ::selection { background: var(--gold); color: var(--graphite); }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
 
-    @keyframes winopen {
-      from { opacity: 0; transform: scale(0.965); }
-      to   { opacity: 1; transform: scale(1); }
+    h1, h2, h3 { font-family: var(--sans); margin: 0; line-height: 1; }
+    h2 { font-size: clamp(2.4rem, 5vw, 4.4rem); font-weight: 800; font-variation-settings: "wdth" 78; letter-spacing: -0.025em; word-spacing: .05em; }
+    h3 { font-weight: 700; }
+    p { margin: 0 0 1em; }
+
+    .mono { font-family: var(--mono); font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; }
+    .label { font-family: var(--mono); font-size: .76rem; letter-spacing: .04em; text-transform: uppercase; display: inline-flex; gap: 10px; align-items: center; }
+    .label .n { background: var(--graphite); color: var(--paper); padding: 2px 9px; border-radius: 99px; }
+
+    /* ---------- pills ---------- */
+    .pill {
+      display: inline-flex; align-items: center; gap: .6em;
+      padding: .85em 1.6em; border-radius: 999px; border: var(--line);
+      font-family: var(--sans); font-size: .82rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      text-decoration: none; color: var(--graphite); background: transparent;
+      transition: background .25s, color .25s, border-color .25s, transform .25s;
     }
+    .pill:hover { transform: translateY(-2px); }
+    .pill .arrow { transition: transform .25s; }
+    .pill:hover .arrow { transform: translateX(4px); }
+    .pill-gold { background: var(--gold); }
+    .pill-gold:hover { background: var(--graphite); color: var(--gold); }
+    .pill-dark { background: var(--graphite); color: var(--paper); }
+    .pill-dark:hover { background: var(--scarlet); border-color: var(--scarlet); }
+    .pill-ghost:hover { background: var(--graphite); color: var(--paper); }
 
-    /* ---- title bar (colored + textured) ---- */
-    .titlebar {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      height: 24px;
-      padding: 0 7px;
-      border-bottom: 1px solid var(--sh-dk);
-      /* inactive: muted pale tan, textured */
-      background:
-        repeating-linear-gradient(to bottom, rgba(255,255,255,0.22) 0 1px, rgba(120,80,40,0.08) 1px 2px),
-        linear-gradient(to bottom, #e8dcc4, #d6c2a4);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: none;
+    /* ============ TOP BAR ============ */
+    .topbar { background: var(--graphite); color: var(--paper); border-bottom: var(--line); }
+    .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-top: 14px; padding-bottom: 14px; }
+    .brand { text-decoration: none; display: flex; align-items: center; gap: 12px; }
+    .brand-name { font-weight: 800; font-size: 1.12rem; letter-spacing: -.01em; font-variation-settings: "wdth" 90; white-space: nowrap; }
+    .nav { display: flex; align-items: center; gap: 8px; }
+    .nav a { font-size: .72rem; padding: .6em 1.15em; color: var(--paper); border-color: rgba(246,240,228,.35); }
+    .nav a:hover { background: var(--paper); color: var(--graphite); border-color: var(--paper); transform: none; }
+    .nav a.pill-gold { color: var(--graphite); border-color: var(--gold); }
+    .nav a.pill-gold:hover { background: var(--scarlet); border-color: var(--scarlet); color: var(--paper); }
+
+    /* ============ HERO ============ */
+    .hero { display: grid; grid-template-columns: 1.08fr 0.92fr; border-bottom: var(--line); min-height: min(88vh, 860px); padding: 0; }
+    .hero-copy { padding: clamp(48px, 7vw, 96px) clamp(24px, 4vw, 64px) clamp(40px, 5vw, 64px) var(--edge); display: flex; flex-direction: column; justify-content: space-between; gap: 40px; border-right: var(--line); }
+    .hero h1 { font-size: clamp(3.1rem, 6.6vw, 6.4rem); font-weight: 850; font-variation-settings: "wdth" 72; letter-spacing: -0.035em; word-spacing: .08em; line-height: .9; margin: 22px 0 30px; }
+    .hero h1 .hl { color: var(--paper); background: var(--scarlet); padding: 0 .12em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+    .hero .lede { font-size: 1.14rem; color: var(--ink-soft); max-width: 32em; margin-bottom: 34px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-meta { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; border: var(--line); border-radius: 999px; overflow: hidden; width: max-content; max-width: 100%; }
+    .hero-meta div { padding: 12px 22px; font-family: var(--mono); font-size: .7rem; text-transform: uppercase; letter-spacing: .03em; border-left: var(--line); line-height: 1.3; }
+    .hero-meta div:first-child { border-left: 0; }
+    .hero-meta b { font-family: var(--sans); font-size: 1.2rem; font-weight: 800; letter-spacing: -.01em; display: block; text-transform: none; }
+
+    .hero-art { position: relative; background: var(--teal); background-image: var(--grain-lt); overflow: hidden; isolation: isolate; min-height: 560px; }
+    .hero-art .rings { position: absolute; width: 150%; aspect-ratio: 1; left: -10%; top: -32%; z-index: -1; }
+    .hero-photo { position: absolute; top: 9%; right: 9%; width: 58%; aspect-ratio: 3 / 4; border-radius: 999px; overflow: hidden; border: 2px solid var(--graphite); box-shadow: 10px 10px 0 var(--graphite); }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 32% 50%; }
+    .badge { position: absolute; top: 5%; left: 7%; width: 132px; height: 132px; }
+    .badge svg { width: 100%; height: 100%; animation: spin 22s linear infinite; }
+    .badge .core { position: absolute; inset: 30%; border-radius: 50%; background: var(--gold); border: 2px solid var(--graphite); display: grid; place-items: center; font-weight: 900; font-size: 1.25rem; font-variation-settings: "wdth" 75; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .hero-art .checker { position: absolute; left: 0; right: 0; bottom: 0; height: 22px; background: var(--checker) 0 0 / 22px 22px; border-top: var(--line); }
+
+    /* ---- the business card ---- */
+    .desk { position: absolute; left: 6%; bottom: 11%; width: 76%; perspective: 1600px; }
+    .bcard {
+      --rx: 5deg; --ry: -7deg; --rz: -3deg;
+      position: relative; width: 100%; aspect-ratio: 3.5 / 2;
+      container-type: inline-size;
+      display: grid; grid-template-columns: 36% 1fr;
+      background-color: var(--paper); background-image: var(--grain), var(--fibre);
+      background-size: 240px 240px, 400px 400px;
+      color: var(--graphite); border-radius: 6px; border: 2px solid var(--graphite);
+      transform: rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rz));
+      transition: transform .6s cubic-bezier(.2,.7,.2,1);
+      box-shadow: 12px 12px 0 var(--graphite), 0 40px 60px -20px rgba(0,0,0,.45);
     }
-    /* active: brick-red, textured pinstripe */
-    .window.is-active .titlebar {
-      border-bottom-color: var(--red-dk);
-      background:
-        repeating-linear-gradient(to bottom, rgba(255,255,255,0.20) 0 1px, rgba(0,0,0,0.10) 1px 2px),
-        linear-gradient(to bottom, var(--red-lt), var(--red) 60%, var(--red-dk));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
-    }
-    body.floating .titlebar { cursor: grab; }
-    body.floating .window.dragging .titlebar { cursor: grabbing; }
-    .tb-fill { flex: 1; align-self: stretch; }
-    .title {
-      font-family: "Silkscreen", Geneva, sans-serif;
-      font-weight: 700;
-      font-size: 11px;
-      letter-spacing: 0.5px;
-      color: var(--ink-soft);
-      padding: 2px 12px 1px;
-      white-space: nowrap;
-      max-width: 60%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .window.is-active .title { color: #f6f6e2; text-shadow: 0 1px 0 rgba(3,0,39,0.35); }
+    .bcard-photo { position: relative; overflow: hidden; border-right: 2px solid var(--graphite); border-radius: 4px 0 0 4px; }
+    .bcard-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; filter: saturate(.85) contrast(1.04); }
+    .bcard-body { padding: 8% 8% 7% 8%; display: flex; flex-direction: column; min-width: 0; }
+    .bcard-kicker { font-family: var(--mono); font-size: 2.2cqw; text-transform: uppercase; letter-spacing: .04em; display: flex; gap: 1.2cqw; }
+    .bcard-kicker span { padding: .25em .8em; border-radius: 99px; border: 1px solid var(--graphite); }
+    .bcard-kicker span:first-child { background: var(--gold); }
+    .bcard-name { font-size: 7.6cqw; font-weight: 850; font-variation-settings: "wdth" 80; letter-spacing: -.03em; line-height: .92; margin: auto 0 1.6cqw; white-space: nowrap; }
+    .bcard-title { font-size: 3cqw; color: var(--teal); font-weight: 600; }
+    .bcard-rule { height: 2px; background: var(--scarlet); width: 18%; margin: 5% 0 4.5%; }
+    .bcard-contact { font-family: var(--mono); font-size: 2.6cqw; line-height: 1.7; }
+    .bcard-contact span { display: block; }
 
-    /* control boxes */
-    .ctl {
-      appearance: none; -webkit-appearance: none;
-      font: inherit; padding: 0; cursor: default;
-      position: relative;
-      width: 14px; height: 14px;
-      flex: 0 0 auto;
-      border-radius: 3px;
-      background: linear-gradient(to bottom, #fcfcef, #e4e3c6);
-      border: 1px solid var(--sh-dk);
-      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 rgba(169,128,95,0.6);
-    }
-    .ctl:hover { background: linear-gradient(to bottom, #ffffff, #ecebd2); }
-    .ctl:active { box-shadow: inset 1px 1px 0 rgba(169,128,95,0.7), inset -1px -1px 0 #fff; }
-    .ctl.close { background: linear-gradient(to bottom, var(--red-lt), var(--red)); border-color: var(--red-dk); }
-    .ctl.close:hover { background: linear-gradient(to bottom, #dba2a4, var(--red-lt)); }
-    .ctl[disabled] { cursor: default; box-shadow: none; border-color: rgba(246,246,226,0.55); background: rgba(246,246,226,0.28); opacity: 0.75; }
-    .ctl[disabled]::after { opacity: 0.5; }
-    .ctl.zoom::after {
-      content: ""; position: absolute; top: 2px; left: 2px;
-      width: 5px; height: 5px; border: 1px solid var(--sh-dk); background: transparent;
-    }
-    .ctl.collapse::after {
-      content: ""; position: absolute; left: 3px; right: 3px; top: 6px;
-      border-top: 1px solid var(--sh-dk);
-    }
+    /* ============ MARQUEE BANDS ============ */
+    .band { overflow: hidden; border-bottom: var(--line); white-space: nowrap; }
+    .band-track { display: inline-flex; width: max-content; animation: slide 38s linear infinite; }
+    .band.rev .band-track { animation-direction: reverse; animation-duration: 46s; }
+    .band span { font-weight: 900; font-variation-settings: "wdth" 62; text-transform: uppercase; letter-spacing: -.02em; font-size: clamp(3rem, 9vw, 8.4rem); line-height: .95; padding: .08em .25em .02em; display: inline-flex; align-items: center; gap: .25em; }
+    .band span::after { content: ""; width: .36em; height: .36em; border-radius: 50%; background: currentColor; display: inline-block; margin-left: .3em; }
+    .band-red { background: var(--scarlet); color: var(--graphite); }
+    .band-dark { background: var(--graphite); color: var(--gold); }
+    .band-dark span:nth-child(even) { color: var(--paper); }
+    @keyframes slide { to { transform: translateX(-50%); } }
 
-    /* ---- body / sunken pane ---- */
-    .window-body { background-color: var(--face); background-image: var(--grain); background-size: 180px 180px; padding: 10px; }
-    .window.collapsed .window-body { display: none; }
-    .pane {
-      background-color: var(--pane);
-      background-image: var(--grain);
-      background-size: 180px 180px;
-      border: 2px solid;
-      border-color: var(--sh) var(--hi) var(--hi) var(--sh);
-      border-radius: 3px;
-      box-shadow: 0 0 0 1px var(--sh-dk);
-      padding: 16px 18px 20px;
-    }
+    /* ============ MOSAIC ============ */
+    .mosaic { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; grid-template-rows: 260px 260px; gap: 1.5px; background: var(--graphite); border-bottom: var(--line); }
+    .mosaic > * { position: relative; min-width: 0; overflow: hidden; }
+    .m-a { grid-row: span 2; }
+    .tile { padding: 26px; display: flex; flex-direction: column; justify-content: space-between; background-image: var(--grain); }
+    .tile .w { font-size: clamp(2.2rem, 3.6vw, 3.4rem); font-weight: 900; font-variation-settings: "wdth" 66; text-transform: uppercase; line-height: .9; letter-spacing: -.02em; }
+    .tile p { margin: 10px 0 0; font-size: .92rem; line-height: 1.4; }
+    .t-gold { background-color: var(--gold); }
+    .t-teal { background-color: var(--teal); color: var(--paper); }
+    .t-red { background-color: var(--scarlet); color: var(--paper); }
 
-    /* ---- shell text (main window) ---- */
-    .promptline { font-family: Monaco, "Courier New", monospace; font-size: 12px; color: var(--ink-soft); margin: 2px 0; }
-    .user { color: var(--red-dk); font-weight: 700; }
-    .at   { color: var(--ink-faint); }
-    .path { color: var(--tan-dk); }
-    .sym  { color: var(--ink-faint); }
-    .cmd  { color: var(--ink); }
-    .name-out { display: block; font-size: 21px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); margin: 6px 0 2px; }
-    .block { margin: 4px 0 16px; }
+    /* photos: palette duotone that warms back to color on hover */
+    .duo { --lo: var(--dteal); --hi: #fbe7b4; position: relative; background: var(--hi); isolation: isolate; }
+    .duo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.1); mix-blend-mode: multiply; transition: filter .7s ease, transform 1.2s cubic-bezier(.2,.7,.2,1); }
+    .duo::after { content: ""; position: absolute; inset: 0; background: var(--lo); mix-blend-mode: lighten; transition: opacity .7s ease; pointer-events: none; }
+    .duo-red  { --lo: #5a1310; --hi: #ffd9c9; }
+    .duo-teal { --lo: #042a36; --hi: #9fd6dc; }
+    .duo-gray { --lo: var(--graphite); --hi: var(--paper); }
+    .duo:hover img { filter: none; transform: scale(1.04); }
+    .duo:hover::after { opacity: 0; }
 
-    /* ---- buttons ---- */
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      text-decoration: none; color: var(--ink); font-size: 13px;
-      background: linear-gradient(to bottom, #fffdf7, var(--tan));
-      border: 1px solid var(--sh-dk);
-      border-radius: 9px; padding: 6px 16px;
-      box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(74,38,28,0.25);
-      transition: filter 0.12s ease;
-    }
-    .btn:hover { filter: brightness(1.04); }
-    .btn:active { box-shadow: inset 0 1px 3px rgba(74,38,28,0.35); }
-    /* filled-red default button */
-    .btn.default {
-      color: var(--face);
-      background: linear-gradient(to bottom, #2a3560, var(--ink) 72%, #0d1330);
-      border-color: var(--brown-dk);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 2px 6px rgba(3,0,39,0.45);
-    }
+    /* ============ SECTIONS ============ */
+    section { padding: clamp(80px, 10vw, 136px) 0; }
+    .section-head { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(24px, 5vw, 80px); align-items: end; margin-bottom: clamp(44px, 6vw, 76px); }
+    .section-head .label { margin-bottom: 20px; }
+    .section-head p { color: var(--ink-soft); font-size: 1.08rem; margin: 0; max-width: 30em; }
 
-    /* ---- launcher entries (main window) ---- */
-    .entry { display: block; text-decoration: none; color: var(--ink); padding: 7px 9px; margin: 2px 0; border-radius: 5px; border: 1px solid transparent; }
-    .entry:hover, .entry:focus-visible { background: linear-gradient(to bottom, var(--red-lt), var(--red)); color: #fff; outline: none; }
-    .entry-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 10px; font-family: Monaco, "Courier New", monospace; font-size: 12px; }
-    .perm { color: var(--ink-faint); }
-    .name { color: var(--ink); font-weight: 700; }
-    .meta { color: var(--ink-faint); font-size: 11px; }
-    .entry:hover .perm, .entry:hover .meta, .entry:focus-visible .perm, .entry:focus-visible .meta { color: #ffe2da; }
-    .entry:hover .name, .entry:focus-visible .name { color: #fff; }
+    /* services banner */
+    .banner { position: relative; overflow: hidden; height: clamp(240px, 30vw, 400px); border: var(--line); border-radius: 22px; margin-bottom: clamp(48px, 6vw, 80px); }
+    .banner .duo { position: absolute; inset: 0; }
+    .banner .big { position: absolute; left: .06em; bottom: -.13em; font-size: clamp(5rem, 19vw, 17rem); font-weight: 900; font-variation-settings: "wdth" 62; text-transform: uppercase; line-height: .8; letter-spacing: -.03em; color: var(--gold); pointer-events: none; }
+    .banner .cap { position: absolute; right: 18px; top: 18px; background: var(--paper); border: var(--line); border-radius: 99px; padding: 6px 14px; }
 
-    /* ---- project window content ---- */
-    .thumb { display: block; width: 100%; aspect-ratio: 5 / 3; overflow: hidden; background: var(--pane); border-radius: 4px;
-      border: 2px solid; border-color: var(--sh) var(--hi) var(--hi) var(--sh); box-shadow: 0 0 0 1px var(--sh-dk); }
-    .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
-    .proj-meta { font-family: Monaco, "Courier New", monospace; font-size: 11px; color: var(--tan-dk); margin: 12px 0 5px; }
-    .desc { font-size: 13px; color: var(--ink-soft); margin: 0 0 14px; }
+    .svc-list { border-top: var(--line); }
+    .svc { display: grid; grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.2fr) 46px; gap: clamp(16px, 3vw, 44px); align-items: start; padding: 32px 18px 32px 0; border-bottom: 1px solid var(--rule); transition: background .3s, padding .3s; }
+    .svc:hover { background: var(--gold); padding-left: 18px; }
+    .svc .n { font-family: var(--mono); font-size: .82rem; padding-top: 10px; }
+    .svc h3 { font-size: clamp(1.7rem, 2.8vw, 2.5rem); font-weight: 800; font-variation-settings: "wdth" 78; letter-spacing: -.02em; line-height: 1; }
+    .svc p { color: var(--ink-soft); font-size: 1rem; margin: 4px 0 12px; }
+    .svc .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .svc .tags span { font-family: var(--mono); font-size: .68rem; text-transform: uppercase; border: 1px solid var(--graphite); border-radius: 99px; padding: 2px 10px; }
+    .svc .go { width: 46px; height: 46px; border-radius: 50%; border: var(--line); display: grid; place-items: center; text-decoration: none; font-size: 1.1rem; transition: background .25s, color .25s, transform .3s; }
+    .svc:hover .go { background: var(--graphite); color: var(--gold); transform: rotate(-45deg); }
 
-    /* ---- resume window (iframe) ---- */
-    .resumew .pane { padding: 0; overflow: hidden; }
-    .frame { width: 100%; height: 440px; border: 0; display: block; background: #07080a; }
-    .frame-foot { display: flex; justify-content: flex-end; padding: 6px 8px; border-top: 1px solid var(--sh); background: var(--face); }
-    .frame-foot a { font-size: 11px; color: var(--link); }
+    /* problems */
+    .tint { background: var(--paper-2); background-image: var(--grain), var(--fibre); background-size: 240px 240px, 400px 400px; border-top: var(--line); border-bottom: var(--line); }
+    .fix-list { display: grid; grid-template-columns: repeat(2, 1fr); border: var(--line); border-radius: 22px; overflow: hidden; background: var(--graphite); gap: 1.5px; }
+    .fix { background: var(--paper); background-image: var(--grain); padding: 36px 36px 34px; display: grid; grid-template-columns: 70px 1fr; gap: 18px; }
+    .fix .sym { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; font-weight: 900; font-size: 1.4rem; border: var(--line); }
+    .fix:nth-child(1) .sym { background: var(--scarlet); color: var(--paper); }
+    .fix:nth-child(2) .sym { background: var(--gold); }
+    .fix:nth-child(3) .sym { background: var(--teal); color: var(--paper); }
+    .fix:nth-child(4) .sym { background: var(--graphite); color: var(--gold); }
+    .fix h3 { font-size: 1.4rem; font-weight: 800; font-variation-settings: "wdth" 85; letter-spacing: -.015em; margin-bottom: 10px; line-height: 1.1; }
+    .fix p { color: var(--ink-soft); font-size: .98rem; margin: 0; }
 
-    /* blinking caret */
-    .cursor { display: inline-block; width: 7px; height: 1em; background: var(--red); vertical-align: text-bottom; margin-left: 3px; animation: blink 1s step-end infinite; }
-    @keyframes blink { 50% { opacity: 0; } }
+    /* industries */
+    .industries { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .industry { border: var(--line); border-radius: 18px; overflow: hidden; background: var(--paper); transition: transform .3s, box-shadow .3s; }
+    .industry:hover { transform: translate(-3px, -3px); box-shadow: 6px 6px 0 var(--graphite); }
+    .industry .top { height: 64px; border-bottom: var(--line); position: relative; }
+    .industry:nth-child(1) .top { background: var(--scarlet); }
+    .industry:nth-child(2) .top { background: var(--gold); }
+    .industry:nth-child(3) .top { background: var(--teal); }
+    .industry:nth-child(4) .top { background: var(--checker) 0 0 / 16px 16px; }
+    .industry:nth-child(5) .top { background: var(--dteal); }
+    .industry .top span { position: absolute; left: 14px; bottom: 10px; background: var(--paper); border: 1px solid var(--graphite); border-radius: 99px; padding: 1px 9px; }
+    .industry .body { padding: 20px 20px 22px; }
+    .industry h3 { font-size: 1.2rem; font-weight: 800; font-variation-settings: "wdth" 85; margin-bottom: 8px; line-height: 1.1; }
+    .industry p { font-size: .9rem; color: var(--ink-soft); margin: 0; }
 
+    /* care plans */
+    .care { background: var(--dteal); background-image: var(--grain-lt); color: var(--paper); border-top: var(--line); border-bottom: var(--line); }
+    .care .section-head p { color: rgba(246,240,228,.8); }
+    .care .label .n { background: var(--gold); color: var(--graphite); }
+    .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .plan { border: 1.5px solid rgba(246,240,228,.4); border-radius: 22px; padding: 34px 30px 32px; position: relative; }
+    .plan.pick { background: var(--gold); color: var(--graphite); border-color: var(--graphite); box-shadow: 10px 10px 0 var(--graphite); }
+    .plan .tag { position: absolute; top: -14px; left: 28px; background: var(--scarlet); color: var(--paper); border: var(--line); border-radius: 99px; padding: 4px 12px; }
+    .plan h3 { font-size: 2.2rem; font-weight: 900; font-variation-settings: "wdth" 72; text-transform: uppercase; letter-spacing: -.02em; margin-bottom: 8px; }
+    .plan .for { opacity: .85; margin-bottom: 22px; font-size: .98rem; }
+    .plan ul { list-style: none; padding: 0; margin: 0; }
+    .plan li { padding: 11px 0 11px 28px; border-top: 1px solid rgba(246,240,228,.2); font-size: .96rem; position: relative; }
+    .plan.pick li { border-color: rgba(50,48,49,.25); }
+    .plan li::before { content: ""; position: absolute; left: 0; top: 1.05em; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); }
+    .plan.pick li::before { background: var(--scarlet); }
+    .care-note { margin: 48px 0 0; text-align: center; color: rgba(246,240,228,.8); }
+    .care-note a { color: var(--gold); text-underline-offset: 4px; }
+
+    /* process */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); border: var(--line); border-radius: 22px; overflow: hidden; background: var(--graphite); gap: 1.5px; }
+    .step { background: var(--paper); background-image: var(--grain); padding: 30px 26px 32px; }
+    .step .n { font-size: 5rem; font-weight: 900; font-variation-settings: "wdth" 62; line-height: .8; display: block; margin-bottom: 22px; -webkit-text-stroke: 1.5px var(--graphite); color: transparent; }
+    .step:nth-child(1) .n { color: var(--scarlet); -webkit-text-stroke: 0; }
+    .step h3 { font-size: 1.3rem; font-weight: 800; font-variation-settings: "wdth" 85; margin-bottom: 8px; }
+    .step p { font-size: .96rem; color: var(--ink-soft); margin: 0; }
+
+    /* case showcase */
+    .case-frame { position: relative; background: var(--teal); background-image: var(--grain-lt); padding: clamp(20px, 5vw, 72px); border: var(--line); border-radius: 26px; overflow: hidden; isolation: isolate; }
+    .case-frame .blob { position: absolute; z-index: -1; pointer-events: none; }
+    .case-frame .b1 { width: 44%; right: -8%; top: -18%; }
+    .case-frame .b2 { width: 34%; left: -12%; bottom: -30%; }
+    .case-frame .b3 { width: 22%; right: 16%; bottom: -12%; }
+    .case { background: var(--paper); background-image: var(--grain), var(--fibre); display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(24px, 4vw, 56px); padding: clamp(24px, 4vw, 52px); align-items: center; border: var(--line); border-radius: 18px; box-shadow: 12px 12px 0 var(--graphite); }
+    .js .case:not(.on) { display: none; }
+    .case h3 { font-size: clamp(2.8rem, 5.8vw, 5rem); font-weight: 900; font-variation-settings: "wdth" 68; letter-spacing: -.03em; line-height: .9; margin: 16px 0; }
+    .case .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .case .meta span { border: 1px solid var(--graphite); border-radius: 99px; padding: 3px 11px; }
+    .case .meta span:first-child { background: var(--gold); }
+    .case p { color: var(--ink-soft); font-size: 1rem; }
+    .case .actions { margin-top: 22px; }
+    .case .shot { aspect-ratio: 16 / 11; overflow: hidden; background: #fff; border: var(--line); border-radius: 12px; display: block; }
+    .case .shot img { width: 100%; height: 100%; object-fit: cover; object-position: left top; }
+    .case-nav { display: none; }
+    .js .case-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 26px; }
+    .case-nav .dots { display: flex; gap: 8px; }
+    .case-nav .dots button { width: 36px; height: 12px; border-radius: 99px; border: 1.5px solid var(--graphite); padding: 0; background: var(--paper); cursor: pointer; }
+    .case-nav .dots button.on { background: var(--gold); }
+    .case-nav .arrows { display: flex; gap: 10px; }
+    .case-nav .arrows button { width: 50px; height: 50px; border-radius: 50%; border: var(--line); background: var(--paper); color: var(--graphite); font-size: 1.1rem; cursor: pointer; transition: background .25s, color .25s; }
+    .case-nav .arrows button:hover { background: var(--graphite); color: var(--gold); }
+
+    /* about */
+    .about .wrap { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(40px, 7vw, 110px); align-items: center; }
+    .collage { position: relative; padding: 18% 0 0 18%; }
+    .collage .duo { position: absolute; left: 0; top: 0; width: 64%; aspect-ratio: 4 / 5; border: var(--line); border-radius: 999px 999px 18px 18px; overflow: hidden; }
+    .collage .portrait { position: relative; z-index: 1; margin: 0; border: 2px solid var(--graphite); border-radius: 18px; overflow: hidden; box-shadow: 12px 12px 0 var(--scarlet); background: var(--paper); }
+    .collage .portrait img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; }
+    .collage .portrait figcaption { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-top: var(--line); }
+    .collage .portrait figcaption b { font-weight: 800; font-variation-settings: "wdth" 85; }
+    .about h2 { margin: 20px 0 28px; }
+    .about .big { font-size: 1.24rem; line-height: 1.5; color: var(--graphite); }
+    .about p { color: var(--ink-soft); }
+    .creds { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5px; margin: 32px 0 36px; border: var(--line); border-radius: 18px; overflow: hidden; background: var(--graphite); }
+    .creds div { padding: 14px 18px; background: var(--paper); font-size: .96rem; }
+    .creds b { display: block; font-family: var(--mono); font-weight: 500; font-size: .68rem; text-transform: uppercase; letter-spacing: .04em; color: var(--scarlet); margin-bottom: 2px; }
+    .about-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    /* contact */
+    .contact { padding-top: 0; }
+    .contact-card { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(28px, 5vw, 70px); align-items: center; background: var(--scarlet); background-image: var(--grain-lt); color: var(--paper); padding: clamp(36px, 6vw, 80px); border: var(--line); border-radius: 26px; box-shadow: 14px 14px 0 var(--graphite); }
+    .contact .label .n { background: var(--gold); color: var(--graphite); }
+    .contact h2 { margin: 20px 0 18px; }
+    .contact p { color: rgba(246,240,228,.92); font-size: 1.08rem; margin: 0; max-width: 28em; }
+    .contact-side { border-left: 1.5px solid rgba(246,240,228,.45); padding-left: clamp(24px, 4vw, 56px); }
+    .contact .mail { display: inline-block; font-size: clamp(1.5rem, 2.8vw, 2.4rem); font-weight: 800; font-variation-settings: "wdth" 80; letter-spacing: -.02em; text-decoration: none; border-bottom: 3px solid var(--gold); margin: 8px 0 30px; word-break: break-word; }
+    .contact .mail:hover { color: var(--gold); }
+
+    /* footer */
+    .checker-strip { height: 26px; background: var(--checker) 0 0 / 26px 26px; border-top: var(--line); border-bottom: var(--line); }
+    footer { background: var(--graphite); color: var(--paper); padding: 30px 0 36px; font-size: .9rem; }
+    footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+    footer nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    footer nav a.pill { font-size: .7rem; padding: .5em 1em; color: var(--paper); border-color: rgba(246,240,228,.35); }
+    footer nav a.pill:hover { background: var(--gold); color: var(--graphite); border-color: var(--gold); transform: none; }
+
+    /* ============ MOTION ============ */
+    @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+    @keyframes place-card { from { opacity: 0; transform: translateY(60px) rotateX(20deg) rotateZ(-10deg); } to { opacity: 1; transform: rotateX(5deg) rotateY(-7deg) rotateZ(-3deg); } }
+    @keyframes pop { from { opacity: 0; transform: scale(.8); } to { opacity: 1; transform: none; } }
+    .hero-copy > * { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
+    .hero-copy > :nth-child(2) { animation-delay: .12s; }
+    .hero-photo { animation: pop 1s .15s cubic-bezier(.2,.75,.2,1) both; }
+    .badge { animation: pop .8s .5s cubic-bezier(.2,.75,.2,1) both; }
+    .bcard { animation: place-card 1.2s .35s cubic-bezier(.2,.75,.2,1) both; }
+    .bcard.live { animation: none; }
+    .js .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+    .js .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
-      .window { animation: none; }
-      .cursor { animation: none; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1080px) {
+      .industries { grid-template-columns: repeat(3, 1fr); }
+      .nav a:not(.pill-gold):nth-child(-n+2) { display: none; }
+    }
+    @media (max-width: 960px) {
+      .hero { grid-template-columns: 1fr; min-height: 0; }
+      .hero-copy { border-right: 0; border-bottom: var(--line); padding-left: var(--gutter); }
+      .hero-art { min-height: 0; aspect-ratio: 1 / 0.95; }
+      .section-head, .about .wrap, .contact-card { grid-template-columns: 1fr; }
+      .mosaic { grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 220px 220px 220px; }
+      .m-a { grid-row: span 1; grid-column: span 2; }
+      .plans { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .case { grid-template-columns: 1fr; }
+      .case .shot { order: -1; }
+      .collage { max-width: 460px; }
+      .contact-side { border-left: 0; padding-left: 0; border-top: 1.5px solid rgba(246,240,228,.45); padding-top: 28px; }
+    }
+    @media (max-width: 760px) {
+      body { font-size: 17px; }
+      .nav a:not(.pill-gold) { display: none; }
+      .svc { grid-template-columns: 40px minmax(0, 1fr); padding: 26px 0; }
+      .svc:hover { padding-left: 0; background: none; }
+      .svc > div { grid-column: 2; }
+      .svc .go { display: none; }
+      .fix-list, .creds { grid-template-columns: 1fr; }
+      .fix { padding: 26px 22px; grid-template-columns: 1fr; }
+      .industries { grid-template-columns: 1fr 1fr; }
+      .mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4, 180px); }
+      .m-a { grid-column: span 2; }
+      .tile { padding: 18px; }
+      .hero-meta { grid-template-columns: 1fr 1fr; border-radius: 18px; width: 100%; }
+      .hero-meta div:nth-child(3) { grid-column: span 2; border-left: 0; border-top: var(--line); }
+      .badge { width: 96px; height: 96px; }
+      .desk { width: 86%; left: 4%; }
+      .hero-art { aspect-ratio: 1 / 1.22; }
+      .hero-photo { width: 64%; top: 6%; }
+      .desk { bottom: 7%; }
+    }
+    @media (max-width: 480px) {
+      .steps, .industries { grid-template-columns: 1fr; }
     }
   </style>
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-  <div id="desktop">
+  <!-- ============ TOP BAR ============ -->
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="Brian Sullivan, home">
+        <span class="brand-name">Brian Sullivan</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a class="pill" href="#services">Services</a>
+        <a class="pill" href="#care">Care plans</a>
+        <a class="pill" href="#work">Work</a>
+        <a class="pill" href="/resume/">Résumé</a>
+        <a class="pill pill-gold" href="#contact">Get in touch</a>
+      </nav>
+    </div>
+  </header>
 
-    {% assign featured = "Make a Mile,newsquick.app,deadreader.com" | split: "," %}
-
-    <!-- ================= MAIN WINDOW ================= -->
-    <main class="window main" id="win-main" aria-label="Brian Sullivan">
-      <div class="titlebar">
-        <button type="button" class="ctl close" aria-label="Close (disabled)" disabled></button>
-        <span class="tb-fill"></span>
-        <span class="title">bsullivan.io</span>
-        <span class="tb-fill"></span>
-        <button type="button" class="ctl collapse" aria-label="Collapse"></button>
-        <button type="button" class="ctl zoom" aria-label="Zoom"></button>
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <div>
+        <span class="label"><span class="n">Web development</span> Search · Email · IT</span>
+        <h1 id="hero-title">Websites, search and IT <span class="hl">for small businesses.</span></h1>
+        <p class="lede">I'm a full-stack web engineer with more than 15 years of experience. I build websites and web apps for small businesses, set up email and search listings, and provide updates and support after a site goes live.</p>
+        <div class="hero-actions">
+          <a class="pill pill-dark" href="#contact">Start a conversation <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="pill pill-ghost" href="#services">View services</a>
+        </div>
       </div>
-      <div class="window-body">
-        <div class="pane">
-          <div class="promptline">
-            <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cmd">whoami</span>
-          </div>
-          <div class="block">
-            <span class="name-out">Brian Sullivan</span>
-            full-stack web engineer
-          </div>
+      <div class="hero-meta">
+        <div><b>15+</b>years in web dev</div>
+        <div><b>Full stack</b>design to servers</div>
+        <div><b>Ongoing</b>support &amp; care</div>
+      </div>
+    </div>
 
-          <div class="promptline">
-            <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cmd">open resume</span>
-          </div>
-          <div class="block">
-            <a class="btn default" href="/resume" data-target="win-resume">▤ open full résumé →</a>
-          </div>
-
-          <div class="promptline">
-            <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cmd">ls -l projects/</span>
-          </div>
-          {% for fname in featured %}
-            {% assign p = site.data.projects | where: "project", fname | first %}
-            {% if p %}
-              {% assign slug = p.project | downcase | replace: " ", "-" | split: "." | first %}
-              <a class="entry" href="{{ p.url }}" data-target="win-{{ slug }}">
-                <span class="entry-head">
-                  <span class="perm">drwxr-xr-x</span>
-                  <span class="name">{{ slug }}/</span>
-                  <span class="meta">{{ p.duration }} · {{ p.role }}</span>
-                </span>
-              </a>
-            {% endif %}
-          {% endfor %}
-
-          <div class="promptline" style="margin-top:10px">
-            <span class="user">brian@bsullivan</span><span class="at">:</span><span class="path">~</span> <span class="sym">$</span> <span class="cursor" aria-hidden="true"></span>
+    <div class="hero-art">
+      <svg class="rings" viewBox="0 0 100 100" aria-hidden="true">
+        <g fill="none" stroke="#084c61" stroke-width="1.6">
+          <circle cx="50" cy="50" r="4"/><circle cx="50" cy="50" r="8"/><circle cx="50" cy="50" r="12"/><circle cx="50" cy="50" r="16"/><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="24"/><circle cx="50" cy="50" r="28"/><circle cx="50" cy="50" r="32"/><circle cx="50" cy="50" r="36"/><circle cx="50" cy="50" r="40"/><circle cx="50" cy="50" r="44"/><circle cx="50" cy="50" r="48"/>
+        </g>
+      </svg>
+      <div class="hero-photo"><img src="/images/stock/laptop-code-yellow-mug.jpg" alt="Laptop on a desk showing code in an editor" width="1100" height="733"></div>
+      <div class="badge" aria-hidden="true">
+        <svg viewBox="0 0 100 100">
+          <defs><path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+          <circle cx="50" cy="50" r="49" fill="#f6f0e4" stroke="#323031" stroke-width="2"/>
+          <text font-family="IBM Plex Mono, monospace" font-size="9.2" letter-spacing="1.6" fill="#323031"><textPath href="#circ">WEBSITES · SEARCH · EMAIL · APPS · IT · </textPath></text>
+        </svg>
+        <span class="core">BS</span>
+      </div>
+      <div class="desk">
+        <div class="bcard" id="bcard" role="img" aria-label="Business card for Brian Sullivan, full-stack web engineer, with photo">
+          <div class="bcard-photo"><img src="/images/avatar.jpg" alt="" width="1280" height="1280"></div>
+          <div class="bcard-body">
+            <div class="bcard-kicker"><span>Web</span><span>Search</span><span>IT</span></div>
+            <div class="bcard-name">Brian Sullivan</div>
+            <div class="bcard-title">Full-stack web engineer</div>
+            <div class="bcard-rule"></div>
+            <div class="bcard-contact">
+              <span>{{ site.resume_contact_email }}</span>
+              <span>bsullivan.io</span>
+            </div>
           </div>
         </div>
       </div>
-    </main>
+      <div class="checker" aria-hidden="true"></div>
+    </div>
+  </section>
 
-    <!-- ================= PROJECT WINDOWS ================= -->
-    {% for fname in featured %}
-      {% assign p = site.data.projects | where: "project", fname | first %}
-      {% if p %}
-        {% assign slug = p.project | downcase | replace: " ", "-" | split: "." | first %}
-        {% assign domain = p.url | remove: "https://" | remove: "http://" | remove: "www." | replace: "/", "" %}
-        <section class="window proj" id="win-{{ slug }}" aria-label="{{ p.project }}">
-          <div class="titlebar">
-            <button type="button" class="ctl close" aria-label="Close"></button>
-            <span class="tb-fill"></span>
-            <span class="title">{{ p.project }}</span>
-            <span class="tb-fill"></span>
-            <button type="button" class="ctl collapse" aria-label="Collapse"></button>
-            <button type="button" class="ctl zoom" aria-label="Zoom"></button>
-          </div>
-          <div class="window-body">
-            <div class="pane">
-              {% if p.image %}
-              <span class="thumb"><img src="{{ p.image }}" alt="Screenshot of {{ p.project }}" width="640" height="384"></span>
-              {% endif %}
-              <div class="proj-meta">{{ p.duration }} · {{ p.role }}</div>
-              <p class="desc">{{ p.description }}</p>
-              <a class="btn" href="{{ p.url }}" target="_blank" rel="noopener noreferrer">▤ open {{ domain }} →</a>
-            </div>
-          </div>
-        </section>
-      {% endif %}
-    {% endfor %}
-
-    <!-- ================= RESUME WINDOW ================= -->
-    <section class="window resumew" id="win-resume" aria-label="résumé">
-      <div class="titlebar">
-        <button type="button" class="ctl close" aria-label="Close"></button>
-        <span class="tb-fill"></span>
-        <span class="title">résumé</span>
-        <span class="tb-fill"></span>
-        <button type="button" class="ctl collapse" aria-label="Collapse"></button>
-        <button type="button" class="ctl zoom" aria-label="Zoom"></button>
+  <main>
+    <!-- ============ MARQUEE BANDS ============ -->
+    <div class="band band-red" aria-hidden="true">
+      <div class="band-track">
+        <span>Websites</span><span>Search</span><span>Analytics</span><span>Email</span><span>Web apps</span><span>IT support</span>
+        <span>Websites</span><span>Search</span><span>Analytics</span><span>Email</span><span>Web apps</span><span>IT support</span>
       </div>
-      <div class="window-body">
-        <div class="pane">
-          <iframe class="frame" src="/resume" title="Brian Sullivan résumé" loading="lazy"></iframe>
-          <div class="frame-foot"><a href="/resume">open full page →</a></div>
+    </div>
+    <div class="band band-dark rev" aria-hidden="true">
+      <div class="band-track">
+        <span>Design</span><span>Build</span><span>Launch</span><span>Support</span><span>Design</span><span>Build</span><span>Launch</span><span>Support</span>
+        <span>Design</span><span>Build</span><span>Launch</span><span>Support</span><span>Design</span><span>Build</span><span>Launch</span><span>Support</span>
+      </div>
+    </div>
+
+    <!-- ============ MOSAIC ============ -->
+    <div class="mosaic">
+      <div class="m-a duo duo-teal"><img src="/images/stock/wireframe-sketches.jpg" alt="Hand-drawn website wireframe sketches" loading="lazy"></div>
+      <div class="tile t-gold"><span class="mono">01 / Design</span><div><div class="w">Design</div><p>Custom sites that work on phones and desktops.</p></div></div>
+      <div class="duo duo-red"><img src="/images/stock/laptop-code-desk.jpg" alt="Laptop on a desk showing code" loading="lazy"></div>
+      <div class="tile t-teal"><span class="mono">02 / Build</span><div><div class="w">Build</div><p>Web apps, integrations and payments.</p></div></div>
+      <div class="duo duo-gray"><img src="/images/stock/laptop-analytics-dashboard.jpg" alt="Laptop showing an analytics dashboard" loading="lazy"></div>
+      <div class="tile t-red"><span class="mono">03 / Support</span><div><div class="w">Support</div><p>Updates, security, email and IT.</p></div></div>
+      <div class="duo"><img src="/images/stock/phone-app.jpg" alt="Phone showing a mobile app" loading="lazy"></div>
+    </div>
+
+    <!-- ============ SERVICES ============ -->
+    <section id="services" aria-labelledby="services-title">
+      <div class="wrap">
+        <div class="banner reveal" aria-hidden="true">
+          <div class="duo duo-teal"><img src="/images/stock/code-closeup.jpg" alt="" loading="lazy"></div>
+          <span class="cap mono">Websites · Search · Email · Apps · IT</span>
+          <span class="big">Services</span>
+        </div>
+        <div class="section-head reveal">
+          <div>
+            <h2 id="services-title">What I can help with.</h2>
+          </div>
+          <p>I can take on a single project, such as a new website or an email migration, or handle your website and technology on an ongoing basis.</p>
+        </div>
+
+        <div class="svc-list">
+          <article class="svc reveal">
+            <span class="n">[01]</span>
+            <h3>Website Design &amp; Development</h3>
+            <div>
+              <p>Custom websites that load quickly and work well on phones. I handle hosting, domain setup and SSL certificates.</p>
+              <div class="tags"><span>Design</span><span>Mobile</span><span>Hosting</span><span>Domains</span></div>
+            </div>
+            <a class="go" href="#contact" aria-label="Ask about website design">→</a>
+          </article>
+          <article class="svc reveal">
+            <span class="n">[02]</span>
+            <h3>Search, Ads &amp; Analytics</h3>
+            <div>
+              <p>Google Business Profile setup, local SEO, Google Ads campaigns, and analytics reporting that shows where your customers are coming from.</p>
+              <div class="tags"><span>SEO</span><span>Google Ads</span><span>Analytics</span><span>Listings</span></div>
+            </div>
+            <a class="go" href="#contact" aria-label="Ask about search and analytics">→</a>
+          </article>
+          <article class="svc reveal">
+            <span class="n">[03]</span>
+            <h3>Social &amp; Dynamic Content</h3>
+            <div>
+              <p>Facebook and Instagram posts, events and specials can appear on your website automatically, so you only need to post once.</p>
+              <div class="tags"><span>Social feeds</span><span>Events</span><span>Menus</span><span>Reviews</span></div>
+            </div>
+            <a class="go" href="#contact" aria-label="Ask about social content">→</a>
+          </article>
+          <article class="svc reveal">
+            <span class="n">[04]</span>
+            <h3>Email &amp; Workspace</h3>
+            <div>
+              <p>Email at your own domain, plus shared calendars and files, set up in Google Workspace or Microsoft 365 with the right security settings.</p>
+              <div class="tags"><span>Google Workspace</span><span>Microsoft 365</span><span>Security</span></div>
+            </div>
+            <a class="go" href="#contact" aria-label="Ask about email and workspace">→</a>
+          </article>
+          <article class="svc reveal">
+            <span class="n">[05]</span>
+            <h3>Custom Web Apps</h3>
+            <div>
+              <p>Online ordering, appointment booking, quote request forms, Stripe payments, AI tools, and integrations between the software you already use.</p>
+              <div class="tags"><span>Ordering</span><span>Booking</span><span>Payments</span><span>APIs</span><span>AI</span></div>
+            </div>
+            <a class="go" href="#contact" aria-label="Ask about custom web apps">→</a>
+          </article>
+          <article class="svc reveal">
+            <span class="n">[06]</span>
+            <h3>IT Services</h3>
+            <div>
+              <p>Backups, software updates, multi-factor sign-in and device setup for small offices, including help with HIPAA and NY DFS requirements.</p>
+              <div class="tags"><span>Backups</span><span>MFA</span><span>Devices</span><span>Compliance</span></div>
+            </div>
+            <a class="go" href="#contact" aria-label="Ask about IT services">→</a>
+          </article>
         </div>
       </div>
     </section>
 
-  </div>
+    <!-- ============ PROBLEMS ============ -->
+    <section class="tint" aria-labelledby="fixes-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="label"><span class="n">01</span> Common issues</span>
+            <h2 id="fixes-title">Problems I can fix.</h2>
+          </div>
+          <p>Websites that have run for years without regular maintenance tend to run into the same few problems. Here are the ones I see most often.</p>
+        </div>
+        <div class="fix-list reveal">
+          <div class="fix">
+            <span class="sym" aria-hidden="true">1</span>
+            <div>
+              <h3>Your site is down or shows a security warning</h3>
+              <p>This is usually an expired SSL certificate, lapsed hosting, or a domain that wasn't renewed. I'll get it working again and set up monitoring so it doesn't happen again.</p>
+            </div>
+          </div>
+          <div class="fix">
+            <span class="sym" aria-hidden="true">2</span>
+            <div>
+              <h3>Facebook is your only website</h3>
+              <p>Facebook pages don't show up well in Google search. I can build a website that displays your Facebook posts, so you can keep posting in one place.</p>
+            </div>
+          </div>
+          <div class="fix">
+            <span class="sym" aria-hidden="true">3</span>
+            <div>
+              <h3>Your site is outdated and hard to update</h3>
+              <p>I rebuild older sites so they work on phones and load quickly. After that, you can email or text me changes and I'll make them.</p>
+            </div>
+          </div>
+          <div class="fix">
+            <span class="sym" aria-hidden="true">4</span>
+            <div>
+              <h3>Your Google listing is wrong or missing</h3>
+              <p>Old hours, a disconnected phone number, or no listing at all. I claim and update your Google Business Profile and other directory listings.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INDUSTRIES ============ -->
+    <section aria-labelledby="ind-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="label"><span class="n">02</span> Industries</span>
+            <h2 id="ind-title">Types of businesses I work with.</h2>
+          </div>
+          <p>I have starting templates for each of these, which shortens the build and keeps the cost down.</p>
+        </div>
+        <div class="industries">
+          <div class="industry reveal"><div class="top"><span class="mono">i</span></div><div class="body"><h3>Restaurants &amp; Bars</h3><p>Menus, weekly specials, live music calendars and online ordering.</p></div></div>
+          <div class="industry reveal"><div class="top"><span class="mono">ii</span></div><div class="body"><h3>Trades &amp; Services</h3><p>Service areas, click to call, quote requests with photos, and reviews.</p></div></div>
+          <div class="industry reveal"><div class="top"><span class="mono">iii</span></div><div class="body"><h3>Seasonal &amp; Events</h3><p>Rentals, programs, inquiry forms, galleries and seasonal hours.</p></div></div>
+          <div class="industry reveal"><div class="top"><span class="mono">iv</span></div><div class="body"><h3>Studios &amp; Classes</h3><p>Schedules, trial signups, class packs and memberships.</p></div></div>
+          <div class="industry reveal"><div class="top"><span class="mono">v</span></div><div class="body"><h3>Professional Offices</h3><p>A professional website plus secure email, backups and IT.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CARE PLANS ============ -->
+    <section id="care" class="care" aria-labelledby="care-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="label"><span class="n">03</span> Ongoing support</span>
+            <h2 id="care-title">Monthly care plans.</h2>
+          </div>
+          <p>After your site is live, a care plan covers hosting, security, renewals and content updates. Your domain and accounts stay registered in your name.</p>
+        </div>
+        <div class="plans">
+          <div class="plan reveal">
+            <h3>Essentials</h3>
+            <p class="for">Hosting, security and occasional updates.</p>
+            <ul>
+              <li>Hosting &amp; SSL certificate</li>
+              <li>Domain renewal monitoring</li>
+              <li>Uptime &amp; security monitoring</li>
+              <li>A couple of content updates each month</li>
+            </ul>
+          </div>
+          <div class="plan pick reveal">
+            <span class="tag mono">Recommended</span>
+            <h3>Standard</h3>
+            <p class="for">For businesses that update their site often.</p>
+            <ul>
+              <li>Everything in Essentials</li>
+              <li>Unlimited small updates by text or email</li>
+              <li>Hours, menus, specials &amp; events</li>
+              <li>Monthly traffic &amp; search report</li>
+            </ul>
+          </div>
+          <div class="plan reveal">
+            <h3>Growth</h3>
+            <p class="for">Adds an integration and search work.</p>
+            <ul>
+              <li>Everything in Standard</li>
+              <li>An integration: ordering, booking, or payments</li>
+              <li>Search &amp; ads tuning</li>
+              <li>Quarterly strategy review</li>
+            </ul>
+          </div>
+        </div>
+        <p class="care-note reveal">Pricing is quoted up front. I also take on one-time fixes such as SSL certificates, domain transfers and listing cleanup. <a href="#contact">Get in touch.</a></p>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section aria-labelledby="process-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="label"><span class="n">04</span> Process</span>
+            <h2 id="process-title">How it works.</h2>
+          </div>
+          <p>Most projects follow these four steps.</p>
+        </div>
+        <div class="steps reveal">
+          <div class="step"><span class="n">01</span><h3>Initial review</h3><p>We talk by phone, video call or in person. I look over your website, listings and email and make recommendations.</p></div>
+          <div class="step"><span class="n">02</span><h3>Proposal</h3><p>You get a short written proposal with a fixed price.</p></div>
+          <div class="step"><span class="n">03</span><h3>Build &amp; launch</h3><p>I build the site and you review it before it goes live. Domains and accounts are set up in your name.</p></div>
+          <div class="step"><span class="n">04</span><h3>Ongoing support</h3><p>I handle updates, security and renewals. When something changes, send me an email or text.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    {% assign showcase = "Make a Mile,newsquick.app" | split: "," %}
+    <section id="work" class="tint" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="label"><span class="n">05</span> Portfolio</span>
+            <h2 id="work-title">My own projects.</h2>
+          </div>
+          <p>I also build and run my own products. Here are two of them.</p>
+        </div>
+        <div class="case-frame reveal">
+          <svg class="blob b1" viewBox="0 0 400 300" aria-hidden="true"><path fill="#ffc857" stroke="#323031" stroke-width="2" d="M400,0 L400,220 C360,236 330,196 296,206 C258,218 268,262 222,266 C178,270 186,220 148,204 C112,190 92,218 66,192 C40,166 76,132 56,102 C36,72 -4,80 6,42 C14,12 56,0 88,0 Z"/></svg>
+          <svg class="blob b2" viewBox="0 0 400 320" aria-hidden="true"><path fill="#db3a34" stroke="#323031" stroke-width="2" d="M0,40 C40,20 70,70 110,64 C150,58 150,10 196,12 C244,14 236,70 272,92 C306,114 350,96 370,132 C392,172 350,200 356,240 C362,280 400,300 400,320 L0,320 Z"/><path fill="#084c61" stroke="#323031" stroke-width="2" d="M0,150 C34,136 58,170 92,166 C130,162 136,126 172,132 C210,138 206,184 240,200 C270,214 306,206 318,236 C330,268 300,296 306,320 L0,320 Z"/></svg>
+          <svg class="blob b3" viewBox="0 0 200 160" aria-hidden="true"><path fill="#323031" d="M20,160 C6,120 30,96 58,90 C90,82 96,46 128,40 C162,34 196,62 196,100 C196,130 186,146 200,160 Z"/></svg>
+          {% assign n = 0 %}{% for p in site.data.projects %}{% if showcase contains p.project %}{% assign n = n | plus: 1 %}
+          <article class="case{% if n == 1 %} on{% endif %}" aria-roledescription="slide" aria-label="Project {{ n }} of {{ showcase.size }}">
+            <div>
+              <span class="label"><span class="n">Case {{ n | prepend: "0" }}</span> of {{ showcase.size | prepend: "0" }}</span>
+              <h3>{{ p.project }}</h3>
+              <div class="meta mono"><span>{{ p.role }}</span><span>{{ p.url | remove: "https://" | remove: "www." }}</span></div>
+              <p>{{ p.description }}</p>
+              <div class="actions"><a class="pill pill-dark" href="{{ p.url }}" target="_blank" rel="noopener">Visit site <span class="arrow" aria-hidden="true">→</span></a></div>
+            </div>
+            <a class="shot" href="{{ p.url }}" target="_blank" rel="noopener" tabindex="-1"><img src="{{ p.image }}" alt="Screenshot of {{ p.project }}" loading="lazy"></a>
+          </article>
+          {% endif %}{% endfor %}
+          <div class="case-nav">
+            <div class="dots" role="tablist" aria-label="Choose project"></div>
+            <div class="arrows">
+              <button type="button" class="prev" aria-label="Previous project">←</button>
+              <button type="button" class="next" aria-label="Next project">→</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="collage reveal">
+          <div class="duo duo-teal" aria-hidden="true"><img src="/images/stock/laptop-code-plant.jpg" alt="" loading="lazy"></div>
+          <figure class="portrait">
+            <img src="/images/avatar.jpg" alt="Brian Sullivan" loading="lazy">
+            <figcaption><b>Brian Sullivan</b><span class="mono">bsullivan.io</span></figcaption>
+          </figure>
+        </div>
+        <div class="reveal">
+          <span class="label"><span class="n">06</span> About</span>
+          <h2 id="about-title">Fifteen years of full-stack engineering.</h2>
+          <p class="big">I've worked as a full-stack web engineer for more than 15 years, building web platforms, APIs and data systems for SaaS, ad tech and e-commerce companies.</p>
+          <p>That work has included high-traffic websites, marketing and paid search tools, analytics pipelines, and more recently LLM-based products. I now offer these services directly to small businesses.</p>
+          <div class="creds">
+            <div><b>Experience</b>15+ years, full stack</div>
+            <div><b>Recent roles</b>Marketfuel, Mediaocean</div>
+            <div><b>Specialties</b>Web, APIs, search &amp; analytics</div>
+            <div><b>Projects</b>Make a Mile, NewsQuick</div>
+          </div>
+          <div class="about-actions">
+            <a class="pill pill-dark" href="/resume/">View my résumé <span class="arrow" aria-hidden="true">→</span></a>
+            {% if site.resume_social_links.resume_linkedin_url %}<a class="pill pill-ghost" href="{{ site.resume_social_links.resume_linkedin_url }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}
+            {% if site.resume_social_links.resume_github_url %}<a class="pill pill-ghost" href="{{ site.resume_social_links.resume_github_url }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <div class="contact-card reveal">
+          <div>
+            <span class="label"><span class="n">07</span> Contact</span>
+            <h2 id="contact-title">Tell me about your project.</h2>
+            <p>Send me a short description of your business and what you need help with. I usually reply within a day.</p>
+          </div>
+          <div class="contact-side">
+            <span class="mono">Email</span><br>
+            <a class="mail" href="mailto:{{ site.resume_contact_email }}?subject=Website%20inquiry">{{ site.resume_contact_email }}</a>
+            <div><a class="pill pill-gold" href="mailto:{{ site.resume_contact_email }}?subject=Website%20inquiry">Send an email <span class="arrow" aria-hidden="true">→</span></a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="checker-strip" aria-hidden="true"></div>
+  <footer>
+    <div class="wrap">
+      <span>© {{ site.time | date: "%Y" }} Brian Sullivan</span>
+      <nav aria-label="Footer">
+        <a class="pill" href="#services">Services</a>
+        <a class="pill" href="#work">Work</a>
+        <a class="pill" href="/resume/">Résumé</a>
+        <a class="pill" href="mailto:{{ site.resume_contact_email }}">Email</a>
+      </nav>
+    </div>
+  </footer>
 
   <script>
-  (function () {
-    var body = document.body;
-    var desktop = document.getElementById('desktop');
-    var wins = [].slice.call(document.querySelectorAll('.window'));
-    var z = 10;
+    (function () {
+      // scroll reveal
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); }
+      else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (!en.isIntersecting) return;
+            var i = Array.prototype.indexOf.call(en.target.parentNode.children, en.target);
+            en.target.style.transitionDelay = Math.min(i, 5) * 70 + 'ms';
+            en.target.classList.add('in');
+            io.unobserve(en.target);
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        els.forEach(function (e) { io.observe(e); });
+      }
 
-    function front(w) {
-      z += 1; w.style.zIndex = z;
-      wins.forEach(function (o) { o.classList.toggle('is-active', o === w); });
-    }
-
-    // focus on interaction
-    wins.forEach(function (w) {
-      w.addEventListener('pointerdown', function () { front(w); }, true);
-
-      var bar = w.querySelector('.titlebar');
-      var closeB = w.querySelector('.ctl.close');
-      var collB = w.querySelector('.ctl.collapse');
-      var zoomB = w.querySelector('.ctl.zoom');
-
-      if (closeB) closeB.addEventListener('click', function (e) { e.stopPropagation(); w.style.display = 'none'; });
-      if (collB) collB.addEventListener('click', function (e) { e.stopPropagation(); w.classList.toggle('collapsed'); });
-      if (zoomB) zoomB.addEventListener('click', function (e) { e.stopPropagation(); toggleZoom(w); });
-
-      if (bar) {
-        bar.addEventListener('dblclick', function (e) {
-          if (e.target.closest('.ctl')) return;
-          w.classList.toggle('collapsed');
+      // project showcase
+      var frame = document.querySelector('.case-frame');
+      if (frame) {
+        var cases = frame.querySelectorAll('.case'), dots = frame.querySelector('.dots'), cur = 0;
+        if (cases.length < 2) { frame.querySelector('.case-nav').style.display = 'none'; }
+        cases.forEach(function (c, i) {
+          var d = document.createElement('button');
+          d.type = 'button'; d.setAttribute('role', 'tab'); d.setAttribute('aria-label', 'Project ' + (i + 1));
+          d.addEventListener('click', function () { show(i); });
+          dots.appendChild(d);
         });
-        bar.addEventListener('pointerdown', function (e) { startDrag(e, w, bar); });
-      }
-    });
-
-    function toggleZoom(w) {
-      if (!body.classList.contains('floating')) return;
-      if (w.classList.contains('zoomed')) {
-        w.classList.remove('zoomed');
-        w.style.width = w.dataset.ow || '';
-        w.style.left = w.dataset.ol || '';
-        w.style.top = w.dataset.ot || '';
-      } else {
-        w.dataset.ow = w.style.width; w.dataset.ol = w.style.left; w.dataset.ot = w.style.top;
-        w.classList.add('zoomed');
-        var dw = Math.min(900, desktop.clientWidth - 24);
-        w.style.width = dw + 'px';
-        w.style.left = Math.max(12, (desktop.clientWidth - dw) / 2) + 'px';
-        w.style.top = '24px';
-      }
-      front(w);
-    }
-
-    function startDrag(e, w, bar) {
-      if (e.target.closest('.ctl')) return;
-      if (!body.classList.contains('floating')) return;
-      front(w);
-      var rect = w.getBoundingClientRect();
-      var drect = desktop.getBoundingClientRect();
-      var ox = e.clientX - rect.left;
-      var oy = e.clientY - rect.top;
-      w.classList.add('dragging');
-      try { bar.setPointerCapture(e.pointerId); } catch (err) {}
-
-      function move(ev) {
-        var x = ev.clientX - drect.left - ox;
-        var y = ev.clientY - drect.top - oy;
-        x = Math.max(0, Math.min(x, desktop.clientWidth - 60));
-        y = Math.max(0, Math.min(y, desktop.clientHeight - 24));
-        w.style.left = x + 'px';
-        w.style.top = y + 'px';
-      }
-      function up() {
-        w.classList.remove('dragging');
-        bar.removeEventListener('pointermove', move);
-        bar.removeEventListener('pointerup', up);
-        bar.removeEventListener('pointercancel', up);
-      }
-      bar.addEventListener('pointermove', move);
-      bar.addEventListener('pointerup', up);
-      bar.addEventListener('pointercancel', up);
-    }
-
-    // launchers (project entries + résumé button)
-    [].slice.call(document.querySelectorAll('[data-target]')).forEach(function (a) {
-      a.addEventListener('click', function (e) {
-        var t = document.getElementById(a.getAttribute('data-target'));
-        if (!t) return; // no window -> let the link navigate
-        e.preventDefault();
-        t.style.display = '';
-        t.classList.remove('collapsed');
-        if (body.classList.contains('floating') && !t.style.left) {
-          t.style.left = Math.max(12, (desktop.clientWidth - t.offsetWidth) / 2) + 'px';
-          t.style.top = '48px';
+        function show(i) {
+          cur = (i + cases.length) % cases.length;
+          cases.forEach(function (c, j) { c.classList.toggle('on', j === cur); });
+          dots.querySelectorAll('button').forEach(function (d, j) { d.classList.toggle('on', j === cur); d.setAttribute('aria-selected', j === cur); });
         }
-        front(t);
-        t.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-      });
-    });
-
-    // double-click empty desktop -> restore everything
-    desktop.addEventListener('dblclick', function (e) {
-      if (e.target !== desktop) return;
-      wins.forEach(function (w) { w.style.display = ''; });
-    });
-
-    // ---- layout / responsive ----
-    var mq = window.matchMedia('(min-width: 880px)');
-
-    function placeAll() {
-      var main = document.getElementById('win-main');
-      var W = desktop.clientWidth;
-      var mW = main.offsetWidth;
-      var mX = Math.max(20, (W - mW) / 2);
-      var mY = 44;
-      var spots = [
-        [mX - 312, mY + 18],
-        [mX + mW - 70, mY - 8],
-        [mX - 232, mY + 286],
-        [mX + mW - 150, mY + 250]
-      ];
-      var others = wins.filter(function (w) { return w !== main; });
-      others.forEach(function (w, i) {
-        var s = spots[i % spots.length];
-        w.style.left = Math.max(8, Math.min(s[0], W - 90)) + 'px';
-        w.style.top = Math.max(8, s[1]) + 'px';
-        w.style.zIndex = 2 + i;
-      });
-      main.style.left = mX + 'px';
-      main.style.top = mY + 'px';
-      main.style.zIndex = 10;
-      z = 10;
-    }
-
-    function layout() {
-      if (mq.matches) {
-        body.classList.add('floating');
-        body.classList.remove('stacked');
-        placeAll();
-      } else {
-        body.classList.remove('floating');
-        body.classList.add('stacked');
-        wins.forEach(function (w) {
-          w.style.left = ''; w.style.top = ''; w.style.width = '';
-          w.style.zIndex = ''; w.classList.remove('zoomed');
-        });
+        frame.querySelector('.prev').addEventListener('click', function () { show(cur - 1); });
+        frame.querySelector('.next').addEventListener('click', function () { show(cur + 1); });
+        show(0);
       }
-    }
 
-    if (mq.addEventListener) mq.addEventListener('change', layout);
-    else if (mq.addListener) mq.addListener(layout);
-
-    body.classList.add('has-js');
-    layout();
-
-    // main window starts focused (red title bar)
-    var mainWin = document.getElementById('win-main');
-    if (mainWin) mainWin.classList.add('is-active');
-  })();
+      // business card tilts gently toward the pointer
+      var card = document.getElementById('bcard');
+      var art = document.querySelector('.hero-art');
+      if (!card || !art || matchMedia('(prefers-reduced-motion: reduce)').matches || !matchMedia('(hover: hover)').matches) return;
+      card.addEventListener('animationend', function () { card.classList.add('live'); });
+      var base = { rx: 5, ry: -7 };
+      art.addEventListener('pointermove', function (e) {
+        if (!card.classList.contains('live')) return;
+        var r = art.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.setProperty('--rx', (base.rx - y * 6).toFixed(2) + 'deg');
+        card.style.setProperty('--ry', (base.ry + x * 8).toFixed(2) + 'deg');
+      });
+      art.addEventListener('pointerleave', function () {
+        card.style.removeProperty('--rx'); card.style.removeProperty('--ry');
+      });
+    })();
   </script>
 </body>
 </html>
