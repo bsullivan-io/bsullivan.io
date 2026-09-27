@@ -180,6 +180,7 @@
 
     /* ============ SECTIONS ============ */
     section { padding: clamp(80px, 10vw, 136px) 0; }
+    #services + section { padding-top: 0; }
     .section-head { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(24px, 5vw, 80px); align-items: end; margin-bottom: clamp(44px, 6vw, 76px); }
     .section-head .label { margin-bottom: 20px; }
     .section-head p { color: var(--ink-soft); font-size: 1.08rem; margin: 0; max-width: 30em; }
@@ -201,17 +202,8 @@
     .svc .go { width: 46px; height: 46px; border-radius: 50%; border: var(--line); display: grid; place-items: center; text-decoration: none; font-size: 1.1rem; transition: background .25s, color .25s, transform .3s; }
     .svc:hover .go { background: var(--graphite); color: var(--gold); transform: rotate(-45deg); }
 
-    /* problems */
+    /* tinted band */
     .tint { background: var(--paper-2); background-image: var(--grain), var(--fibre); background-size: 240px 240px, 400px 400px; border-top: var(--line); border-bottom: var(--line); }
-    .fix-list { display: grid; grid-template-columns: repeat(2, 1fr); border: var(--line); border-radius: 22px; overflow: hidden; background: var(--graphite); gap: 1.5px; }
-    .fix { background: var(--paper); background-image: var(--grain); padding: 36px 36px 34px; display: grid; grid-template-columns: 70px 1fr; gap: 18px; }
-    .fix .sym { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; font-weight: 900; font-size: 1.4rem; border: var(--line); }
-    .fix:nth-child(1) .sym { background: var(--scarlet); color: var(--paper); }
-    .fix:nth-child(2) .sym { background: var(--gold); }
-    .fix:nth-child(3) .sym { background: var(--teal); color: var(--paper); }
-    .fix:nth-child(4) .sym { background: var(--graphite); color: var(--gold); }
-    .fix h3 { font-size: 1.4rem; font-weight: 800; font-variation-settings: "wdth" 85; letter-spacing: -.015em; margin-bottom: 10px; line-height: 1.1; }
-    .fix p { color: var(--ink-soft); font-size: .98rem; margin: 0; }
 
     /* industries */
     .industries { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
@@ -356,9 +348,7 @@
       .svc:hover { padding-left: 0; background: none; }
       .svc > div { grid-column: 2; }
       .svc .go { display: none; }
-      .fix-list, .creds { grid-template-columns: 1fr; }
-      .fix { padding: 26px 22px; grid-template-columns: 1fr; }
-      .industries { grid-template-columns: 1fr 1fr; }
+          .industries { grid-template-columns: 1fr 1fr; }
       .mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4, 180px); }
       .m-a { grid-column: span 2; }
       .tile { padding: 18px; }
@@ -437,7 +427,6 @@
             <div class="bcard-rule"></div>
             <div class="bcard-contact">
               <span>{{ site.resume_contact_email }}</span>
-              <span>bsullivan.io</span>
             </div>
           </div>
         </div>
@@ -546,55 +535,12 @@
       </div>
     </section>
 
-    <!-- ============ PROBLEMS ============ -->
-    <section class="tint" aria-labelledby="fixes-title">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div>
-            <span class="label"><span class="n">01</span> Common issues</span>
-            <h2 id="fixes-title">Problems I can fix.</h2>
-          </div>
-          <p>Websites that have run for years without regular maintenance tend to run into the same few problems. Here are the ones I see most often.</p>
-        </div>
-        <div class="fix-list reveal">
-          <div class="fix">
-            <span class="sym" aria-hidden="true">1</span>
-            <div>
-              <h3>Your site is down or shows a security warning</h3>
-              <p>This is usually an expired SSL certificate, lapsed hosting, or a domain that wasn't renewed. I'll get it working again and set up monitoring so it doesn't happen again.</p>
-            </div>
-          </div>
-          <div class="fix">
-            <span class="sym" aria-hidden="true">2</span>
-            <div>
-              <h3>Facebook is your only website</h3>
-              <p>Facebook pages don't show up well in Google search. I can build a website that displays your Facebook posts, so you can keep posting in one place.</p>
-            </div>
-          </div>
-          <div class="fix">
-            <span class="sym" aria-hidden="true">3</span>
-            <div>
-              <h3>Your site is outdated and hard to update</h3>
-              <p>I rebuild older sites so they work on phones and load quickly. After that, you can email or text me changes and I'll make them.</p>
-            </div>
-          </div>
-          <div class="fix">
-            <span class="sym" aria-hidden="true">4</span>
-            <div>
-              <h3>Your Google listing is wrong or missing</h3>
-              <p>Old hours, a disconnected phone number, or no listing at all. I claim and update your Google Business Profile and other directory listings.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ INDUSTRIES ============ -->
     <section aria-labelledby="ind-title">
       <div class="wrap">
         <div class="section-head reveal">
           <div>
-            <span class="label"><span class="n">02</span> Industries</span>
+            <span class="label"><span class="n">01</span> Industries</span>
             <h2 id="ind-title">Types of businesses I work with.</h2>
           </div>
         </div>
@@ -613,7 +559,7 @@
       <div class="wrap">
         <div class="section-head reveal">
           <div>
-            <span class="label"><span class="n">03</span> Ongoing support</span>
+            <span class="label"><span class="n">02</span> Ongoing support</span>
             <h2 id="care-title">Monthly care plans.</h2>
           </div>
           <p>After your site is live, a care plan covers hosting, security, renewals and content updates. Your domain and accounts stay registered in your name.</p>
@@ -658,7 +604,7 @@
       <div class="wrap">
         <div class="section-head reveal">
           <div>
-            <span class="label"><span class="n">04</span> Process</span>
+            <span class="label"><span class="n">03</span> Process</span>
             <h2 id="process-title">How it works.</h2>
           </div>
           <p>Most projects follow these four steps.</p>
@@ -678,7 +624,7 @@
       <div class="wrap">
         <div class="section-head reveal">
           <div>
-            <span class="label"><span class="n">05</span> Portfolio</span>
+            <span class="label"><span class="n">04</span> Portfolio</span>
             <h2 id="work-title">My own projects.</h2>
           </div>
           <p>I also build and run my own products. Here are two of them.</p>
@@ -721,7 +667,7 @@
           </figure>
         </div>
         <div class="reveal">
-          <span class="label"><span class="n">06</span> About</span>
+          <span class="label"><span class="n">05</span> About</span>
           <h2 id="about-title">Fifteen years of full-stack engineering.</h2>
           <p class="big">I've worked as a full-stack web engineer for more than 15 years, building web platforms, APIs and data systems for SaaS, ad tech and e-commerce companies.</p>
           <p>That work has included high-traffic websites, marketing and paid search tools, analytics pipelines, and more recently LLM-based products. I now offer these services directly to small businesses.</p>
@@ -745,7 +691,7 @@
       <div class="wrap">
         <div class="contact-card reveal">
           <div>
-            <span class="label"><span class="n">07</span> Contact</span>
+            <span class="label"><span class="n">06</span> Contact</span>
             <h2 id="contact-title">Tell me about your project.</h2>
             <p>Send me a short description of your business and what you need help with. I usually reply within a day.</p>
           </div>
