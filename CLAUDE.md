@@ -92,11 +92,16 @@ bsullivan.io/
 - Palette tokens on `:root`: `--teal #177e89`, `--dteal #084c61`, `--scarlet #db3a34`, `--gold #ffc857`, `--graphite #323031`, on a warm `--paper #f6f0e4` with a subtle grain/fibre card-stock texture
 - Fonts (Google Fonts): **Archivo** variable (uses the `wdth` axis for condensed display type) + **IBM Plex Mono** for small labels
 - Sections: top bar, split hero (copy + teal art panel with code photo, spinning badge and a tilting business card using `images/avatar.jpg`), two marquee bands, photo/color mosaic, services (banner + 6 rows), care plans, process, portfolio showcase (JS slider, stacked without JS), about collage, contact, checker strip + footer
-- **Portfolio** loops over `_data/projects.yml`, filtered by the `showcase` Liquid assign (`"Make a Mile,newsquick.app"`)
+- **Portfolio ("Selected work")** shows `_data/examples.yml` (example client sites, home page only) followed by `_data/projects.yml` entries named in the `showcase` Liquid assign (`"Make a Mile,newsquick.app"`). Keep example sites out of `projects.yml`, which also feeds the resume
 - Stock photos are free-license Unsplash images saved in `images/stock/` (screens show code, dashboards or websites, never a blank desktop); `.duo`, `.duo-red`, `.duo-teal`, `.duo-gray` tint them into the palette and hover restores color
 - Self-contained: inline CSS and small inline JS (scroll reveal, card tilt, project slider); respects `prefers-reduced-motion`
 - Copy style: plain and factual; avoid em dashes, "not X, Y" constructions, and location references (no town names)
 - `/services/` redirects to `/#services`
+
+### Example sites — `sites/`
+- Standalone demo sites for the portfolio, each a self-contained `index.html` with no front matter (copied as-is by Jekyll)
+- `sites/restaurant-example/`: **Good Times Diner**, a fictional restaurant (modern x retro Americana; Shrikhand + Bungee + Figtree; tabbed menu, live open/closed status from an hours table, daily specials, and a demo pickup cart that sends nothing). Marked `noindex` with a visible "example website" banner
+- Portfolio thumbnails are 1440×900 screenshots saved in `images/projects/`
 
 ### `resume2.html` — Terminal Resume (active)
 - The layout used by `resume/index.html`

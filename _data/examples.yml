@@ -1,0 +1,7 @@
+# Example client sites shown in the home page portfolio (not on the resume)
+- project: Good Times Diner
+  role: Example site
+  label: Restaurant
+  url: /sites/restaurant-example/
+  image: /images/projects/good-times-diner.png
+  description: A modern, retro Americana website for a fictional diner, with a tabbed menu, live open and closed hours, daily specials, and an online pickup order builder.

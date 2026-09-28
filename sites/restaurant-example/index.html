@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Good Times Diner · Example restaurant website</title>
+  <meta name="description" content="Good Times Diner is a fictional restaurant. This is an example restaurant website built by Brian Sullivan, with a menu, hours and online ordering.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Bungee&family=Figtree:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cherry:  #d62828;
+      --cherry-dk: #a4161a;
+      --cream:   #fff4e0;
+      --cream-2: #fbe6c2;
+      --mint:    #8fd6c3;
+      --mint-dk: #3f9e89;
+      --mustard: #f4b942;
+      --navy:    #1d2d44;
+      --line:    3px solid var(--navy);
+      --script:  "Shrikhand", "Cooper Black", Georgia, serif;
+      --sign:    "Bungee", Impact, sans-serif;
+      --body:    "Figtree", "Helvetica Neue", Arial, sans-serif;
+      --checker: conic-gradient(var(--navy) 25%, var(--cream) 0 50%, var(--navy) 0 75%, var(--cream) 0);
+      --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.15  0 0 0 0 0.25  0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      --wrap: 1180px;
+      --gutter: clamp(16px, 4.5vw, 48px);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--cream); background-image: var(--grain); color: var(--navy); font-family: var(--body); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; }
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+    h1, h2, h3 { margin: 0; line-height: 1; }
+    p { margin: 0 0 1em; }
+    .sign { font-family: var(--sign); font-weight: 400; letter-spacing: .04em; }
+    .script { font-family: var(--script); font-weight: 400; }
+
+    .btn { display: inline-flex; align-items: center; gap: .5em; font-family: var(--sign); font-size: .95rem; letter-spacing: .04em; text-decoration: none; padding: .8em 1.4em; border: var(--line); border-radius: 999px; background: var(--cream); color: var(--navy); box-shadow: 4px 4px 0 var(--navy); cursor: pointer; transition: transform .15s, box-shadow .15s, background .2s; }
+    .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--navy); }
+    .btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--navy); }
+    .btn-red { background: var(--cherry); color: var(--cream); }
+    .btn-mint { background: var(--mint); }
+    .btn-mustard { background: var(--mustard); }
+
+    /* ---------- demo notice ---------- */
+    .demo { background: var(--navy); color: var(--cream); font-size: .82rem; text-align: center; padding: 8px var(--gutter); }
+    .demo a { color: var(--mustard); font-weight: 700; }
+
+    /* ---------- header ---------- */
+    header.top { border-bottom: var(--line); background: var(--cream); position: sticky; top: 0; z-index: 20; }
+    header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 12px; padding-bottom: 12px; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-badge { width: 46px; height: 46px; border-radius: 50%; background: var(--cherry); border: var(--line); display: grid; place-items: center; color: var(--cream); font-family: var(--script); font-size: 1.15rem; box-shadow: inset 0 0 0 3px var(--cherry), inset 0 0 0 5px var(--cream); }
+    .logo-text { font-family: var(--script); font-size: 1.45rem; color: var(--cherry); line-height: 1; }
+    .logo-text small { display: block; font-family: var(--sign); font-size: .6rem; color: var(--navy); letter-spacing: .3em; margin-top: 3px; }
+    nav.main { display: flex; align-items: center; gap: 22px; }
+    nav.main a { text-decoration: none; font-weight: 700; font-size: .95rem; }
+    nav.main a:hover { color: var(--cherry); }
+    .status { display: inline-flex; align-items: center; gap: 8px; font-size: .8rem; font-weight: 700; border: 2px solid var(--navy); border-radius: 99px; padding: 4px 12px; background: var(--cream-2); white-space: nowrap; }
+    .status i { width: 10px; height: 10px; border-radius: 50%; background: #999; }
+    .status.open i { background: #2bb673; box-shadow: 0 0 0 3px rgba(43,182,115,.25); }
+    .status.closed i { background: var(--cherry); }
+    .cart-btn { position: relative; }
+    .cart-btn .count[hidden] { display: none; }
+    .cart-btn .count { position: absolute; top: -8px; right: -8px; min-width: 24px; height: 24px; border-radius: 99px; background: var(--mustard); border: 2px solid var(--navy); font-family: var(--body); font-weight: 800; font-size: .75rem; display: grid; place-items: center; padding: 0 5px; }
+
+    /* ---------- hero ---------- */
+    .hero { position: relative; overflow: hidden; border-bottom: var(--line); background: repeating-conic-gradient(from 0deg at 72% 60%, var(--cream) 0 7.5deg, var(--cream-2) 7.5deg 15deg); }
+    .hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 30px; align-items: center; padding-top: clamp(40px, 7vw, 90px); padding-bottom: clamp(56px, 8vw, 110px); }
+    .eyebrow { display: inline-block; font-family: var(--sign); font-size: .8rem; letter-spacing: .12em; background: var(--mint); border: 2px solid var(--navy); border-radius: 99px; padding: 5px 14px; }
+    .neon { margin: 22px 0 6px; }
+    .neon .script { display: block; font-size: clamp(3.6rem, 9vw, 7.4rem); color: var(--cherry); line-height: .95; text-shadow: 3px 3px 0 var(--navy), 0 0 22px rgba(214,40,40,.35); transform: rotate(-4deg); transform-origin: left; }
+    .neon .diner { display: inline-block; margin-top: 18px; font-family: var(--sign); font-size: clamp(1.8rem, 4vw, 2.8rem); letter-spacing: .32em; padding: .18em .2em .18em .5em; background: var(--navy); color: var(--mustard); border-radius: 12px; border: 3px solid var(--navy); box-shadow: inset 0 0 0 3px var(--mustard); }
+    .hero .lede { font-size: 1.2rem; max-width: 30em; margin: 24px 0 30px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero-art { position: relative; }
+    .hero-art .counter { position: absolute; left: 4%; right: 4%; bottom: 3%; height: 26%; background: var(--checker) 0 0 / 34px 34px; border: var(--line); border-radius: 16px; transform: perspective(600px) rotateX(38deg); transform-origin: bottom; }
+    .hero-art svg.food { position: relative; width: 100%; }
+    .burst { position: absolute; top: 2%; right: 0; width: 132px; aspect-ratio: 1; display: grid; place-items: center; text-align: center; font-family: var(--sign); font-size: .78rem; line-height: 1.15; color: var(--navy); animation: wobble 6s ease-in-out infinite; }
+    .burst svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .burst span { position: relative; }
+    .burst b { display: block; font-family: var(--script); font-weight: 400; font-size: 1.5rem; color: var(--cherry); letter-spacing: 0; }
+    @keyframes wobble { 50% { transform: rotate(8deg) scale(1.04); } }
+
+    /* ---------- marquee ---------- */
+    .marquee { background: var(--cherry); color: var(--cream); border-bottom: var(--line); overflow: hidden; white-space: nowrap; }
+    .marquee div { display: inline-flex; animation: slide 30s linear infinite; }
+    .marquee span { font-family: var(--sign); font-size: 1.15rem; letter-spacing: .08em; padding: 14px 20px; }
+    .marquee span::after { content: "★"; color: var(--mustard); margin-left: 40px; }
+    @keyframes slide { to { transform: translateX(-50%); } }
+
+    /* ---------- sections ---------- */
+    section { padding: clamp(64px, 9vw, 110px) 0; }
+    .head { text-align: center; margin-bottom: 44px; }
+    .head .sign { display: inline-block; font-size: .8rem; letter-spacing: .2em; color: var(--cherry); margin-bottom: 12px; }
+    .head h2 { font-family: var(--script); font-weight: 400; font-size: clamp(2.6rem, 6vw, 4.4rem); color: var(--navy); }
+    .head p { max-width: 34em; margin: 16px auto 0; }
+
+    /* menu */
+    .tabs { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+    .tabs button { font-family: var(--sign); font-size: .9rem; letter-spacing: .04em; padding: .6em 1.2em; border: var(--line); border-radius: 99px; background: var(--cream); color: var(--navy); cursor: pointer; }
+    .tabs button[aria-selected="true"] { background: var(--navy); color: var(--mustard); }
+    html:not(.js) .tabs { display: none; }
+    .board { background: var(--navy); color: var(--cream); border-radius: 26px; padding: clamp(22px, 4vw, 48px); border: var(--line); box-shadow: 10px 10px 0 var(--cherry); position: relative; }
+    .board::before { content: ""; position: absolute; inset: 10px; border: 2px dashed rgba(255,244,224,.25); border-radius: 18px; pointer-events: none; }
+    .panel { display: grid; grid-template-columns: 180px 1fr; gap: clamp(20px, 4vw, 48px); align-items: start; }
+    .js .panel[hidden] { display: none; }
+    .panel + .panel { margin-top: 40px; }
+    .js .panel + .panel { margin-top: 0; }
+    .panel-art { background: var(--cream); border-radius: 50%; border: 3px solid var(--mustard); padding: 14px; }
+    .panel h3 { font-family: var(--sign); font-weight: 400; color: var(--mustard); font-size: 1.4rem; letter-spacing: .06em; margin-bottom: 14px; }
+    .items { list-style: none; margin: 0; padding: 0; }
+    .item { display: grid; grid-template-columns: 1fr auto auto; gap: 6px 14px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid rgba(255,244,224,.14); }
+    .item:last-child { border-bottom: 0; }
+    .item .name { font-weight: 800; font-size: 1.1rem; display: flex; align-items: baseline; gap: 10px; }
+    .item .name::after { content: ""; flex: 1; border-bottom: 2px dotted rgba(255,244,224,.35); transform: translateY(-4px); }
+    .item .price { font-family: var(--sign); color: var(--mustard); }
+    .item .desc { grid-column: 1 / -1; font-size: .92rem; color: rgba(255,244,224,.75); margin-top: -4px; }
+    .item .tag { font-size: .66rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; background: var(--mint); color: var(--navy); border-radius: 99px; padding: 1px 8px; margin-left: 6px; vertical-align: 2px; }
+    .add { font-family: var(--body); font-weight: 800; font-size: .8rem; border: 2px solid var(--cream); color: var(--cream); background: transparent; border-radius: 99px; padding: 3px 12px; cursor: pointer; transition: background .15s, color .15s; }
+    .add:hover { background: var(--mustard); border-color: var(--mustard); color: var(--navy); }
+    .add.added { background: var(--mint); border-color: var(--mint); color: var(--navy); }
+
+    /* specials + hours */
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+    .card { background: var(--cream); border: var(--line); border-radius: 22px; padding: clamp(22px, 3.5vw, 36px); box-shadow: 8px 8px 0 var(--navy); }
+    .card h3 { font-family: var(--script); font-weight: 400; font-size: 2.2rem; color: var(--cherry); margin-bottom: 18px; }
+    .alt { background: var(--mint); background-image: var(--grain); border-top: var(--line); border-bottom: var(--line); }
+    table { width: 100%; border-collapse: collapse; }
+    td { padding: 10px 0; border-bottom: 2px dotted rgba(29,45,68,.25); }
+    td:last-child { text-align: right; font-weight: 700; }
+    tr.today td { color: var(--cherry); font-weight: 800; }
+    tr.today td:first-child::after { content: "Today"; font-family: var(--sign); font-size: .62rem; letter-spacing: .08em; background: var(--cherry); color: var(--cream); border-radius: 99px; padding: 2px 8px; margin-left: 8px; vertical-align: 2px; }
+    .specials li { list-style: none; display: grid; grid-template-columns: 58px 1fr; gap: 12px; padding: 10px 0; border-bottom: 2px dotted rgba(29,45,68,.25); }
+    .specials { padding: 0; margin: 0; }
+    .specials li b { font-family: var(--sign); font-weight: 400; font-size: .85rem; }
+    .specials li.today { background: var(--mustard); border-radius: 12px; padding: 10px 12px; margin: 4px -12px; border-bottom: 0; }
+    .visit { margin-top: 22px; display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; }
+    .visit .pin { width: 56px; height: 56px; border-radius: 50%; background: var(--cherry); border: var(--line); display: grid; place-items: center; color: var(--cream); font-size: 1.5rem; }
+
+    /* ordering */
+    .ways { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 40px; }
+    .way { text-align: center; }
+    .way .ico { width: 74px; height: 74px; margin: 0 auto 16px; border-radius: 50%; border: var(--line); display: grid; place-items: center; background: var(--mustard); }
+    .way:nth-child(2) .ico { background: var(--mint); }
+    .way:nth-child(3) .ico { background: var(--cherry); }
+    .way h3 { font-family: var(--sign); font-weight: 400; font-size: 1.2rem; letter-spacing: .04em; margin-bottom: 10px; }
+    .way p { font-size: .95rem; }
+    .order-box { display: grid; grid-template-columns: 1.3fr 1fr; gap: 26px; align-items: start; }
+    .cart-list { list-style: none; margin: 0 0 16px; padding: 0; }
+    .cart-list li { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 2px dotted rgba(29,45,68,.25); }
+    .qty { display: inline-flex; align-items: center; border: 2px solid var(--navy); border-radius: 99px; overflow: hidden; }
+    .qty button { border: 0; background: var(--cream-2); width: 28px; height: 28px; font-weight: 800; cursor: pointer; color: var(--navy); }
+    .qty span { width: 28px; text-align: center; font-weight: 800; }
+    .empty { color: rgba(29,45,68,.6); font-style: italic; }
+    .total { display: flex; justify-content: space-between; font-family: var(--sign); font-size: 1.2rem; margin: 10px 0 18px; }
+    .pickup label { display: block; font-weight: 700; font-size: .9rem; margin-bottom: 6px; }
+    .pickup select, .pickup input { width: 100%; font: inherit; padding: 10px 12px; border: var(--line); border-radius: 12px; background: #fff; color: var(--navy); margin-bottom: 14px; }
+    .confirm { display: none; background: var(--mint); border: var(--line); border-radius: 16px; padding: 16px; margin-top: 14px; font-weight: 700; }
+    .confirm.show { display: block; }
+    .note { font-size: .8rem; color: rgba(29,45,68,.65); margin-top: 10px; }
+
+    /* footer */
+    .floor { height: 44px; background: var(--checker) 0 0 / 44px 44px; border-top: var(--line); }
+    footer { background: var(--navy); color: var(--cream); padding: 44px 0 34px; }
+    footer .wrap { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 30px; }
+    footer .logo-text { color: var(--mustard); }
+    footer .logo-text small { color: var(--cream); }
+    footer h4 { font-family: var(--sign); font-weight: 400; color: var(--mint); letter-spacing: .08em; margin: 0 0 10px; font-size: .9rem; }
+    footer p { font-size: .92rem; color: rgba(255,244,224,.85); }
+    footer .credit { grid-column: 1 / -1; border-top: 1px solid rgba(255,244,224,.2); padding-top: 18px; font-size: .82rem; color: rgba(255,244,224,.7); }
+    footer .credit a { color: var(--mustard); }
+
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+    @media (max-width: 900px) {
+      .hero .wrap, .split, .order-box { grid-template-columns: 1fr; }
+      .hero-art { max-width: 480px; margin: 0 auto; width: 100%; }
+      .panel { grid-template-columns: 1fr; }
+      .panel-art { width: 130px; }
+      .ways { grid-template-columns: 1fr; }
+      footer .wrap { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      nav.main a:not(.btn) { display: none; }
+      .status { display: none; }
+      .logo-text { font-size: 1.2rem; }
+      .burst { width: 104px; }
+      .tabs { gap: 6px; }
+      .tabs button { font-size: .72rem; padding: .55em .85em; }
+    }
+  </style>
+  <script>document.documentElement.className = 'js';</script>
+</head>
+<body>
+  <!-- reusable illustrations -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-burger" viewBox="0 0 120 110">
+        <g stroke="#1d2d44" stroke-width="4" stroke-linejoin="round">
+          <path d="M14 50 C14 20 106 20 106 50 Z" fill="#f4b942"/>
+          <path d="M8 60 L112 60 L104 70 L94 62 L84 72 L72 62 L60 72 L48 62 L36 72 L24 62 L16 70 Z" fill="#6ac46a"/>
+          <rect x="10" y="66" width="100" height="14" rx="7" fill="#7a3b1e"/>
+          <path d="M10 80 L110 80 L100 90 L20 90 Z" fill="#f4d03f"/>
+          <path d="M16 88 L104 88 C104 102 16 102 16 88 Z" fill="#f4b942"/>
+        </g>
+        <g fill="#fff4e0"><ellipse cx="44" cy="34" rx="3" ry="1.8"/><ellipse cx="60" cy="28" rx="3" ry="1.8"/><ellipse cx="76" cy="35" rx="3" ry="1.8"/><ellipse cx="54" cy="40" rx="3" ry="1.8"/></g>
+      </symbol>
+      <symbol id="i-shake" viewBox="0 0 80 140">
+        <g stroke="#1d2d44" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M50 4 L40 40" fill="none" stroke="#d62828" stroke-width="7"/>
+          <circle cx="40" cy="18" r="8" fill="#d62828"/>
+          <path d="M12 44 C8 30 24 26 30 32 C32 20 50 20 52 32 C58 24 74 30 68 44 Z" fill="#fff4e0"/>
+          <path d="M8 44 L72 44 L62 116 L18 116 Z" fill="#f7a8b8"/>
+          <path d="M14 60 L66 60" stroke="#fff4e0" stroke-width="4"/>
+          <rect x="22" y="116" width="36" height="8" fill="#8fd6c3"/>
+          <path d="M16 136 L64 136 L58 124 L22 124 Z" fill="#8fd6c3"/>
+        </g>
+      </symbol>
+      <symbol id="i-coffee" viewBox="0 0 120 100">
+        <g stroke="#1d2d44" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M40 8 C34 16 46 20 40 28 M58 6 C52 14 64 18 58 26" fill="none"/>
+          <path d="M92 44 C112 44 112 72 90 70" fill="none" stroke-width="7"/>
+          <path d="M20 36 L96 36 L90 80 C88 88 28 88 26 80 Z" fill="#fff4e0"/>
+          <path d="M22 50 L94 50" stroke="#d62828" stroke-width="5"/>
+          <ellipse cx="58" cy="92" rx="52" ry="6" fill="#8fd6c3"/>
+        </g>
+      </symbol>
+      <symbol id="i-pie" viewBox="0 0 120 90">
+        <g stroke="#1d2d44" stroke-width="4" stroke-linejoin="round">
+          <path d="M10 60 L110 30 L110 58 L10 82 Z" fill="#d62828"/>
+          <path d="M10 60 L110 30 C112 22 104 16 96 20 L14 50 C6 54 6 60 10 60 Z" fill="#f4b942"/>
+          <path d="M10 82 L110 58 L110 66 L10 90" fill="#e8a33a"/>
+          <path d="M30 60 L40 57 M55 52 L65 49 M80 45 L90 42" stroke="#fff4e0" stroke-width="3"/>
+        </g>
+      </symbol>
+      <symbol id="i-bag" viewBox="0 0 60 60"><g fill="none" stroke="#1d2d44" stroke-width="4" stroke-linejoin="round"><path d="M10 20 L50 20 L46 54 L14 54 Z" fill="#fff4e0"/><path d="M22 20 C22 8 38 8 38 20"/></g></symbol>
+      <symbol id="i-phone" viewBox="0 0 60 60"><path fill="#fff4e0" stroke="#1d2d44" stroke-width="4" stroke-linejoin="round" d="M18 8 L26 8 L30 20 L24 25 C27 32 31 36 36 38 L41 32 L52 36 L52 44 C52 50 46 54 38 52 C24 48 12 36 8 22 C6 14 10 8 18 8 Z"/></symbol>
+      <symbol id="i-car" viewBox="0 0 60 60"><g stroke="#1d2d44" stroke-width="4" stroke-linejoin="round"><path d="M6 38 L10 26 C12 20 16 18 22 18 L38 18 C44 18 48 20 50 26 L54 38 Z" fill="#fff4e0"/><rect x="4" y="36" width="52" height="10" rx="4" fill="#fff4e0"/><circle cx="16" cy="48" r="6" fill="#1d2d44"/><circle cx="44" cy="48" r="6" fill="#1d2d44"/></g></symbol>
+    </defs>
+  </svg>
+
+  <div class="demo">This is an example website. Good Times Diner is a fictional restaurant, designed and built by <a href="/#work">Brian Sullivan</a>.</div>
+
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="#top">
+        <span class="logo-badge" aria-hidden="true">GT</span>
+        <span class="logo-text">Good Times<small>Diner</small></span>
+      </a>
+      <nav class="main" aria-label="Main">
+        <span class="status" id="status"><i></i><span>Checking hours…</span></span>
+        <a href="#menu">Menu</a>
+        <a href="#hours">Hours</a>
+        <a class="btn btn-red cart-btn" href="#order">Order <span class="count" id="cart-count" hidden>0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="title" style="padding:0">
+      <div class="wrap">
+        <div>
+          <span class="eyebrow">Breakfast served all day</span>
+          <h1 class="neon" id="title"><span class="script">Good Times</span><span class="diner">Diner</span></h1>
+          <p class="lede">Pancakes, burgers, hand-spun shakes and pie, made to order seven days a week. Grab a booth, call ahead, or order online for pickup.</p>
+          <div class="hero-actions">
+            <a class="btn btn-red" href="#order">Order for pickup</a>
+            <a class="btn btn-mint" href="#menu">See the menu</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="counter"></div>
+          <svg class="food" viewBox="0 0 400 330">
+            <use href="#i-shake" x="42" y="20" width="120" height="210"/>
+            <use href="#i-burger" x="150" y="112" width="210" height="192"/>
+            <use href="#i-coffee" x="10" y="200" width="130" height="108"/>
+          </svg>
+          <div class="burst">
+            <svg viewBox="0 0 100 100"><polygon fill="#f4b942" stroke="#1d2d44" stroke-width="3" points="50,2 58,16 74,8 74,26 92,26 84,42 98,50 84,58 92,74 74,74 74,92 58,84 50,98 42,84 26,92 26,74 8,74 16,58 2,50 16,42 8,26 26,26 26,8 42,16"/></svg>
+            <span>Pie of<br>the day<b>$4.50</b></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div>
+        <span>Breakfast all day</span><span>Hand-spun shakes</span><span>Fresh pie daily</span><span>Burgers on the griddle</span><span>Bottomless coffee</span>
+        <span>Breakfast all day</span><span>Hand-spun shakes</span><span>Fresh pie daily</span><span>Burgers on the griddle</span><span>Bottomless coffee</span>
+      </div>
+    </div>
+
+    <!-- ============ MENU ============ -->
+    <section id="menu" aria-labelledby="menu-title">
+      <div class="wrap">
+        <div class="head">
+          <span class="sign">The menu</span>
+          <h2 id="menu-title">What's cooking</h2>
+          <p>A short menu, done well. Tap "Add" on anything to start a pickup order.</p>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Menu sections">
+          <button role="tab" aria-selected="true" aria-controls="p-breakfast" id="t-breakfast">Breakfast</button>
+          <button role="tab" aria-selected="false" aria-controls="p-lunch" id="t-lunch">Burgers &amp; plates</button>
+          <button role="tab" aria-selected="false" aria-controls="p-sweets" id="t-sweets">Shakes &amp; pie</button>
+        </div>
+        <div class="board">
+          <div class="panel" id="p-breakfast" role="tabpanel" aria-labelledby="t-breakfast">
+            <div class="panel-art"><svg viewBox="0 0 120 100" aria-hidden="true"><use href="#i-coffee"/></svg></div>
+            <div>
+              <h3>Breakfast</h3>
+              <ul class="items">
+                <li class="item" data-id="stack" data-price="9.50"><span class="name">Buttermilk Short Stack</span><span class="price">$9.50</span><button class="add">Add</button><span class="desc">Three pancakes, whipped butter, warm maple syrup.</span></li>
+                <li class="item" data-id="twoegg" data-price="11.00"><span class="name">Two-Egg Breakfast</span><span class="price">$11.00</span><button class="add">Add</button><span class="desc">Eggs your way, home fries, toast, bacon or sausage.</span></li>
+                <li class="item" data-id="skillet" data-price="13.50"><span class="name">Diner Skillet <span class="tag">Favorite</span></span><span class="price">$13.50</span><button class="add">Add</button><span class="desc">Hash browns, peppers, onions, cheddar and two eggs on top.</span></li>
+                <li class="item" data-id="coffee" data-price="2.75"><span class="name">Bottomless Coffee</span><span class="price">$2.75</span><button class="add">Add</button><span class="desc">Fresh pot, all morning long.</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel" id="p-lunch" role="tabpanel" aria-labelledby="t-lunch">
+            <div class="panel-art"><svg viewBox="0 0 120 110" aria-hidden="true"><use href="#i-burger"/></svg></div>
+            <div>
+              <h3>Burgers &amp; plates</h3>
+              <ul class="items">
+                <li class="item" data-id="classic" data-price="12.00"><span class="name">Good Times Classic <span class="tag">Favorite</span></span><span class="price">$12.00</span><button class="add">Add</button><span class="desc">Double smash patty, American cheese, pickles, house sauce, fries.</span></li>
+                <li class="item" data-id="patty" data-price="12.50"><span class="name">Patty Melt</span><span class="price">$12.50</span><button class="add">Add</button><span class="desc">Grilled rye, Swiss, caramelized onions, fries.</span></li>
+                <li class="item" data-id="blt" data-price="10.50"><span class="name">Triple-Decker BLT</span><span class="price">$10.50</span><button class="add">Add</button><span class="desc">Thick bacon, lettuce, tomato, mayo on toasted white.</span></li>
+                <li class="item" data-id="meatloaf" data-price="15.00"><span class="name">Meatloaf Dinner</span><span class="price">$15.00</span><button class="add">Add</button><span class="desc">Mashed potatoes, gravy, green beans, dinner roll.</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel" id="p-sweets" role="tabpanel" aria-labelledby="t-sweets">
+            <div class="panel-art"><svg viewBox="0 0 80 140" aria-hidden="true" style="max-height:150px;margin:auto"><use href="#i-shake"/></svg></div>
+            <div>
+              <h3>Shakes &amp; pie</h3>
+              <ul class="items">
+                <li class="item" data-id="shake" data-price="6.50"><span class="name">Hand-Spun Shake</span><span class="price">$6.50</span><button class="add">Add</button><span class="desc">Vanilla, chocolate, strawberry or black and white.</span></li>
+                <li class="item" data-id="float" data-price="5.50"><span class="name">Root Beer Float</span><span class="price">$5.50</span><button class="add">Add</button><span class="desc">Two scoops of vanilla, frosty mug.</span></li>
+                <li class="item" data-id="pie" data-price="4.50"><span class="name">Pie of the Day</span><span class="price">$4.50</span><button class="add">Add</button><span class="desc">Ask about today's slice. Add à la mode for $1.50.</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOURS + SPECIALS ============ -->
+    <section id="hours" class="alt" aria-labelledby="hours-title">
+      <div class="wrap">
+        <div class="head">
+          <span class="sign">Come on in</span>
+          <h2 id="hours-title">Hours &amp; specials</h2>
+        </div>
+        <div class="split">
+          <div class="card">
+            <h3>Hours</h3>
+            <table id="hours-table">
+              <tr data-day="1"><td>Monday</td><td>6:30am to 3pm</td></tr>
+              <tr data-day="2"><td>Tuesday</td><td>6:30am to 3pm</td></tr>
+              <tr data-day="3"><td>Wednesday</td><td>6:30am to 3pm</td></tr>
+              <tr data-day="4"><td>Thursday</td><td>6:30am to 8pm</td></tr>
+              <tr data-day="5"><td>Friday</td><td>6:30am to 9pm</td></tr>
+              <tr data-day="6"><td>Saturday</td><td>7am to 9pm</td></tr>
+              <tr data-day="0"><td>Sunday</td><td>7am to 2pm</td></tr>
+            </table>
+            <div class="visit">
+              <span class="pin" aria-hidden="true">★</span>
+              <div><b>123 Main Street, Anytown, USA</b><br>Free parking out back. <a href="tel:+15550142000">(555) 014-2000</a></div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Blue plate specials</h3>
+            <ul class="specials" id="specials">
+              <li data-day="1"><b>Mon</b><span>Chicken pot pie with a side salad, $13</span></li>
+              <li data-day="2"><b>Tue</b><span>Two tacos from the griddle and rice, $12</span></li>
+              <li data-day="3"><b>Wed</b><span>Turkey club and a cup of soup, $12</span></li>
+              <li data-day="4"><b>Thu</b><span>Spaghetti and meatballs, $14</span></li>
+              <li data-day="5"><b>Fri</b><span>Beer-battered fish fry, $16</span></li>
+              <li data-day="6"><b>Sat</b><span>Chicken and waffles, $15</span></li>
+              <li data-day="0"><b>Sun</b><span>Roast turkey dinner, $15</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ORDER ============ -->
+    <section id="order" aria-labelledby="order-title">
+      <div class="wrap">
+        <div class="head">
+          <span class="sign">Hungry?</span>
+          <h2 id="order-title">Three ways to order</h2>
+        </div>
+        <div class="ways">
+          <div class="way"><div class="ico"><svg viewBox="0 0 60 60" width="38" aria-hidden="true"><use href="#i-bag"/></svg></div><h3>Pickup online</h3><p>Build your order below and pick a time. We'll have it bagged and ready at the counter.</p></div>
+          <div class="way"><div class="ico"><svg viewBox="0 0 60 60" width="36" aria-hidden="true"><use href="#i-phone"/></svg></div><h3>Call ahead</h3><p>Give us a ring at <a href="tel:+15550142000">(555) 014-2000</a> and we'll start cooking.</p></div>
+          <div class="way"><div class="ico"><svg viewBox="0 0 60 60" width="40" aria-hidden="true"><use href="#i-car"/></svg></div><h3>Delivery</h3><p>Available through local delivery apps during lunch and dinner hours.</p></div>
+        </div>
+
+        <div class="order-box">
+          <div class="card">
+            <h3>Your order</h3>
+            <ul class="cart-list" id="cart-list"><li class="empty">Nothing yet. Add items from the menu above.</li></ul>
+            <div class="total"><span>Total</span><span id="cart-total">$0.00</span></div>
+            <a class="btn btn-mint" href="#menu">Back to the menu</a>
+          </div>
+          <form class="card pickup" id="pickup-form">
+            <h3>Pickup</h3>
+            <label for="pickup-name">Name for the order</label>
+            <input id="pickup-name" name="name" autocomplete="off" placeholder="Your name" required>
+            <label for="pickup-time">Pickup time</label>
+            <select id="pickup-time" name="time"></select>
+            <button class="btn btn-red" type="submit">Place pickup order</button>
+            <div class="confirm" id="confirm" role="status"></div>
+            <p class="note">Demo only. No order is sent and nothing is charged.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="floor" aria-hidden="true"></div>
+  <footer>
+    <div class="wrap">
+      <div>
+        <span class="logo-text">Good Times<small>Diner</small></span>
+        <p style="margin-top:14px">Breakfast all day, burgers, shakes and pie.</p>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <p>123 Main Street<br>Anytown, USA<br><a href="tel:+15550142000">(555) 014-2000</a></p>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <p>Mon to Wed 6:30am to 3pm<br>Thu 6:30am to 8pm<br>Fri 6:30am to 9pm<br>Sat 7am to 9pm · Sun 7am to 2pm</p>
+      </div>
+      <p class="credit">Example restaurant website designed and built by <a href="/">Brian Sullivan</a>. Good Times Diner, its menu and its address are fictional.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // opening hours in minutes after midnight, keyed by day (0 = Sunday)
+      var HOURS = { 0: [420, 840], 1: [390, 900], 2: [390, 900], 3: [390, 900], 4: [390, 1200], 5: [390, 1260], 6: [420, 1260] };
+      var now = new Date(), day = now.getDay(), mins = now.getHours() * 60 + now.getMinutes();
+
+      function fmt(m) {
+        var h = Math.floor(m / 60), mm = m % 60, ap = h >= 12 ? 'pm' : 'am';
+        h = h % 12 || 12;
+        return h + (mm ? ':' + String(mm).padStart(2, '0') : '') + ap;
+      }
+
+      // open / closed badge
+      var st = document.getElementById('status'), today = HOURS[day];
+      if (mins >= today[0] && mins < today[1]) {
+        st.className = 'status open'; st.lastChild.textContent = 'Open until ' + fmt(today[1]);
+      } else {
+        var next = mins < today[0] ? { d: day, o: today[0] } : { d: (day + 1) % 7, o: HOURS[(day + 1) % 7][0] };
+        st.className = 'status closed';
+        st.lastChild.textContent = 'Closed · opens ' + (next.d === day ? '' : 'tomorrow ') + fmt(next.o);
+      }
+
+      // highlight today
+      document.querySelectorAll('#hours-table tr, #specials li').forEach(function (el) {
+        if (+el.getAttribute('data-day') === day) el.classList.add('today');
+      });
+
+      // menu tabs
+      var tabs = document.querySelectorAll('.tabs button');
+      function select(tab) {
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.setAttribute('aria-selected', on);
+          document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+        });
+      }
+      tabs.forEach(function (t) { t.addEventListener('click', function () { select(t); }); });
+      select(tabs[0]);
+
+      // cart
+      var cart = {}, names = {}, prices = {};
+      var list = document.getElementById('cart-list'), totalEl = document.getElementById('cart-total'), countEl = document.getElementById('cart-count');
+      document.querySelectorAll('.item').forEach(function (it) {
+        var id = it.dataset.id;
+        names[id] = it.querySelector('.name').firstChild.textContent.trim();
+        prices[id] = parseFloat(it.dataset.price);
+        var b = it.querySelector('.add');
+        b.setAttribute('aria-label', 'Add ' + names[id] + ' to order');
+        b.addEventListener('click', function () {
+          cart[id] = (cart[id] || 0) + 1; render();
+          b.classList.add('added'); b.textContent = 'Added';
+          setTimeout(function () { b.classList.remove('added'); b.textContent = 'Add'; }, 900);
+        });
+      });
+      function money(n) { return '$' + n.toFixed(2); }
+      function render() {
+        var ids = Object.keys(cart).filter(function (k) { return cart[k] > 0; });
+        var total = 0, count = 0;
+        list.innerHTML = '';
+        if (!ids.length) list.innerHTML = '<li class="empty">Nothing yet. Add items from the menu above.</li>';
+        ids.forEach(function (id) {
+          total += cart[id] * prices[id]; count += cart[id];
+          var li = document.createElement('li');
+          li.innerHTML = '<span></span><span class="qty"><button type="button" aria-label="Remove one">−</button><span></span><button type="button" aria-label="Add one">+</button></span><b></b>';
+          li.children[0].textContent = names[id];
+          li.querySelector('.qty span').textContent = cart[id];
+          li.querySelector('b').textContent = money(cart[id] * prices[id]);
+          var bs = li.querySelectorAll('.qty button');
+          bs[0].addEventListener('click', function () { cart[id]--; render(); });
+          bs[1].addEventListener('click', function () { cart[id]++; render(); });
+          list.appendChild(li);
+        });
+        totalEl.textContent = money(total);
+        countEl.hidden = !count; countEl.textContent = count;
+      }
+
+      // pickup times: every 15 minutes during today's remaining hours, else tomorrow
+      var sel = document.getElementById('pickup-time');
+      var start = Math.max(mins + 20, today[0]), end = today[1], label = 'Today';
+      if (start >= end) { var t = HOURS[(day + 1) % 7]; start = t[0] + 15; end = t[1]; label = 'Tomorrow'; }
+      start = Math.ceil(start / 15) * 15;
+      for (var m = start; m <= end - 15; m += 15) {
+        var o = document.createElement('option'); o.textContent = label + ', ' + fmt(m); sel.appendChild(o);
+      }
+
+      document.getElementById('pickup-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var c = document.getElementById('confirm');
+        var count = Object.keys(cart).reduce(function (a, k) { return a + cart[k]; }, 0);
+        if (!count) { c.textContent = 'Add something from the menu first.'; c.classList.add('show'); return; }
+        var name = document.getElementById('pickup-name').value.trim() || 'friend';
+        c.textContent = 'Thanks, ' + name + '! In a real site your order of ' + count + ' item' + (count > 1 ? 's' : '') + ' (' + totalEl.textContent + ') would be sent to the kitchen for ' + sel.value + '.';
+        c.classList.add('show');
+      });
+    })();
+  </script>
+</body>
+</html>

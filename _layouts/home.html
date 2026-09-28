@@ -584,31 +584,33 @@
 
     <!-- ============ WORK ============ -->
     {% assign showcase = "Make a Mile,newsquick.app" | split: "," %}
+    {% assign own = site.data.projects | where_exp: "p", "showcase contains p.project" %}
+    {% assign cases = site.data.examples | concat: own %}
     <section id="work" class="tint" aria-labelledby="work-title">
       <div class="wrap">
         <div class="section-head reveal">
           <div>
             <span class="label"><span class="n">03</span> Portfolio</span>
-            <h2 id="work-title">My own projects.</h2>
+            <h2 id="work-title">Selected work.</h2>
           </div>
-          <p>I also build and run my own products. Here are two of them.</p>
+          <p>Example sites for small businesses, plus products I have built and run myself.</p>
         </div>
         <div class="case-frame reveal">
           <svg class="blob b1" viewBox="0 0 400 300" aria-hidden="true"><path fill="#ffc857" stroke="#323031" stroke-width="2" d="M400,0 L400,220 C360,236 330,196 296,206 C258,218 268,262 222,266 C178,270 186,220 148,204 C112,190 92,218 66,192 C40,166 76,132 56,102 C36,72 -4,80 6,42 C14,12 56,0 88,0 Z"/></svg>
           <svg class="blob b2" viewBox="0 0 400 320" aria-hidden="true"><path fill="#db3a34" stroke="#323031" stroke-width="2" d="M0,40 C40,20 70,70 110,64 C150,58 150,10 196,12 C244,14 236,70 272,92 C306,114 350,96 370,132 C392,172 350,200 356,240 C362,280 400,300 400,320 L0,320 Z"/><path fill="#084c61" stroke="#323031" stroke-width="2" d="M0,150 C34,136 58,170 92,166 C130,162 136,126 172,132 C210,138 206,184 240,200 C270,214 306,206 318,236 C330,268 300,296 306,320 L0,320 Z"/></svg>
           <svg class="blob b3" viewBox="0 0 200 160" aria-hidden="true"><path fill="#323031" d="M20,160 C6,120 30,96 58,90 C90,82 96,46 128,40 C162,34 196,62 196,100 C196,130 186,146 200,160 Z"/></svg>
-          {% assign n = 0 %}{% for p in site.data.projects %}{% if showcase contains p.project %}{% assign n = n | plus: 1 %}
-          <article class="case{% if n == 1 %} on{% endif %}" aria-roledescription="slide" aria-label="Project {{ n }} of {{ showcase.size }}">
+          {% for p in cases %}{% assign n = forloop.index %}{% assign ext = p.url | slice: 0, 4 %}
+          <article class="case{% if n == 1 %} on{% endif %}" aria-roledescription="slide" aria-label="Project {{ n }} of {{ cases.size }}">
             <div>
-              <span class="label"><span class="n">Case {{ n | prepend: "0" }}</span> of {{ showcase.size | prepend: "0" }}</span>
+              <span class="label"><span class="n">Case {{ n | prepend: "0" }}</span> of {{ cases.size | prepend: "0" }}</span>
               <h3>{{ p.project }}</h3>
-              <div class="meta mono"><span>{{ p.role }}</span><span>{{ p.url | remove: "https://" | remove: "www." }}</span></div>
+              <div class="meta mono"><span>{{ p.role }}</span><span>{% if p.label %}{{ p.label }}{% else %}{{ p.url | remove: "https://" | remove: "www." }}{% endif %}</span></div>
               <p>{{ p.description }}</p>
-              <div class="actions"><a class="pill pill-dark" href="{{ p.url }}" target="_blank" rel="noopener">Visit site <span class="arrow" aria-hidden="true">→</span></a></div>
+              <div class="actions"><a class="pill pill-dark" href="{{ p.url }}"{% if ext == "http" %} target="_blank" rel="noopener"{% endif %}>{% if ext == "http" %}Visit site{% else %}View example site{% endif %} <span class="arrow" aria-hidden="true">→</span></a></div>
             </div>
-            <a class="shot" href="{{ p.url }}" target="_blank" rel="noopener" tabindex="-1"><img src="{{ p.image }}" alt="Screenshot of {{ p.project }}" loading="lazy"></a>
+            <a class="shot" href="{{ p.url }}"{% if ext == "http" %} target="_blank" rel="noopener"{% endif %} tabindex="-1"><img src="{{ p.image }}" alt="Screenshot of {{ p.project }}" loading="lazy"></a>
           </article>
-          {% endif %}{% endfor %}
+          {% endfor %}
           <div class="case-nav">
             <div class="dots" role="tablist" aria-label="Choose project"></div>
             <div class="arrows">
