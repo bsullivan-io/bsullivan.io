@@ -180,7 +180,6 @@
 
     /* ============ SECTIONS ============ */
     section { padding: clamp(80px, 10vw, 136px) 0; }
-    #services + section { padding-top: 0; }
     .section-head { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(24px, 5vw, 80px); align-items: end; margin-bottom: clamp(44px, 6vw, 76px); }
     .section-head .label { margin-bottom: 20px; }
     .section-head p { color: var(--ink-soft); font-size: 1.08rem; margin: 0; max-width: 30em; }
@@ -205,20 +204,6 @@
     /* tinted band */
     .tint { background: var(--paper-2); background-image: var(--grain), var(--fibre); background-size: 240px 240px, 400px 400px; border-top: var(--line); border-bottom: var(--line); }
 
-    /* industries */
-    .industries { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
-    .industry { border: var(--line); border-radius: 18px; overflow: hidden; background: var(--paper); transition: transform .3s, box-shadow .3s; }
-    .industry:hover { transform: translate(-3px, -3px); box-shadow: 6px 6px 0 var(--graphite); }
-    .industry .top { height: 64px; border-bottom: var(--line); position: relative; }
-    .industry:nth-child(1) .top { background: var(--scarlet); }
-    .industry:nth-child(2) .top { background: var(--gold); }
-    .industry:nth-child(3) .top { background: var(--teal); }
-    .industry:nth-child(4) .top { background: var(--checker) 0 0 / 16px 16px; }
-    .industry:nth-child(5) .top { background: var(--dteal); }
-    .industry .top span { position: absolute; left: 14px; bottom: 10px; background: var(--paper); border: 1px solid var(--graphite); border-radius: 99px; padding: 1px 9px; }
-    .industry .body { padding: 20px 20px 22px; }
-    .industry h3 { font-size: 1.2rem; font-weight: 800; font-variation-settings: "wdth" 85; margin-bottom: 8px; line-height: 1.1; }
-    .industry p { font-size: .9rem; color: var(--ink-soft); margin: 0; }
 
     /* care plans */
     .care { background: var(--dteal); background-image: var(--grain-lt); color: var(--paper); border-top: var(--line); border-bottom: var(--line); }
@@ -324,7 +309,6 @@
 
     /* ============ RESPONSIVE ============ */
     @media (max-width: 1080px) {
-      .industries { grid-template-columns: repeat(3, 1fr); }
       .nav a:not(.pill-gold):nth-child(-n+2) { display: none; }
     }
     @media (max-width: 960px) {
@@ -348,7 +332,6 @@
       .svc:hover { padding-left: 0; background: none; }
       .svc > div { grid-column: 2; }
       .svc .go { display: none; }
-          .industries { grid-template-columns: 1fr 1fr; }
       .mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4, 180px); }
       .m-a { grid-column: span 2; }
       .tile { padding: 18px; }
@@ -361,7 +344,7 @@
       .desk { bottom: 7%; }
     }
     @media (max-width: 480px) {
-      .steps, .industries { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
     }
   </style>
   <script>document.documentElement.classList.add('js');</script>
@@ -535,31 +518,12 @@
       </div>
     </section>
 
-    <!-- ============ INDUSTRIES ============ -->
-    <section aria-labelledby="ind-title">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div>
-            <span class="label"><span class="n">01</span> Industries</span>
-            <h2 id="ind-title">Types of businesses I work with.</h2>
-          </div>
-        </div>
-        <div class="industries">
-          <div class="industry reveal"><div class="top"><span class="mono">i</span></div><div class="body"><h3>Restaurants &amp; Bars</h3><p>Menus, weekly specials, live music calendars and online ordering.</p></div></div>
-          <div class="industry reveal"><div class="top"><span class="mono">ii</span></div><div class="body"><h3>Trades &amp; Services</h3><p>Service areas, click to call, quote requests with photos, and reviews.</p></div></div>
-          <div class="industry reveal"><div class="top"><span class="mono">iii</span></div><div class="body"><h3>Seasonal &amp; Events</h3><p>Rentals, programs, inquiry forms, galleries and seasonal hours.</p></div></div>
-          <div class="industry reveal"><div class="top"><span class="mono">iv</span></div><div class="body"><h3>Studios &amp; Classes</h3><p>Schedules, trial signups, class packs and memberships.</p></div></div>
-          <div class="industry reveal"><div class="top"><span class="mono">v</span></div><div class="body"><h3>Professional Offices</h3><p>A professional website plus secure email, backups and IT.</p></div></div>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ CARE PLANS ============ -->
     <section id="care" class="care" aria-labelledby="care-title">
       <div class="wrap">
         <div class="section-head reveal">
           <div>
-            <span class="label"><span class="n">02</span> Ongoing support</span>
+            <span class="label"><span class="n">01</span> Ongoing support</span>
             <h2 id="care-title">Monthly care plans.</h2>
           </div>
           <p>After your site is live, a care plan covers hosting, security, renewals and content updates. Your domain and accounts stay registered in your name.</p>
@@ -604,7 +568,7 @@
       <div class="wrap">
         <div class="section-head reveal">
           <div>
-            <span class="label"><span class="n">03</span> Process</span>
+            <span class="label"><span class="n">02</span> Process</span>
             <h2 id="process-title">How it works.</h2>
           </div>
           <p>Most projects follow these four steps.</p>
@@ -624,7 +588,7 @@
       <div class="wrap">
         <div class="section-head reveal">
           <div>
-            <span class="label"><span class="n">04</span> Portfolio</span>
+            <span class="label"><span class="n">03</span> Portfolio</span>
             <h2 id="work-title">My own projects.</h2>
           </div>
           <p>I also build and run my own products. Here are two of them.</p>
@@ -667,7 +631,7 @@
           </figure>
         </div>
         <div class="reveal">
-          <span class="label"><span class="n">05</span> About</span>
+          <span class="label"><span class="n">04</span> About</span>
           <h2 id="about-title">Fifteen years of full-stack engineering.</h2>
           <p class="big">I've worked as a full-stack web engineer for more than 15 years, building web platforms, APIs and data systems for SaaS, ad tech and e-commerce companies.</p>
           <p>That work has included high-traffic websites, marketing and paid search tools, analytics pipelines, and more recently LLM-based products. I now offer these services directly to small businesses.</p>
@@ -691,7 +655,7 @@
       <div class="wrap">
         <div class="contact-card reveal">
           <div>
-            <span class="label"><span class="n">06</span> Contact</span>
+            <span class="label"><span class="n">05</span> Contact</span>
             <h2 id="contact-title">Tell me about your project.</h2>
             <p>Send me a short description of your business and what you need help with. I usually reply within a day.</p>
           </div>

@@ -91,7 +91,7 @@ bsullivan.io/
 - Retro / typographic / gridded style (inspired by GASS Records, Mecha, App State, Rapide on Awwwards/Httpster): thick graphite rules, pill buttons and labels, big condensed type, checkerboard strips, concentric-ring op-art
 - Palette tokens on `:root`: `--teal #177e89`, `--dteal #084c61`, `--scarlet #db3a34`, `--gold #ffc857`, `--graphite #323031`, on a warm `--paper #f6f0e4` with a subtle grain/fibre card-stock texture
 - Fonts (Google Fonts): **Archivo** variable (uses the `wdth` axis for condensed display type) + **IBM Plex Mono** for small labels
-- Sections: top bar, split hero (copy + teal art panel with code photo, spinning badge and a tilting business card using `images/avatar.jpg`), two marquee bands, photo/color mosaic, services (banner + 6 rows), industries, care plans, process, portfolio showcase (JS slider, stacked without JS), about collage, contact, checker strip + footer
+- Sections: top bar, split hero (copy + teal art panel with code photo, spinning badge and a tilting business card using `images/avatar.jpg`), two marquee bands, photo/color mosaic, services (banner + 6 rows), care plans, process, portfolio showcase (JS slider, stacked without JS), about collage, contact, checker strip + footer
 - **Portfolio** loops over `_data/projects.yml`, filtered by the `showcase` Liquid assign (`"Make a Mile,newsquick.app"`)
 - Stock photos are free-license Unsplash images saved in `images/stock/` (screens show code, dashboards or websites, never a blank desktop); `.duo`, `.duo-red`, `.duo-teal`, `.duo-gray` tint them into the palette and hover restores color
 - Self-contained: inline CSS and small inline JS (scroll reveal, card tilt, project slider); respects `prefers-reduced-motion`
