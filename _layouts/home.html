@@ -585,7 +585,8 @@
     <!-- ============ WORK ============ -->
     {% assign showcase = "Make a Mile,newsquick.app" | split: "," %}
     {% assign own = site.data.projects | where_exp: "p", "showcase contains p.project" %}
-    {% assign cases = site.data.examples | concat: own %}
+    {% comment %}To show example sites again: assign cases = site.data.examples | concat: own{% endcomment %}
+    {% assign cases = own %}
     <section id="work" class="tint" aria-labelledby="work-title">
       <div class="wrap">
         <div class="section-head reveal">
@@ -593,7 +594,6 @@
             <span class="label"><span class="n">03</span> Portfolio</span>
             <h2 id="work-title">Selected work.</h2>
           </div>
-          <p>Example sites for small businesses, plus products I have built and run myself.</p>
         </div>
         <div class="case-frame reveal">
           <svg class="blob b1" viewBox="0 0 400 300" aria-hidden="true"><path fill="#ffc857" stroke="#323031" stroke-width="2" d="M400,0 L400,220 C360,236 330,196 296,206 C258,218 268,262 222,266 C178,270 186,220 148,204 C112,190 92,218 66,192 C40,166 76,132 56,102 C36,72 -4,80 6,42 C14,12 56,0 88,0 Z"/></svg>
