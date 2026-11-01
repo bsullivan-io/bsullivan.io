@@ -51,6 +51,7 @@
         .page { margin: 0.4in auto; padding: 0; }
         .columns { gap: 14px; }
         .sidebar { flex-basis: 220px; }
+        .item { break-inside: avoid; page-break-inside: avoid; }
         a { color: #111827; text-decoration: none; }
       }
     </style>
@@ -89,11 +90,20 @@
             {% for job in site.data.experience %}
             <div class="item" itemscope itemprop="worksFor" itemtype="http://schema.org/Organization">
               <h3 class="company" itemprop="name">{{ job.company }}</h3>
-              {% if job.para %}
-              <p class="copy">{{ job.para }}</p>
+              {% if job.roles %}
+                {% for role in job.roles %}
+                <div class="role">
+                  <div class="details" itemprop="description"><strong>{{ role.position }}</strong> • {{ role.duration }}</div>
+                  <div class="copy">{{ role.summary }}</div>
+                </div>
+                {% endfor %}
+              {% else %}
+                {% if job.para %}
+                <p class="copy">{{ job.para }}</p>
+                {% endif %}
+                <div class="details" itemprop="description">{{ job.position }} • {{ job.duration }}</div>
+                <div class="copy">{{ job.summary }}</div>
               {% endif %}
-              <div class="details" itemprop="description">{{ job.position }} • {{ job.duration }}</div>
-              <div class="copy">{{ job.summary }}</div>
             </div>
             {% endfor %}
           </section>

@@ -23,7 +23,7 @@ resume_contact_address:         "2522 Scotch Hill Road, Marcellus, NY"
 resume_header_contact_info:     "2522 Scotch Hill Road, Marcellus, NY • 732-600-6507 • brian@bsullivan.io"
 display_header_contact_info:    "false"
 
-resume_header_intro: "<p>Senior web engineer with 15+ years building full-stack applications, APIs, automation, and high-scale data systems across SaaS, ad tech, and e-commerce, with recent work focused on LLM integrations, AI-assisted workflows, and agentic tooling.</p>"
+resume_header_intro: "<p>Senior full-stack engineer with 15+ years building SaaS platforms, APIs, data pipelines, and automation across e-commerce and ad tech. Built and operated systems supporting billions of requests. Recent work includes LLM integrations, AI-assisted workflows, and agentic systems.</p>"
 
 # use "yes" to display the email contact button,
 # "no" to display an "I'm not looking for work" message,

@@ -7,18 +7,15 @@
   summary: <ul class='resume-item-list'><li>Led third-party integrations architecture across backend services and React interfaces for a SaaS e-commerce platform used by marketing agencies</li><li>Built features end-to-end across React and Ruby on Rails, including idempotent Rails APIs consumed by the frontend</li><li>Helped scale and modernize the platform for multi-tenancy while strengthening SOC 2-aligned security, dependency management, and compliance readiness</li><li>Reduced automated test suite runtime by 80% through improved test coverage and CI pipeline automation</li><li>Lowered AWS costs by 32% by monitoring, deploying, and tuning services for better scale efficiency</li><li>Used Sidekiq to build background processing and automation workflows that improved response times and reduced server load</li></ul>
 
 
-# Director, Feeds Automation
-- company: Flashtalking by Mediaocean
-  position: Director, Feeds Automation & Engineering
-  duration: Feb, 2023 &mdash; Sept, 2023
-  para: Took on the Director role in 2023 after years building feeds, automation, and ad-serving systems within Mediaocean's global Feeds organization.
-  summary: <ul class='resume-item-list'><li>Led technical direction and engineering best practices for a global team building feed-driven automation and dynamic creative systems across PHP, Docker, and AWS</li><li>Reviewed pull requests, coordinated releases, and led software deployments using Git, Bitbucket, and Jenkins</li><li>Developed reusable internal and client-facing tools, including wrappers around internal APIs that streamlined delivery workflows</li><li>Ran code and documentation reviews that improved alignment, maintainability, and shared ownership across projects</li><li>Managed technical delivery for display, social, and dynamic video campaigns</li></ul>
-
-# Web Services Engineer
-- company: Mediaocean
-  position: Senior Web Services Engineer
-  duration:  May, 2015 &mdash; Feb, 2023
-  summary: <ul class='resume-item-list'><li>Built and operated high-availability services and applications that supported billions of ad requests across the web</li><li>Developed automated data ingestion and transformation pipelines for client APIs and product catalogs, powering scalable services used in ad serving</li><li>Served as lead engineer for feeds, retargeting, social ad creation, and dynamic video automation across hundreds of campaigns</li><li>Delivered solutions for major enterprise brands across automotive, travel, and retail, including Lexus, Audi, Nissan, American Airlines, JetBlue, Royal Caribbean, Best Buy, and Dell</li></ul>
+# Mediaocean / Flashtalking progression
+- company: Mediaocean / Flashtalking
+  roles:
+    - position: Director, Feeds Automation & Engineering
+      duration: Feb, 2023 &mdash; Sept, 2023
+      summary: <ul class='resume-item-list'><li>Led technical direction and engineering best practices for a global team building feed-driven automation and dynamic creative systems across PHP, Docker, and AWS</li><li>Reviewed pull requests, coordinated releases, and led software deployments using Git, Bitbucket, and Jenkins</li><li>Developed reusable internal and client-facing tools, including wrappers around internal APIs that streamlined delivery workflows</li><li>Ran code and documentation reviews that improved alignment, maintainability, and shared ownership across projects</li><li>Managed technical delivery for display, social, and dynamic video campaigns</li></ul>
+    - position: Senior Web Services Engineer
+      duration: May, 2015 &mdash; Feb, 2023
+      summary: <ul class='resume-item-list'><li>Built and operated high-availability services and applications that supported billions of ad requests across the web</li><li>Developed automated data ingestion and transformation pipelines for client APIs and product catalogs, powering scalable services used in ad serving</li><li>Served as lead engineer for feeds, retargeting, social ad creation, and dynamic video automation across hundreds of campaigns</li><li>Delivered solutions for major enterprise brands across automotive, travel, and retail, including Lexus, Audi, Nissan, American Airlines, JetBlue, Royal Caribbean, Best Buy, and Dell</li></ul>
 
 # Full-Stack Web Developer
 - company: Theatermania

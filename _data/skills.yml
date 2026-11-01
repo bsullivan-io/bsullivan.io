@@ -1,39 +1,12 @@
 # Skills
-# Programming languages & Frameworks
-- skill: Programming Languages & Frameworks
-  description: TypeScript / JavaScript, Node.js, jQuery, React, Redux, Angular, Ruby / Ruby on Rails, PHP, Symfony, Laravel, Python, .NET, Jekyll, Tailwind, CSS, HTML, Markdown, SwiftUI
+- skill: Languages & Frameworks
+  description: TypeScript / JavaScript, Node.js, React, Ruby / Ruby on Rails, PHP, Python, .NET, HTML, CSS, Tailwind
 
-# Platforms & Systems
-- skill: Cloud Platforms
-  description: AWS (EC2, ECS, S3, CloudFront), Google Cloud, Render, Railway, GitLab Pages
-- skill: Databases
-  description: DynamoDB, MongoDB, MySQL, PostgreSQL
-- skill: Caching
-  description: Redis, Memcached
-- skill: DevOps & CI/CD
-  description: Docker, Jenkins, CircleCI
-- skill: Version Control
-  description: Git, GitHub, Bitbucket
-- skill: Testing & QA
-  description: Cypress, Playwright, RSpec, Postman
-- skill: Monitoring & Observability
-  description: Bugsnag, Sentry, Grafana, AWS CloudWatch
-# AI
-- skill: AI, LLMs & Agentic Tools
-  description: OpenAI/Anthropic API integrations, agentic workflows, prompt engineering, model evaluation, workflow automation, MCP integrations, Claude Code, Codex, content moderation, NLP (Natural Language Processing)
-- skill: Scripting & CLI
-  description: Bash, PowerShell
-- skill: Project & Collaboration
-  description: Jira, Linear, Asana
-- skill: Ad Tech & Social
-  description: Facebook Business Manager, Opal, Google AdSense, Google AdMob, TikTok Ads Manager, Snapchat Ads Business Manager
-- skill: CMS
-  description: WordPress, Shopify, OpenCart
-- skill: Background Jobs & Queues
-  description: Sidekiq, cron
-- skill: Authentication & Security
-  description: OAuth, JWT, Single Sign-On (SSO), Content Security Policy (CSP)
+- skill: Cloud, Data & Infrastructure
+  description: AWS (EC2, ECS, S3, CloudFront), Docker, PostgreSQL, MySQL, MongoDB, DynamoDB, Redis, Sidekiq
 
-# Applications
-- skill: Technical Proficiencies
-  description: REST APIs, microservices, AI integrations, data parsers, ETL pipelines, content management systems, large-scale data ingestion and retrieval, full-stack development
+- skill: Architecture, Delivery & Quality
+  description: REST APIs, microservices, ETL and data pipelines, background jobs, CI/CD, Git / GitHub, RSpec, Cypress, Playwright, CloudWatch, Grafana, Sentry
+
+- skill: AI & Automation
+  description: OpenAI and Anthropic API integrations, LLM and agentic workflows, MCP integrations, prompt engineering, model evaluation, workflow automation, content moderation, NLP
