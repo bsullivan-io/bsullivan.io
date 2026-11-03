@@ -1,6 +1,13 @@
 # Projects
 # uncomment the urls if you wish to display them, and add your own URL
 
+# Rank Everything
+- project: Rank Everything
+  role: Founder, Developer
+  duration: 2026 &mdash; Present
+  url: "https://settlenothing.com"
+  image: "/images/projects/rank-everything.png"
+  description: Full-stack social ranking game built with Next.js, React, PostgreSQL, and Drizzle ORM. Players choose between unrelated items, with each vote shaping Elo-style global rankings, category leaderboards, popular matchups, and shareable lists.
 # Make a Mile
 - project: Make a Mile
   role: Founder, Developer

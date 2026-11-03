@@ -583,7 +583,7 @@
     </section>
 
     <!-- ============ WORK ============ -->
-    {% assign showcase = "Make a Mile,newsquick.app" | split: "," %}
+    {% assign showcase = "Rank Everything,Make a Mile,newsquick.app" | split: "," %}
     {% assign own = site.data.projects | where_exp: "p", "showcase contains p.project" %}
     {% comment %}To show example sites again: assign cases = site.data.examples | concat: own{% endcomment %}
     {% assign cases = own %}
@@ -641,7 +641,7 @@
             <div><b>Experience</b>15+ years, full stack</div>
             <div><b>Recent roles</b>Marketfuel, Mediaocean</div>
             <div><b>Specialties</b>Web, APIs, search &amp; analytics</div>
-            <div><b>Projects</b>Make a Mile, NewsQuick</div>
+            <div><b>Projects</b>Rank Everything, Make a Mile, NewsQuick</div>
           </div>
           <div class="about-actions">
             <a class="pill pill-dark" href="/resume/">View my résumé <span class="arrow" aria-hidden="true">→</span></a>
