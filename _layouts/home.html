@@ -281,6 +281,7 @@
     .contact-side { border-left: 1.5px solid rgba(246,240,228,.45); padding-left: clamp(24px, 4vw, 56px); }
     .contact .mail { display: inline-block; font-size: clamp(1.5rem, 2.8vw, 2.4rem); font-weight: 800; font-variation-settings: "wdth" 80; letter-spacing: -.02em; text-decoration: none; border-bottom: 3px solid var(--gold); margin: 8px 0 30px; word-break: break-word; }
     .contact .mail:hover { color: var(--gold); }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
     /* footer */
     .checker-strip { height: 26px; background: var(--checker) 0 0 / 26px 26px; border-top: var(--line); border-bottom: var(--line); }
@@ -664,7 +665,10 @@
           <div class="contact-side">
             <span class="mono">Email</span><br>
             <a class="mail" href="mailto:{{ site.resume_contact_email }}?subject=Website%20inquiry">{{ site.resume_contact_email }}</a>
-            <div><a class="pill pill-gold" href="mailto:{{ site.resume_contact_email }}?subject=Website%20inquiry">Send an email <span class="arrow" aria-hidden="true">→</span></a></div>
+            <div class="contact-actions">
+              <a class="pill pill-gold" href="mailto:{{ site.resume_contact_email }}?subject=Website%20inquiry">Send an email <span class="arrow" aria-hidden="true">→</span></a>
+              <a class="pill pill-gold" href="https://m.me/61595393150410" target="_blank" rel="noopener noreferrer" aria-label="Message Brian Sullivan Web Services on Facebook">Message on Facebook <span class="arrow" aria-hidden="true">→</span></a>
+            </div>
           </div>
         </div>
       </div>
