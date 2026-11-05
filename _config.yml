@@ -62,3 +62,16 @@ resume_theme:                   default
 # Note: when editing locally, remember to restart
 # your Jekyll server when you edit this file. Changes
 # to _config.yml are only recognized when the server starts
+
+# Local planning notes are not part of the published site.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - TASK_BOARD.md
+  - Tasks
+  - .obsidian
+
+# Google Analytics 4 — bsullivan.io web stream
+google_analytics_id: "G-B3Q2T69LFW"
