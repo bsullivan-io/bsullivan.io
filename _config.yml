@@ -1,6 +1,8 @@
 # Site settings
-title: "Brian Sullivan"
-description: "Brian Sullivan is a web engineer with over 15 years professional experience."
+title: "Brian Sullivan Web Services"
+url: "https://bsullivan.io"
+baseurl: ""
+description: "Custom websites, SEO, website maintenance and web apps for small businesses in Marcellus, Syracuse and Central New York. 15+ years of experience."
 
 # Build settings
 markdown: kramdown

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% include service-seo.html %}
+  <link rel="icon" href="/images/favicon.png">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f6f0e4; color: #323031; font: 18px/1.65 Arial, sans-serif; }
+    a { color: #084c61; text-underline-offset: .2em; }
+    a:focus-visible { outline: 3px solid #177e89; outline-offset: 5px; }
+    .wrap { width: min(100% - 40px, 960px); margin: auto; }
+    header { background: #323031; color: #f6f0e4; }
+    header .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; padding-block: 20px; }
+    header a { color: inherit; }
+    .brand { font-weight: 800; text-decoration: none; }
+    nav { display: flex; gap: 20px; flex-wrap: wrap; }
+    main { padding-block: 45px 70px; }
+    h1 { font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.08; letter-spacing: -.035em; max-width: 18ch; }
+    h2 { line-height: 1.2; margin-top: 2em; }
+    .eyebrow { color: #084c61; font: bold .85rem/1.5 monospace; text-transform: uppercase; }
+    .content { max-width: 740px; }
+    .contact { background: #db3a34; color: #f6f0e4; border: 2px solid #323031; border-radius: 24px; padding: clamp(24px, 5vw, 45px); margin-top: 50px; box-shadow: 8px 8px #323031; }
+    .contact h2 { margin-top: 0; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-block; background: #ffc857; color: #323031; border: 2px solid #323031; border-radius: 999px; padding: 12px 22px; font-size: .9rem; font-weight: bold; text-decoration: none; }
+    .button:hover { background: #323031; color: #ffc857; }
+    footer { border-top: 2px solid #323031; padding-block: 28px; }
+    footer nav { margin-top: 16px; font-size: .95rem; }
+    li { margin-block: .6em; }
+  </style>
+</head>
+<body>
+<header><div class="wrap"><a class="brand" href="/">Brian Sullivan Web Services</a><nav aria-label="Primary"><a href="/#services">Services</a><a href="/#work">Work</a><a href="#contact">Get in touch</a></nav></div></header>
+<main class="wrap">
+  <a href="/">Home</a> / Services
+  <p class="eyebrow">Marcellus · Syracuse · Central New York</p>
+  <h1>{{ page.heading | escape }}</h1>
+  <div class="content">{{ content }}</div>
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">Tell me what you need.</h2>
+    <p>Work directly with a full-stack web engineer with 15+ years of experience. Send a short description of your business and project. I usually reply within a day.</p>
+    <div class="actions"><a class="button" href="mailto:{{ site.resume_contact_email }}?subject={{ page.service_name | url_encode }}">Send an email</a><a class="button" href="https://m.me/61595393150410" target="_blank" rel="noopener noreferrer" aria-label="Message Brian Sullivan Web Services on Facebook">Message on Facebook</a></div>
+  </section>
+</main>
+<footer><div class="wrap">Brian Sullivan Web Services · Based in Marcellus, NY<nav aria-label="Service pages"><a href="/services/website-design/">Website design</a><a href="/services/seo/">SEO</a><a href="/services/website-maintenance/">Website maintenance</a><a href="/services/custom-web-apps/">Custom web apps</a></nav></div></footer>
+</body>
+</html>
