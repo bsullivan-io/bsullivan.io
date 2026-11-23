@@ -103,6 +103,14 @@ bsullivan.io/
 - `sites/restaurant-example/`: **Good Times Diner**, a fictional restaurant (modern x retro Americana; Shrikhand + Bungee + Figtree; tabbed menu, live open/closed status from an hours table, daily specials, and a demo pickup cart that sends nothing). Marked `noindex` with a visible "example website" banner
 - Portfolio thumbnails are 1440×900 screenshots saved in `images/projects/`
 
+### Fire department landing page — `fire/index.html`
+- Served at `/fire/`. Self-contained page (no layout; inline CSS + small inline JS) that presents the fire department brochure's services; reuses `_includes/analytics.html` and `_includes/service-seo.html` via its front matter
+- Copy follows the approved brochure text in `output/marketing/brochure/completed/section-copy.json`. **No pricing or package names on this page.** Location wording is "Central New York" only
+- Own look, separate from the home page: engine red `#b71928`, ink `#111a2e`, white, grey `#eceef1`, gold `#e2a829` (chevron band and focus rings only); **Big Shoulders Display** headings + **Libre Franklin** body
+- Service illustrations are HTML/CSS mock-ups (`.mock`, `aria-hidden`); the Facebook sync mock-up (`#sync-demo`) is the only animation, plays once on scroll and is skipped under `prefers-reduced-motion`
+- Photos are WebP copies of the brochure images in `images/fire/`
+- Linked from the home page footer and the `service.html` footer
+
 ### `resume2.html` — Terminal Resume (active)
 - The layout used by `resume/index.html`
 - Dark terminal aesthetic applied to full resume content
